@@ -4,21 +4,30 @@
 	{
 		var $idEmpleado;
 		var $nombre;
+		var $foto;
+		var $hojaVida;
 		var $telefono;
-		var $cargo;
 		var $email;
-		var $fkIdArea;
+		var $direccion;
+		var $x;
+		var $y;
+		var $fkArea;
 		var $fkRmple;
 		
-		function __construct($idEmpleado, $nombre, $telefono, $cargo, $email, $fkIdArea, $fkRmple)
+		function __construct($idEmpleado, $nombre, $foto, $hojaVida, $telefono, $email, $direccion, $x, $y, $fkEmple_Jefe, $fkArea,)
 		{
 			$this->idEmpleado=$idEmpleado;
 			$this->nombre=$nombre;
+			$this->foto=$foto;
+			$this->hojaVida=$nombre;
 			$this->telefono=$telefono;
-			$this->cargo=$cargo;
 			$this->email=$email;
-			$this->fkIdArea=$fkIdArea;
-			$this->fkRmple=$fkRmple;
+			$this->direccion=$direccion;
+			$this->x=$x;
+			$this->y=$y;
+			$this->fkEmple_Jefe=$fkEmple_Jefe;
+			$this->fkArea=$fkArea;
+			
 			
 		}
 
@@ -40,11 +49,11 @@
 		function getTelefono(){
 			return $this->telefono;
 		}
-		function setCargo($cargo){
-			$this->cargo=$cargo;
+		function setFoto($foto){
+			$this->foto=$foto;
 		}
-		function getCargo(){
-			return $this->cargo;
+		function getFoto(){
+			return $this->foto;
 		}
 		function setEmail($email){
 			$this->email=$email;
@@ -52,17 +61,41 @@
 		function getEmail(){
 			return $this->email;
 		}
-		function setFkIdArea($fkIdArea){
-			$this->fkIdArea=$fkIdArea;
+		function setFkArea($fkIdArea){
+			$this->fkArea=$fkArea;
 		}
-		function getFkIdArea(){
-			return $this->fkIdArea;
+		function getFkArea(){
+			return $this->fkArea;
 		}
-		function setFkRmple($fkRmple){
-			$this->fkRmple=$fkRmple;
+		function setFkEmple_Jefe($fkEmple_Jefe){
+			$this->fkEmple_Jefe=$fkEmple_Jefe;
 		}
-		function getFkRmple(){
-			return $this->fkRmple;
+		function getFkEmple_Jefe(){
+			return $this->fkEmple_Jefe;
+		}
+		function setDireccion($direccion){
+			$this->direccion=$direccion;
+		}
+		function getDireccion(){
+			return $this->direccion;
+		}
+		function setX($x){
+			$this->x=$x;
+		}
+		function getX(){
+			return $this->x;
+		}
+		function setY($y){
+			$this->y=$y;
+		}
+		function getY(){
+			return $this->y;
+		}
+		function setHojaVida($hojaVida){
+			$this->hojaVida=$hojaVida;
+		}
+		function getHojaVida(){
+			return $this->hojaVida;
 		}
 		
 	}
