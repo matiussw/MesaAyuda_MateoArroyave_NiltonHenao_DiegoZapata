@@ -1,0 +1,88 @@
+*{
+	margin: 0;
+	padding: 0;
+
+}
+
+body{
+	font-family: 'arial', sans-serif;
+	font-size: 15px;
+	line-height: 1.5em;
+	background: #f4f4f4;
+}
+
+#contenedor{
+	background: #454545;
+	margin: 50px auto;
+	overflow: auto;
+	width: 60%;
+	min-height: 200px;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-o-border-radius: 12px;
+}
+
+header  h1{
+	color: #fff;
+	font-size: 22px;
+	padding: 15px 0 10px 10px;
+	border-bottom: 1px solid #fff;
+}
+
+#formulario{
+	width: 90%;
+	min-height: 80px;
+	margin: auto;
+	padding:0;
+	margin-top: 20px;
+}
+
+#formulario input[type=text], #formulario input[type=email], #formulario input[type=url]{
+	height: 25px;
+	width: 48%;
+	padding: 3px;
+	margin-bottom: 20px;
+	border: 1px solid #666666;
+}
+
+textarea{
+	width: 100%;
+}
+
+#formulario .boton-enviar{
+	padding: 5px;
+	width: 50%;
+	margin:10px auto;
+	float: right;
+	border:0;
+	color:#fff;
+	font-size: 16px;
+	background: #2790d2;
+}
+
+#formulario .boton-enviar:hover{
+	background: #35a6ee;
+}
+
+/* MEDIA QUERIES - RESPONSIVE*/
+/* Estilos para smartphone*/
+@media only screen and (max-width: 768px){
+	#formulario input[type=text], #formulario input[type=email], #formulario input[type=url]{
+		width: 98%;
+	}
+
+	#formulario .boton-enviar{
+		width: 100%;
+	}
+}
+/* Estilos para Tablet*/
+@media only screen and (min-width: 768px) and (max-width: 990px){
+	#formulario input[type=text], #formulario input[type=email], #formulario input[type=url]{
+		width: 98%;
+	}
+
+	#formulario .boton-enviar{
+		width: 100%;
+	}
+}
