@@ -4,6 +4,17 @@
 	include "../control/ControlEmpleados.php";
 	include "../control/ControlConexion.php";
 
+	$objEmpleados = new Empleados("","","","","","","","","","","");
+	$objControlEmpleados = new ControlEmpleados($objEmpleados);
+	$objEmpleados = $objControlEmpleados->comboBoxJefe();
+
+	$objEmpleados2 = new Empleados("","","","","","","","","","","");
+	$objControlEmpleados2 = new ControlEmpleados($objEmpleados2);
+	$objEmpleados2 = $objControlEmpleados2->comboBoxArea();
+
+	$objEmpleados3 = new Empleados("","","","","","","","","","","");
+	$objControlEmpleados3 = new ControlEmpleados($objEmpleados3);
+	$objEmpleados3 = $objControlEmpleados3->comboBoxCargo();
 
 try{
 	$ide = $_POST['txtIdEmpleado'];
@@ -100,7 +111,16 @@ try{
 			</tr>
 			<tr>
 				<td><h4>Cargo</h4></td>
-				<td><input class='form-control' type='text' name='txtCargo' value='" . $car . "' >
+				
+				<td><select name='txtCargo'>
+				";
+				while($row = $objEmpleados3->fetch_assoc()){ 
+					echo"
+					
+					<option value='".$row['IDCARGO']."'>".$row['NOMBRE']."</option>";
+
+				}
+				echo"
 				</td>
 			</tr>
 			<tr>
@@ -120,17 +140,35 @@ try{
 			</tr>
 			<tr>
 				<td><h4>Y</h4></td>
-				<td><input class='form-control' type='Email' name='txtY' value='" . $y . "' >
+				<td><input class='form-control' type='text' name='txtY' value='" . $y . "' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Jefe inmediato</h4></td>
-				<td><input class='form-control' type='text' name='txtFkEmple_Jefe' value='" . $fke . "' >
+				
+				<td><select name='txtFkRmple'>
+				";
+				while($row = $objEmpleados->fetch_assoc()){ 
+					echo"
+					
+					<option value='".$row['IDEMPLEADO']."'>".$row['NOMBRE']."</option>";
+
+				}
+				echo"
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Área</h4></td>
-				<td><input class='form-control' type='text' name='txtFkArea' value='" . $fki . "' >
+				<td>
+				<select  name='txtFkIdArea'>
+				";
+				while($row = $objEmpleados2->fetch_assoc()){ 
+					echo"
+				
+					<option value='".$row['IDAREA']."'>".$row['NOMBRE']."</option>";
+
+				}
+				echo"
 				</td>
 			</tr>
 							
