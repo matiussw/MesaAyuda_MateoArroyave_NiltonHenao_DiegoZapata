@@ -20,7 +20,7 @@ class ControlEmpleados
 		$fke=$this->objEmpleados->getFkRmple();
 		
 		$objControlConexion = new ControlConexion();
-		$objControlConexion->abrirBd("localhost","root","","bdmesaayuda");
+		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "insert into empleados values('".$ide."','".$nom."','".$tel."','".$car."','".$ema."','".$fki."','".$fke."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
@@ -30,7 +30,7 @@ class ControlEmpleados
 	{
 		$ide=$this->objEmpleados->getIdEmpleado();		
 		$objControlConexion = new ControlConexion();
-		$objControlConexion->abrirBd("localhost","root","","bdmesaayuda");
+		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "select * from empleados where idEmpleado = '".$ide."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
 		$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
@@ -60,7 +60,7 @@ class ControlEmpleados
 		$fki=$this->objEmpleados->getFkIdArea();
 		$fke=$this->objEmpleados->getFkRmple();
 		$objControlConexion = new ControlConexion();
-		$objControlConexion->abrirBd("localhost","root","","bdmesaayuda");
+		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "update empleados set nombre = '".$nom."', telefono = '".$tel."', cargo = '".$car."', email = '".$ema."', fkIdArea = ".$fki.", fkRmple = '".$fke."' where idEmpleado = '".$ide."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
@@ -70,7 +70,7 @@ class ControlEmpleados
 	{
 		$ide=$this->objEmpleados->getIdEmpleado();
 		$objControlConexion = new ControlConexion();
-		$objControlConexion->abrirBd("localhost","root","","bdmesaayuda");
+		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "delete from empleados where idEmpleado = '".$ide."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();

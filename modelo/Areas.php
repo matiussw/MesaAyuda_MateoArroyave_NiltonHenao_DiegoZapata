@@ -3,14 +3,14 @@
 	class Areas 
 	{
 		var $idArea;
-		var $nombreArea;
-		var $fkRmple;
+		var $nombre;
+		var $fkEmple_Jefe;
 		
-		function __construct($idArea, $nombreArea, $fkRmple)
+		function __construct($idArea, $nombre, $fkEmple_Jefe)
 		{
 			$this->idArea=$idArea;
-			$this->nombreArea=$nombreArea;
-			$this->fkRmple=$fkRmple;		
+			$this->nombre=$nombre;
+			$this->fkEmple_Jefe=$fkEmple_Jefe;		
 		}
 
 		function setIdArea($idArea){
@@ -19,17 +19,17 @@
 		function getIdArea(){
 			return $this->idArea;
 		}
-		function setNombreArea($nombreArea){
-			$this->nombreArea=$nombreArea;
+		function setNombre($nombre){
+			$this->nombre=$nombre;
 		}
-		function getNombreArea(){
-			return $this->nombreArea;
+		function getNombre(){
+			return $this->nombre;
 		}
 		function setFkRmple($fkRmple){
-			$this->fkRmple=$fkRmple;
+			$this->fkEmple_Jefe=$fkEmple_Jefe;
 		}
-		function getFkRmple(){
-			return $this->fkRmple;
+		function getFkEmple_Jefe(){
+			return $this->fkEmple_Jefe;
 		}		
 	}
 

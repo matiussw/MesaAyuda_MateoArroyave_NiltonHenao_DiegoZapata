@@ -84,6 +84,16 @@ try{
 				</td>
 			</tr>
 			<tr>
+				<td><h4>Foto</h4></td>
+				<td><input class='form-control' type='file' name='txtFoto' value='".$fot."' >
+				</td>
+			</tr>
+			<tr>
+				<td><h4>Hoja de vida</h4></td>
+				<td><input class='form-control' type='file' name='txtHojaVida' value='".$hvs."' >
+				</td>
+			</tr>
+			<tr>
 				<td><h4>Teléfono</h4></td>
 				<td><input class='form-control' type='text' name='txtTelefono' value='" . $tel . "' >
 				</td>
@@ -99,15 +109,31 @@ try{
 				</td>
 			</tr>
 			<tr>
-				<td><h4>Id Área</h4></td>
-				<td><input class='form-control' type='text' name='txtFkIdArea' value='" . $fki . "' >
+				<td><h4>Dirección</h4></td>
+				<td><input class='form-control' type='text' name='txtDireccion' value='" . $dir . "' >
 				</td>
 			</tr>
 			<tr>
-				<td><h4>FK Emple</h4></td>
-				<td><input class='form-control' type='text' name='txtFkRmple' value='" . $fke . "' >
+				<td><h4>X</h4></td>
+				<td><input class='form-control' type='text' name='txtX' value='" . $x . "' >
 				</td>
-			</tr>				
+			</tr>
+			<tr>
+				<td><h4>Y</h4></td>
+				<td><input class='form-control' type='Email' name='txtY' value='" . $y . "' >
+				</td>
+			</tr>
+			<tr>
+				<td><h4>Jefe inmediato</h4></td>
+				<td><input class='form-control' type='text' name='txtFkEmple_Jefe' value='" . $fke . "' >
+				</td>
+			</tr>
+			<tr>
+				<td><h4>Área</h4></td>
+				<td><input class='form-control' type='text' name='txtFkArea' value='" . $fki . "' >
+				</td>
+			</tr>
+							
 		</table>
 		<table class='form-table' style='margin: 50px auto;'>
 			<tr>
