@@ -59,6 +59,18 @@ class ControlAreas
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}
+
+	function comboBox(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "bdmesaayuda");
+
+        $sql = "SELECT IDEMPLEADO , NOMBRE FROM empleado";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+        $objControlConexion->cerrarBd();
+        return $recordSet;
+
+    }
 }
 	
 ?>

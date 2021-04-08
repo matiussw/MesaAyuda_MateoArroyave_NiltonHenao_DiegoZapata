@@ -4,6 +4,9 @@
 	include "../control/ControlAreas.php";
 	include "../control/ControlConexion.php";
 
+	    $objAreas = new Areas("","","","");
+		$objControlAreas = new ControlAreas($objAreas);
+		$objAreas = $objControlAreas->comboBox();
 
 try{
 	$ida = $_POST['txtIdArea'];
@@ -76,8 +79,18 @@ try{
 				</td>
 			</tr>			
 			<tr>
-				<td><h4>FK Emple</h4></td>
-				<td><input class='form-control' type='text' name='txtFkRmple' value='" . $fke . "' >
+				<td><h4>Jefe De Area</h4></td>
+				<td><select name='txtFkRmple'>
+				";
+				while($row = $objAreas->fetch_assoc()){ 
+					echo"
+					
+					<option value='".$row['IDEMPLEADO']."'>".$row['NOMBRE']."</option>";
+
+				}
+				echo"
+			
+			  </select>
 				</td>
 			</tr>				
 		</table>
