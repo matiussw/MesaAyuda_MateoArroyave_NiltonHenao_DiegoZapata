@@ -7,13 +7,14 @@
 
 
 try{
-	$ida = $_POST['txtIdArea'];
+	$ida = $_POST['txtArea'];
+	$ide = $_POST['txtIdEmpleado'];
 	$req = $_POST['txtRequerimiento'];
 	$bot = $_POST['btn'];
 
 	switch ($bot) {
 		case 'Guardar':
-		$objEmpleados = new Empleados($ida, $req);
+		$objEmpleados = new Empleados($ida, $ide, $req);
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->guardar();
 		break;
@@ -41,7 +42,8 @@ echo "
 			</header>
 		<div id='formulario'>
 			<form method='POST'>
-				<input type='text' name='txIdArea' placeholder='Ingrese el Area encargada'/>
+				<input type='text' name='txtArea' placeholder='Ingrese el Area encargada'/>
+				<input type='text' name='txtIdEmpleado' placeholder='Ingrese su ID de Empleado'/>
 				<br>
 				<textarea name='txtRequerimiento' placeholder='Ingrese el requerimiento' rows='10'></textarea>
 				<br>
