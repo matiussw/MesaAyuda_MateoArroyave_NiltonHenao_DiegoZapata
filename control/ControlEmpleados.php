@@ -75,6 +75,41 @@ class ControlEmpleados
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}
+
+	function comboBoxJefe(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+
+        $sql = "SELECT IDEMPLEADO , NOMBRE FROM empleado WHERE fkEMPLE_JEFE IS NULL";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+        $objControlConexion->cerrarBd();
+        return $recordSet;
+    }
+
+	function comboBoxArea(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+
+        $sql = "SELECT IDAREA,  NOMBRE FROM area";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+        $objControlConexion->cerrarBd();
+        return $recordSet;
+    }
+
+	function comboBoxCargo(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+
+        $sql = "SELECT * FROM cargo";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+        $objControlConexion->cerrarBd();
+        return $recordSet;
+    }
+	
+
 }
 	
 ?>

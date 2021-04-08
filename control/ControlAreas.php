@@ -69,7 +69,6 @@ class ControlAreas
         $recordSet = $objControlConexion->ejecutarSelect($sql);
         $objControlConexion->cerrarBd();
         return $recordSet;
-
     }
 }
 	

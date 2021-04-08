@@ -85,7 +85,7 @@ try{
 				while($row = $objAreas->fetch_assoc()){ 
 					echo"
 					
-					<option value='".$row['IDEMPLEADO']."'>".$row['NOMBRE']."</option>";
+					<option value='".$row['IDEMPLEADO']."'>".$row['IDEMPLEADO']." ".$row['NOMBRE']."</option>";
 
 				}
 				echo"
