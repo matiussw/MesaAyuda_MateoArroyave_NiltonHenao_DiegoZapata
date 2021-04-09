@@ -2,7 +2,7 @@
 	
 	class Cargos 
 	{
-		var $idCargos;
+		var $idCargo;
 		var $nombre;
 				
 		function __construct($idCargo, $nombre)
