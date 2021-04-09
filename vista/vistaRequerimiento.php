@@ -2,9 +2,12 @@
 
 	error_reporting(E_ALL ^ E_NOTICE);
 	include '../modelo/Requerimiento.php';
-	include '../control/ControlEmpleados.php';
+	include '../control/ControlRequerimiento.php';
 	include '../control/ControlConexion.php';
 
+	$objReque = new Requerimiento("","");
+	$objControlReque = new ControlRequerimiento($objReque);
+	$objReque = $objControlReque->comboBoxArea();
 
 try{
 	$ida = $_POST['txtArea'];
@@ -42,7 +45,17 @@ echo "
 			</header>
 		<div id='formulario'>
 			<form method='POST'>
-				<input type='text' name='txtArea' placeholder='Ingrese el Area encargada'/>
+			<td><h4>Area Requerimiento</h4></td>
+				<td><select name='txtArea'>
+				";
+				while($row = $objReque->fetch_assoc()){ 
+					echo"
+					
+					<option value='".$row['IDAREA']."'>".$row['NOMBRE']."</option>";
+
+				}
+				echo"
+				</td>
 				<input type='text' name='txtIdEmpleado' placeholder='Ingrese su ID de Empleado'/>
 				<br>
 				<textarea name='txtRequerimiento' placeholder='Ingrese el requerimiento' rows='10'></textarea>

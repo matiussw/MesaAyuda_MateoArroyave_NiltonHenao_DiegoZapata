@@ -1,6 +1,6 @@
 <?php
 	
-	class Empleados 
+	class Requerimiento 
 	{
 		var $idDetalle;
 		var $requerimiento;
