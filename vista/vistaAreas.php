@@ -10,8 +10,8 @@
 
 try{
 	$ida = $_POST['txtIdArea'];
-	$nom = $_POST['txtNombreArea'];
-	$fke = $_POST['txtFkRmple'];	
+	$nom = $_POST['txtNombre'];
+	$fke = $_POST['txtFkEmple_Jefe'];	
 	$bot = $_POST['btn'];
 
 	switch ($bot) {
@@ -25,8 +25,8 @@ try{
 		$objAreas = new Areas($ida,"","");
 		$objControlAreas = new ControlAreas($objAreas);
 		$objAreas = $objControlAreas->consultar();
-		$nom=$objAreas->getNombreArea();		
-		$fke=$objAreas->getFkRmple();
+		$nom=$objAreas->getNombre();		
+		$fke=$objAreas->getFkEmple_Jefe();
 			
 		break;
 
@@ -75,12 +75,12 @@ try{
 			</tr>
 			<tr>
 				<td><h4>Nombre Área</h4></td>
-				<td><input class='form-control' type='text' name='txtNombreArea' value='".$nom."' >
+				<td><input class='form-control' type='text' name='txtNombre' value='".$nom."' >
 				</td>
 			</tr>			
 			<tr>
 				<td><h4>Jefe De Area</h4></td>
-				<td><select name='txtFkRmple'>
+				<td><select name='txtFkEmple_Jefe'>
 				";
 				while($row = $objAreas->fetch_assoc()){ 
 					echo"

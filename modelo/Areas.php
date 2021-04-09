@@ -25,7 +25,7 @@
 		function getNombre(){
 			return $this->nombre;
 		}
-		function setFkRmple($fkRmple){
+		function setFkEmple_Jefe($fkEmple_Jefe){
 			$this->fkEmple_Jefe=$fkEmple_Jefe;
 		}
 		function getFkEmple_Jefe(){

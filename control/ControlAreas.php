@@ -12,12 +12,12 @@ class ControlAreas
 
 	function guardar()
 	{
-		$nom=$this->objAreas->getNombreArea();
-		$fke=$this->objAreas->getFkRmple();
+		$nom=$this->objAreas->getNombre();
+		$fke=$this->objAreas->getFkEmple_Jefe();
 
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into areas values('".$ida."','".$nom."','".$fke."')";
+		$comandoSql = "insert into area values('".$ida."','".$nom."','".$fke."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}
@@ -27,13 +27,13 @@ class ControlAreas
 		$ida=$this->objAreas->getIdArea();		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "select * from areas where idArea = '".$ida."'";
+		$comandoSql = "select * from area where idArea = '".$ida."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
 		$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
-		$nom = $registro["nombreArea"];
-		$fke = $registro["fkRmple"];		
-		$this->objAreas->setNombreArea($nom);
-		$this->objAreas->setFkRmple($fke);		
+		$nom = $registro["nombre"];
+		$fke = $registro["fkEmple_Jefe"];		
+		$this->objAreas->setNombre($nom);
+		$this->objAreas->setFkEmple_Jefe($fke);		
 		$objControlConexion->cerrarBd();
 		return $this->objAreas;
 	}
@@ -41,11 +41,11 @@ class ControlAreas
 	function modificar()
 	{	
 		$ida=$this->objAreas->getIdArea();
-		$nom=$this->objAreas->getNombreArea();
-		$fke=$this->objAreas->getFkRmple();		
+		$nom=$this->objAreas->getNombre();
+		$fke=$this->objAreas->getFkEmple_Jefe();		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update areas set nombreArea = '".$nom."', fkRmple = '".$fke."' where idArea = '".$ida."'";
+		$comandoSql = "update area set nombreArea = '".$nom."', FkEmple_Jefe = '".$fke."' where idArea = '".$ida."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}
@@ -55,7 +55,7 @@ class ControlAreas
 		$ida=$this->objAreas->getIdArea();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "delete from areas where idArea = '".$ida."'";
+		$comandoSql = "delete from area where idArea = '".$ida."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}
