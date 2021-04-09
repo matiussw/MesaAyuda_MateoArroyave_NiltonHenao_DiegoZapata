@@ -12,15 +12,13 @@ class ControlRequerimiento
 
 	function guardar()
 	{
-		$ida=$this->objRequerimiento->getidArea();
-		$req=$this->objRequerimiento->getRequerimiento();
+		
+		$are=$this->objRequerimiento->getfkArea();
 
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into requerimiento values('".$ida."','".$nom."','".$fke."')";
-		$comandoSql1 = "insert into detallereq values('".$ida."','".$nom."','".$fke."')";
+		$comandoSql = "insert into requerimiento values('".$are."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
-		$objControlConexion->ejecutarComandoSql($comandoSql1);
 		$objControlConexion->cerrarBd();
 	}
 

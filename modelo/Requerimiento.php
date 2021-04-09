@@ -2,27 +2,27 @@
 	
 	class Requerimiento 
 	{
-		var $idDetalle;
-		var $requerimiento;
+		var $IdReque;
+		var $fkArea;
 				
-		function __construct($idDetalle, $requerimiento)
+		function __construct($IdReque, $fkArea)
 		{
-			$this->idDetalle=$idDetalle;
-			$this->requerimiento=$requerimiento;			
+			$this->IdReque=$IdReque;
+			$this->fkArea=$fkArea;			
 			
 		}
 
-		function setIdidDetalle($idDetalle){
-			$this->idDetalle=$idDetalle;
+		function setIdIdReque($IdReque){
+			$this->IdReque=$IdReque;
 		}
-		function getidDetalle(){
-			return $this->idDetalle;
+		function getIdReque(){
+			return $this->IdReque;
 		}
-		function setRequerimiento($requerimiento){
-			$this->requerimiento=$requerimiento;
+		function setfkArea($fkArea){
+			$this->fkArea=$fkArea;
 		}
-		function getRequerimiento(){
-			return $this->requerimiento;
+		function getfkArea(){
+			return $this->fkArea;
 		}		
 	}
 

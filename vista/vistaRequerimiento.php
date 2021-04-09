@@ -3,6 +3,8 @@
 	error_reporting(E_ALL ^ E_NOTICE);
 	include '../modelo/Requerimiento.php';
 	include '../control/ControlRequerimiento.php';
+	include '../modelo/DetalleReq.php';
+	include '../control/ControlDetalleReq.php';
 	include '../control/ControlConexion.php';
 
 	$objReque = new Requerimiento("","");
@@ -16,10 +18,17 @@ try{
 	$bot = $_POST['btn'];
 
 	switch ($bot) {
-		case 'Guardar':
-		$objEmpleados = new Empleados($ida, $ide, $req);
-		$objControlEmpleados = new ControlEmpleados($objEmpleados);
-		$objControlEmpleados->guardar();
+		case 'Radicar':
+	    
+
+		$objReque = new Requerimiento("", $ida);
+		$objControlReque = new ControlRequerimiento($objReque);
+		$objControlReque->guardar();
+		
+		
+		$obDetalleReq = new DetalleReq("", date("Y-m-d"), $req,"","1",$ide,"");
+		$objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
+		$objControlDetalleReq->guardar();
 		break;
 		
 		default:
