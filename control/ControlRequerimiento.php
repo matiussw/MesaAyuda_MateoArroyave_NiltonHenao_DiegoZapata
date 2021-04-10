@@ -17,7 +17,7 @@ class ControlRequerimiento
 
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into requerimiento values('".$are."')";
+		$comandoSql = "INSERT INTO requerimiento VALUES (NULL,'".$are."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}

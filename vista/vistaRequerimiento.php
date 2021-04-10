@@ -25,10 +25,9 @@ try{
 		$objControlReque = new ControlRequerimiento($objReque);
 		$objControlReque->guardar();
 		
-		
-		$obDetalleReq = new DetalleReq("", date("Y-m-d"), $req,"","1",$ide,"");
-		$objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
-		$objControlDetalleReq->guardar();
+	//	$obDetalleReq = new DetalleReq("", strval(date("Y-m-d")), $req,"","1",$ide,"");
+	  //  $objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
+	    //$objControlDetalleReq->guardar();
 		break;
 		
 		default:
@@ -53,7 +52,7 @@ echo "
 				<h1>Formulario requerimiento</h1>
 			</header>
 		<div id='formulario'>
-			<form method='POST'>
+			<form method='POST' , action='vistaRequerimiento.php'>
 			<td><h4>Area Requerimiento</h4></td>
 				<td><select name='txtArea'>
 				";

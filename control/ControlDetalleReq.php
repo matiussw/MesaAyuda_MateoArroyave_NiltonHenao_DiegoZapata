@@ -16,10 +16,11 @@ class ControlDetalleReq
 		$fec=$this->objDetalleReq->getfecha();
 		$obs=$this->objDetalleReq->getobservacion();
 
-		$fkre=$this->Idreque();
+		$fkre=Idreque();
 
         $fkes=$this->objDetalleReq->getfkEstado();
 		$fkem=$this->objDetalleReq->getfkEmple();
+
 		//$fkas=$this->objDetalleReq->getfkEmpleAsignado();
 	
 		
