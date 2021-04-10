@@ -45,6 +45,7 @@ echo "
 		<meta charset='utf-8'>
 		<title>Formulario Requerimientos</title>
 		<link rel='stylesheet' type='text/css' href='../css/estilos2.css'>
+		<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>
 	</head>
 	<body>
 		<div id='contenedor'>
@@ -68,7 +69,9 @@ echo "
 				<br>
 				<textarea name='txtRequerimiento' placeholder='Ingrese el requerimiento' rows='10'></textarea>
 				<br>
-											
+				
+				<td><a class='btn btn-primary' href='../index.html' role='button'>Regresar</a></td>
+										
 				<input class='boton-enviar' type='submit' name='btn' value='Radicar'/>
 			</form>
 		</div>
