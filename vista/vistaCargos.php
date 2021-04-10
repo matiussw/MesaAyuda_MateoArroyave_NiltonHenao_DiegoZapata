@@ -15,7 +15,7 @@ try{
 
 	switch ($bot) {
 		case 'Guardar':
-		$objCargos = new Cargos($nom);
+		$objCargos = new Cargos($idc, $nom);
 		$objControlCargos = new ControlCargos($objCargos);
 		$objControlCargos->guardar();
 		break;
