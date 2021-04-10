@@ -16,7 +16,7 @@ class ControlCargos
 
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into cargo values('".$nom."')";
+		$comandoSql = "INSERT INTO cargo VALUES (NULL,'".$nom."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}

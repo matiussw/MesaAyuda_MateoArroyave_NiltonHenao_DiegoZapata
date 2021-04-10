@@ -13,15 +13,20 @@ class ControlEmpleados
 	{
 		$ide=$this->objEmpleados->getIdEmpleado();
 		$nom=$this->objEmpleados->getNombre();
+		$fot=$this->objEmpleados->getFoto();
+		$hvs=$this->objEmpleados->getHojaVida();
 		$tel=$this->objEmpleados->getTelefono();
-		$car=$this->objEmpleados->getCargo();
+		$car=$this->objEmpleados->getcargo();
 		$ema=$this->objEmpleados->getEmail();
-		$fki=$this->objEmpleados->getFkIdArea();
-		$fke=$this->objEmpleados->getFkRmple();
+		$dir=$this->objEmpleados->getDireccion();
+		$x=$this->objEmpleados->getX();
+		$y=$this->objEmpleados->getY();
+		$fki=$this->objEmpleados->getFkArea();
+		$fke=$this->objEmpleados->getFkEmple_Jefe();
 		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into empleado values('".$ide."','".$nom."','".$tel."','".$car."','".$ema."','".$fki."','".$fke."')";
+		$comandoSql = "insert into empleado values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$car."','".$ema."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}

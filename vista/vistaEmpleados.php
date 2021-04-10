@@ -4,37 +4,42 @@
 	include "../control/ControlEmpleados.php";
 	include "../control/ControlConexion.php";
 
-	$objEmpleados = new Empleados("","","","","","","","","","","");
+	$objEmpleados = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
 	$objEmpleados = $objControlEmpleados->comboBoxJefe();
 
-	$objEmpleados2 = new Empleados("","","","","","","","","","","");
+	$objEmpleados2 = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados2 = new ControlEmpleados($objEmpleados2);
 	$objEmpleados2 = $objControlEmpleados2->comboBoxArea();
 
-	$objEmpleados3 = new Empleados("","","","","","","","","","","");
+	$objEmpleados3 = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados3 = new ControlEmpleados($objEmpleados3);
 	$objEmpleados3 = $objControlEmpleados3->comboBoxCargo();
 
 try{
 	$ide = $_POST['txtIdEmpleado'];
 	$nom = $_POST['txtNombre'];
+	$fot = $_POST['txtFoto'];
+	$hvs = $_POST['txtHojaVida'];
 	$tel = $_POST['txtTelefono'];
 	$car = $_POST['txtCargo'];
 	$ema = $_POST['txtEmail'];	
-	$fki = $_POST['txtFkIdArea'];
+	$dir = $_POST['txtDireccion'];
+	$x = $_POST['txtX'];
+	$y = $_POST['txtY'];
 	$fke = $_POST['txtFkRmple'];
+	$fki = $_POST['txtFkIdArea'];
 	$bot = $_POST['btn'];
 
 	switch ($bot) {
 		case 'Guardar':
-		$objEmpleados = new Empleados($ide, $nom, $tel, $car, $ema, $fki, $fke);
+		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $car, $ema,$dir, $x, $y, $fke, $fki);
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->guardar();
 		break;
 
 		case 'Consultar':
-		$objEmpleados = new Empleados($ide,"","","","",0,"");
+		$objEmpleados = new Empleados($ide,"","","","","","","","","","","","");
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objEmpleados = $objControlEmpleados->consultar();
 		$nom=$objEmpleados->getNombre();

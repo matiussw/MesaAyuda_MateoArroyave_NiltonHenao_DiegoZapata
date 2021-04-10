@@ -7,6 +7,7 @@
 		var $foto;
 		var $hojaVida;
 		var $telefono;
+		var $cargo;
 		var $email;
 		var $direccion;
 		var $x;
@@ -14,13 +15,14 @@
 		var $fkArea;
 		var $fkRmple;
 		
-		function __construct($idEmpleado, $nombre, $foto, $hojaVida, $telefono, $email, $direccion, $x, $y, $fkEmple_Jefe, $fkArea)
+		function __construct($idEmpleado, $nombre, $foto, $hojaVida, $telefono,$cargo, $email, $direccion, $x, $y, $fkEmple_Jefe, $fkArea)
 		{
 			$this->idEmpleado=$idEmpleado;
 			$this->nombre=$nombre;
 			$this->foto=$foto;
 			$this->hojaVida=$nombre;
 			$this->telefono=$telefono;
+			$this->cargo=$cargo;
 			$this->email=$email;
 			$this->direccion=$direccion;
 			$this->x=$x;
@@ -29,6 +31,13 @@
 			$this->fkArea=$fkArea;
 			
 			
+		}
+
+	    function setcargo($cargo){
+			$this->cargo=$cargo;
+		}
+		function getcargo(){
+			return $this->cargo;
 		}
 
 		function setIdAmpleado($idEmpleado){

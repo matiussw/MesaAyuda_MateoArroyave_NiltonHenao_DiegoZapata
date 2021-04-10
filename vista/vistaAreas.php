@@ -96,7 +96,7 @@ try{
 		</table>
 		<table class='form-table' style='margin: 50px auto;'>
 			<tr>
-				<td><input class='btn btn-success' type='submit' name='btn' value='Guardar'></td>
+				<td><input class='btn btn-success' type='submit' name='btn' value='	'></td>
 				<td><input class='btn btn-info' type='submit' name='btn' value='Consultar'></td>
 				<td><input class='btn btn-warning' type='submit' name='btn' value='Modificar'></td>
 				<td><input class='btn btn-danger' type='submit' name='btn' value='Borrar'></td>

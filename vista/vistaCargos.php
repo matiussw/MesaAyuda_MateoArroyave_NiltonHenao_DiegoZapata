@@ -4,8 +4,7 @@
 	include "../control/ControlCargos.php";
 	include "../control/ControlConexion.php";
 
-	    $objCargos = new Cargos(null,"");
-		$objControlCargos = new ControlCargos($objCargos);
+	   
 		
 
 try{
@@ -15,7 +14,7 @@ try{
 
 	switch ($bot) {
 		case 'Guardar':
-		$objCargos = new Cargos(null, $nom);
+		$objCargos = new Cargos("", $nom);
 		$objControlCargos = new ControlCargos($objCargos);
 		$objControlCargos->guardar();
 		break;

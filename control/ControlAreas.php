@@ -12,6 +12,7 @@ class ControlAreas
 
 	function guardar()
 	{
+		$ida=$this->objAreas->getIdArea();	
 		$nom=$this->objAreas->getNombre();
 		$fke=$this->objAreas->getFkEmple_Jefe();
 
