@@ -24,10 +24,15 @@ try{
 		$objReque = new Requerimiento("", $ida);
 		$objControlReque = new ControlRequerimiento($objReque);
 		$objControlReque->guardar();
+		date_default_timezone_set('America/Bogota');	
+		$hoy = date('Y-m-d H:i:s');
 		
-	//	$obDetalleReq = new DetalleReq("", strval(date("Y-m-d")), $req,"","1",$ide,"");
-	  //  $objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
-	    //$objControlDetalleReq->guardar();
+	  $fkReque=$objControlReque->Idreque();	
+	// echo $fkReque ;
+
+	  $obDetalleReq = new DetalleReq("",$hoy, $req,$fkReque,"1",$ide,"");
+	  $objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
+	  $objControlDetalleReq->guardar();
 		break;
 		
 		default:
@@ -53,7 +58,7 @@ echo "
 				<h1>Formulario requerimiento</h1>
 			</header>
 		<div id='formulario'>
-			<form method='POST' , action='vistaRequerimiento.php'>
+			<form method='POST' >
 			<td><h4>Area Requerimiento</h4></td>
 				<td><select name='txtArea'>
 				";

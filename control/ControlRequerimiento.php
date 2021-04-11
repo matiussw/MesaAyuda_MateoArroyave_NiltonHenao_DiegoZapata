@@ -32,6 +32,21 @@ class ControlRequerimiento
         $objControlConexion->cerrarBd();
         return $recordSet;
     }
+
+	
+    function Idreque(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+
+        $sql = "select IDREQ from requerimiento order by IDREQ desc limit 1";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+
+		$idreque=$recordSet->fetch_assoc();
+		$id=$idreque['IDREQ'];
+        $objControlConexion->cerrarBd();
+        return $id;
+    }
 }
 	
 ?>

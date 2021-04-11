@@ -62,7 +62,7 @@ try{
 </head>
 <body>
 
-	<form method='post' action='vistaAreas.php'>		
+	<form method='POST' action='vistaAreas.php'>		
 
 		<table class='form-table'  style='margin: 50px auto;' >
 			<thread class='thead-dark'>

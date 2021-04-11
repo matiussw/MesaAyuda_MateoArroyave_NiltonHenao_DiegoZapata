@@ -83,7 +83,7 @@ try{
 </head>
 <body>
 
-	<form method='post' action='vistaEmpleados.php'>		
+	<form method='POST' action='vistaEmpleados.php'>		
 
 		<table class='form-table'  style='margin: 50px auto;' >
 			<thread class='thead-dark'>

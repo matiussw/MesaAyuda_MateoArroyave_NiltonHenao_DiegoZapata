@@ -16,7 +16,7 @@ class ControlDetalleReq
 		$fec=$this->objDetalleReq->getfecha();
 		$obs=$this->objDetalleReq->getobservacion();
 
-		$fkre=Idreque();
+		$fkre=$this->objDetalleReq->getfkReque();
 
         $fkes=$this->objDetalleReq->getfkEstado();
 		$fkem=$this->objDetalleReq->getfkEmple();
@@ -26,21 +26,14 @@ class ControlDetalleReq
 		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into detallereq values('".$fec."','".$obs."','.$fkre.','.$fkes.','".$fkem."')";
+		$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."',NULL)";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
+		echo '<script> alert("Su solicitud se ha radicada exitosamente. Ahora Será redirigido al índice")</script>';
+		echo"<script> window.location='../index.html';</script>";
+
 	}
 
-    function Idreque(){
-
-        $objControlConexion = new ControlConexion();
-        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-
-        $sql = "select IDREQ from requerimiento order by IDREQ desc limit 1";
-        $recordSet = $objControlConexion->ejecutarSelect($sql);
-        $objControlConexion->cerrarBd();
-        return $recordSet;
-    }
     
 }
 
