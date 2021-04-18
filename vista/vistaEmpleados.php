@@ -4,19 +4,18 @@
 	include "../control/ControlEmpleados.php";
 	include "../control/ControlConexion.php";
 
-	$objEmpleados = new Empleados("","","","","","","","","","","","");
+	$objEmpleados = new Empleados("","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
 	$objEmpleados = $objControlEmpleados->comboBoxJefe();
 
-	$objEmpleados2 = new Empleados("","","","","","","","","","","","");
+	$objEmpleados2 = new Empleados("","","","","","","","","","","");
 	$objControlEmpleados2 = new ControlEmpleados($objEmpleados2);
 	$objEmpleados2 = $objControlEmpleados2->comboBoxArea();
 
-	$objEmpleados3 = new Empleados("","","","","","","","","","","","");
+	$objEmpleados3 = new Empleados("","","","","","","","","","","");
 	$objControlEmpleados3 = new ControlEmpleados($objEmpleados3);
 	$objEmpleados3 = $objControlEmpleados3->comboBoxCargo();
 
-try{
 	$ide = $_POST['txtIdEmpleado'];
 	$nom = $_POST['txtNombre'];
 	$fot = $_POST['txtFoto'];
@@ -33,26 +32,31 @@ try{
 
 	switch ($bot) {
 		case 'Guardar':
-		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $car, $ema,$dir, $x, $y, $fke, $fki);
+		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki);
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->guardar();
 		break;
 
 		case 'Consultar':
-		$objEmpleados = new Empleados($ide,"","","","","","","","","","","","");
+		$objEmpleados = new Empleados($ide,"","","","","","","","","","");
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objEmpleados = $objControlEmpleados->consultar();
+		$ide=$objEmpleados->getIdEmpleado();
 		$nom=$objEmpleados->getNombre();
+		$fot=$objEmpleados->getFoto();
+		$hvs=$objEmpleados->getHojaVida();
 		$tel=$objEmpleados->getTelefono();
-		$car=$objEmpleados->getCargo();
 		$ema=$objEmpleados->getEmail();
-		$fki=$objEmpleados->getFkIdArea();
-		$fke=$objEmpleados->getFkRmple();
+		$dir=$objEmpleados->getDireccion();
+		$x=$objEmpleados->getX();
+		$y=$objEmpleados->getY();
+		$fki=$objEmpleados->getFkArea();
+		$fke=$objEmpleados->getFkEmple_Jefe();
 			
 		break;
 
 		case 'Modificar':
-		$objEmpleados = new Empleados($ide, $nom, $tel, $car, $ema, $fki, $fke);
+		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki);
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->modificar();
 		break;
@@ -67,9 +71,7 @@ try{
 			# code...
 			break;
 	}
-	} catch (Exception $e){
-
-	}
+	
 
 	echo "
 	<!DOCTYPE html>
@@ -119,6 +121,7 @@ try{
 				
 				<td><select class='form-control' name='txtCargo'>
 				";
+				
 				while($row = $objEmpleados3->fetch_assoc()){ 
 					echo"
 					
@@ -126,6 +129,7 @@ try{
 
 				}
 				echo"
+				<option value='NULL'>Sin asingnar</option>
 				</td>
 			</tr>
 			<tr>
@@ -160,6 +164,7 @@ try{
 
 				}
 				echo"
+				<option value='NULL'>Sin asingnar</option>
 				</td>
 			</tr>
 			<tr>
@@ -174,6 +179,7 @@ try{
 
 				}
 				echo"
+				<option value='NULL'>Sin asingnar</option>
 				</td>
 			</tr>
 							

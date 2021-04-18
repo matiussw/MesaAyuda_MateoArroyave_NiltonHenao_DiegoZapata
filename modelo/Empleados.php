@@ -7,37 +7,28 @@
 		var $foto;
 		var $hojaVida;
 		var $telefono;
-		var $cargo;
 		var $email;
 		var $direccion;
 		var $x;
 		var $y;
-		var $fkArea;
+		var $fkIdArea;
 		var $fkRmple;
 		
-		function __construct($idEmpleado, $nombre, $foto, $hojaVida, $telefono,$cargo, $email, $direccion, $x, $y, $fkEmple_Jefe, $fkArea)
+		function __construct($idEmpleado, $nombre, $foto, $hojaVida, $telefono,$email, $direccion, $x, $y, $fkEmple_Jefe, $fkIdArea)
 		{
 			$this->idEmpleado=$idEmpleado;
 			$this->nombre=$nombre;
 			$this->foto=$foto;
-			$this->hojaVida=$nombre;
+			$this->hojaVida=$hojaVida;
 			$this->telefono=$telefono;
-			$this->cargo=$cargo;
 			$this->email=$email;
 			$this->direccion=$direccion;
 			$this->x=$x;
 			$this->y=$y;
 			$this->fkEmple_Jefe=$fkEmple_Jefe;
-			$this->fkArea=$fkArea;
+			$this->fkIdArea=$fkIdArea;
 			
 			
-		}
-
-	    function setcargo($cargo){
-			$this->cargo=$cargo;
-		}
-		function getcargo(){
-			return $this->cargo;
 		}
 
 		function setIdAmpleado($idEmpleado){
@@ -71,10 +62,10 @@
 			return $this->email;
 		}
 		function setFkArea($fkIdArea){
-			$this->fkArea=$fkArea;
+			$this->fkIdArea=$fkIdArea;
 		}
 		function getFkArea(){
-			return $this->fkArea;
+			return $this->fkIdArea;
 		}
 		function setFkEmple_Jefe($fkEmple_Jefe){
 			$this->fkEmple_Jefe=$fkEmple_Jefe;

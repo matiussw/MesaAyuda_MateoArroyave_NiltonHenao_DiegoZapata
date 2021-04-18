@@ -31,8 +31,8 @@ class ControlAreas
 		$comandoSql = "select * from area where idArea = '".$ida."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
 		$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
-		$nom = $registro["nombre"];
-		$fke = $registro["fkEmple_Jefe"];		
+		$nom = $registro["NOMBRE"];
+		$fke = $registro["FKEMPLE"];		
 		$this->objAreas->setNombre($nom);
 		$this->objAreas->setFkEmple_Jefe($fke);		
 		$objControlConexion->cerrarBd();
@@ -46,7 +46,7 @@ class ControlAreas
 		$fke=$this->objAreas->getFkEmple_Jefe();		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update area set nombreArea = '".$nom."', FkEmple_Jefe = '".$fke."' where idArea = '".$ida."'";
+		$comandoSql = "update area set NOMBRE = '".$nom."', FKEMPLE = '".$fke."' where idArea = '".$ida."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}

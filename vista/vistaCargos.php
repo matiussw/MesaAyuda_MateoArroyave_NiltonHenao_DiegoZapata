@@ -29,13 +29,13 @@ try{
 		break;
 
 		case 'Modificar':
-		$objCargos = new Cargos($nom);
+		$objCargos = new Cargos($idc,$nom);
 		$objControlCargos = new ControlCargos($objCargos);
 		$objControlCargos->modificar();
 		break;
 
 		case 'Borrar':
-		$objCargos = new Cargos($idc,"","");
+		$objCargos = new Cargos($idc,""	);
 		$objControlCargos = new ControlCargos($objCargos);
 		$objControlCargos->borrar();
 		break;

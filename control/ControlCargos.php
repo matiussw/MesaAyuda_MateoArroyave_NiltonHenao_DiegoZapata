@@ -29,7 +29,7 @@ class ControlCargos
 		$comandoSql = "select * from cargo where idCargo = '".$idc."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
 		$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
-		$nom = $registro["nombre"];				
+		$nom = $registro["NOMBRE"];				
 		$this->objCargos->setNombre($nom);				
 		$objControlConexion->cerrarBd();
 		return $this->objCargos;
@@ -41,7 +41,7 @@ class ControlCargos
 		$nom=$this->objCargos->getNombre();				
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update cargo set nombre = '".$nom."' where idCargo = '".$idc."'";
+		$comandoSql = "update cargo set NOMBRE = '".$nom."' where idCargo = '".$idc."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}
