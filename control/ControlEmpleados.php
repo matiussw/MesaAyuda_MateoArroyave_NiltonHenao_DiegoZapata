@@ -16,21 +16,28 @@ class ControlEmpleados
 		$fot=$this->objEmpleados->getFoto();
 		$hvs=$this->objEmpleados->getHojaVida();
 		$tel=$this->objEmpleados->getTelefono();
-		$car=$this->objEmpleados->getcargo();
 		$ema=$this->objEmpleados->getEmail();
 		$dir=$this->objEmpleados->getDireccion();
 		$x=$this->objEmpleados->getX();
 		$y=$this->objEmpleados->getY();
 		$fki=$this->objEmpleados->getFkArea();
 		$fke=$this->objEmpleados->getFkEmple_Jefe();
+
+		echo $nom." ".$hvs;
 		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 
-		$comandoSql = "insert into empleado values('".$ide."','".$nom."',NULL,NULL,'".$tel."','".$car."','".$ema."','".$dir."',".$x.",".$y.",".$fke.",'".$fki."')";
+		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."')";
 		
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+	    $sw2=$objControlConexion->ejecutarComandoSql($comandoSql);
+		if ($sw2) {
+            echo '<script>alert("Registro Exitoso")</script>';
+        } else { 
+            echo '<script>alert("Clave Primaria Repetida o Campos Vacios")</script>';
+        }
 		$objControlConexion->cerrarBd();
+		
 	}
 
 	function consultar()
@@ -38,21 +45,36 @@ class ControlEmpleados
 		$ide=$this->objEmpleados->getIdEmpleado();		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "select * from empleado where idEmpleado = '".$ide."'";
+		$comandoSql = "select * from empleado where IDEMPLEADO ='".$ide."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
-		$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
-		$nom = $registro["nombre"];
-		$tel = $registro["telefono"];
-		$car = $registro["cargo"];
-		$ema = $registro["email"];
-		$fki = $registro["fkIdArea"];
-		$fke = $registro["fkRmple"];
-		$this->objEmpleados->setNombre($nom);
-		$this->objEmpleados->setTelefono($tel);
-		$this->objEmpleados->setCargo($car);
-		$this->objEmpleados->setEmail($ema);
-		$this->objEmpleados->setFkIdArea($fki);
-		$this->objEmpleados->setFkRmple($fke);
+		if ($rs){
+			$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
+			$nom = $registro["NOMBRE"];
+			$fot = $registro["FOTO"];
+			$hvs = $registro["HOJAVIDA"];
+			$tel = $registro["TELEFONO"];
+			$ema = $registro["EMAIL"];
+			$dir = $registro["DIRECCION"];
+			$x = $registro["X"];
+			$Y = $registro["Y"];
+			$fke = $registro["fkEMPLE_JEFE"];
+			$fki = $registro["fkAREA"];
+			
+			$this->objEmpleados->setNombre($nom);
+			$this->objEmpleados->setFoto($fot);
+			$this->objEmpleados->setHojaVida($hvs);
+			$this->objEmpleados->setTelefono($tel);
+			$this->objEmpleados->setEmail($ema);
+			$this->objEmpleados->setDireccion($dir);
+			$this->objEmpleados->setX($x);
+			$this->objEmpleados->setY($Y);
+			$this->objEmpleados->setFkArea($fki);
+			$this->objEmpleados->setFkEmple_Jefe($fke);
+		
+		}else {
+			echo '<script>alert("Registro no encontrado")</script>';
+		}
+		
 		$objControlConexion->cerrarBd();
 		return $this->objEmpleados;
 	}
@@ -61,14 +83,18 @@ class ControlEmpleados
 	{
 		$ide=$this->objEmpleados->getIdEmpleado();
 		$nom=$this->objEmpleados->getNombre();
+		$fot=$this->objEmpleados->getFoto();
+		$hvs=$this->objEmpleados->getHojaVida();
 		$tel=$this->objEmpleados->getTelefono();
-		$car=$this->objEmpleados->getCargo();
 		$ema=$this->objEmpleados->getEmail();
-		$fki=$this->objEmpleados->getFkIdArea();
-		$fke=$this->objEmpleados->getFkRmple();
+		$dir=$this->objEmpleados->getDireccion();
+		$x=$this->objEmpleados->getX();
+		$y=$this->objEmpleados->getY();
+		$fki=$this->objEmpleados->getFkArea();
+		$fke=$this->objEmpleados->getFkEmple_Jefe();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update empleado set nombre = '".$nom."', telefono = '".$tel."', cargo = '".$car."', email = '".$ema."', fkIdArea = ".$fki.", fkRmple = '".$fke."' where idEmpleado = '".$ide."'";
+		$comandoSql = "update empleado set NOMBRE = '".$nom."', FOTO = '".$fot."', HOJAVIDA = '".$hvs."', TELEFONO = '".$tel."', EMAIL = '".$ema."', DIRECCION = '".$dir."', X = '".$x."', Y = ".$y.", fkEMPLE_JEFE = '".$fke."' , fkAREA = '".$fki."' where IDEMPLEADO  = '".$ide."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}
