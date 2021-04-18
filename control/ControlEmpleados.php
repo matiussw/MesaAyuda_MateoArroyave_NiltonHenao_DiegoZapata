@@ -28,7 +28,7 @@ class ControlEmpleados
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 
-		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."')";
+		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."',NULL,'".$fki."')";
 		
 	    $sw2=$objControlConexion->ejecutarComandoSql($comandoSql);
 		if ($sw2) {
@@ -116,31 +116,23 @@ class ControlEmpleados
 
         $sql = "select * from area a INNER JOIN empleado b on a.FKEMPLE = b.IDEMPLEADO";
         $recordSet = $objControlConexion->ejecutarSelect($sql);
+		$matriz = array();
+		$i = 0;
+		while($row = $recordSet->fetch_assoc()){ 
+		
+			$nombre = $row['NOMBRE'];
+			$idEmpleado = $row['IDEMPLEADO'];
+			$objArea = new Empleados($idEmpleado, $nombre, "", "", "","", "", "", "", "", "");
+			$matriz[$i] = $objArea;
+			$i++;
+			}
         $objControlConexion->cerrarBd();
-        return $recordSet;
-    }
+        return $matriz;
+        }
 
-	function comboBoxArea(){
+		
 
-        $objControlConexion = new ControlConexion();
-        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-
-        $sql = "SELECT IDAREA,  NOMBRE FROM area";
-        $recordSet = $objControlConexion->ejecutarSelect($sql);
-        $objControlConexion->cerrarBd();
-        return $recordSet;
-    }
-
-	function comboBoxCargo(){
-
-        $objControlConexion = new ControlConexion();
-        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-
-        $sql = "SELECT * FROM cargo";
-        $recordSet = $objControlConexion->ejecutarSelect($sql);
-        $objControlConexion->cerrarBd();
-        return $recordSet;
-    }
+	
 	
 
 }

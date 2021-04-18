@@ -1,20 +1,27 @@
 <?php
+
 	error_reporting(E_ALL ^ E_NOTICE);
+	include "../control/ControlConexion.php";
 	include "../modelo/Empleados.php";
 	include "../control/ControlEmpleados.php";
-	include "../control/ControlConexion.php";
+	include "../modelo/Areas.php";
+	include "../control/ControlAreas.php";
+	include "../modelo/Cargos.php";
+	include "../control/ControlCargos.php";
+	
+	
 
 	$objEmpleados = new Empleados("","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
-	$objEmpleados = $objControlEmpleados->comboBoxJefe();
+	$matriz = $objControlEmpleados->comboBoxJefe();
 
-	$objEmpleados2 = new Empleados("","","","","","","","","","","");
-	$objControlEmpleados2 = new ControlEmpleados($objEmpleados2);
-	$objEmpleados2 = $objControlEmpleados2->comboBoxArea();
+	$objEmpleados2 = new Areas("","","");
+	$objControlEmpleados2 = new ControlAreas($objEmpleados2);
+	$matriz2 = $objControlEmpleados2->comboBoxArea();
 
-	$objEmpleados3 = new Empleados("","","","","","","","","","","");
-	$objControlEmpleados3 = new ControlEmpleados($objEmpleados3);
-	$objEmpleados3 = $objControlEmpleados3->comboBoxCargo();
+	$objEmpleados3 = new Cargos("","");
+	$objControlEmpleados3 = new ControlCargos($objEmpleados3);
+	$matriz3 = $objControlEmpleados3->comboBoxCargo();
 
 	$ide = $_POST['txtIdEmpleado'];
 	$nom = $_POST['txtNombre'];
@@ -122,10 +129,10 @@
 				<td><select name='txtCargo'>
 				";
 				
-				while($row = $objEmpleados3->fetch_assoc()){ 
+				foreach ($matriz3 as $row){ 
 					echo"
 					
-					<option value='".$row['IDCARGO']."'>".$row['NOMBRE']."</option>";
+					<option value='".$row->getIdCargo()."'>".$row->getNombre()."</option>";
 
 				}
 				echo"
@@ -157,14 +164,14 @@
 				
 				<td><select name='txtFkRmple'>
 				";
-				while($row = $objEmpleados->fetch_assoc()){ 
+				foreach ($matriz as $row){ 
 					echo"
 					
-					<option value='".$row['IDEMPLEADO']."'>".$row['NOMBRE']."</option>";
+					<option value='".$row->getIdEmpleado();"'>".$row->getNombre()."</option>";
 
 				}
 				echo"
-				<option value='NULL'>Sin asingnar</option>
+				<option value=NULL>Sin asingnar</option>
 				</td>
 			</tr>
 			<tr>
@@ -172,14 +179,14 @@
 				<td>
 				<select  name='txtFkIdArea'>
 				";
-				while($row = $objEmpleados2->fetch_assoc()){ 
+				foreach ($matriz2 as $row) { 
 					echo"
 				
-					<option value='".$row['IDAREA']."'>".$row['NOMBRE']."</option>";
+					<option value='".$row->getIdArea()."'>".$row->getNombre()."</option>";
 
 				}
 				echo"
-				<option value='NULL'>Sin asingnar</option>
+				<option value=>Sin asingnar</option>
 				</td>
 			</tr>
 							
@@ -201,4 +208,3 @@
 </body>
 </html>";
 ?>
-

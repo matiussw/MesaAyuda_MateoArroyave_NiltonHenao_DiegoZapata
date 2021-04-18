@@ -71,6 +71,27 @@ class ControlAreas
         $objControlConexion->cerrarBd();
         return $recordSet;
     }
+	function comboBoxArea(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+
+        $sql = "SELECT IDAREA,  NOMBRE FROM area";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+		$matriz = array();
+		$i = 0;
+		while($row = $recordSet->fetch_assoc()){ 
+		
+			$nombre = $row['NOMBRE'];
+			$idArea = $row['IDAREA'];
+			$EmpleadoEncargado = $mostrar['FKEMPLE'];
+			$objArea = new Areas($idArea, $nombre, $EmpleadoEncargado);
+			$matriz[$i] = $objArea;
+			$i++;
+			}
+        $objControlConexion->cerrarBd();
+        return $matriz;
+    }
 }
 	
 ?>

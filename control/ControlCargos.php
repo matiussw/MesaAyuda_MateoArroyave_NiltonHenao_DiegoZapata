@@ -55,6 +55,26 @@ class ControlCargos
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}	
+
+	function comboBoxCargo(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+        $sql = "SELECT * FROM cargo";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+		$matriz = array();
+		$i = 0;
+		while($row = $recordSet->fetch_assoc()){ 
+		
+			$nombre = $row['NOMBRE'];
+			$idCargo = $row['IDCARGO '];
+			$objArea = new Cargos($idCargo, $nombre);
+			$matriz[$i] = $objArea;
+			$i++;
+			}
+        $objControlConexion->cerrarBd();
+        return $matriz;
+    }
 }
 	
 ?>
