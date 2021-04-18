@@ -117,7 +117,7 @@ try{
 			<tr>
 				<td><h4>Cargo</h4></td>
 				
-				<td><select name='txtCargo'>
+				<td><select class='form-control' name='txtCargo'>
 				";
 				while($row = $objEmpleados3->fetch_assoc()){ 
 					echo"
@@ -151,7 +151,7 @@ try{
 			<tr>
 				<td><h4>Jefe inmediato</h4></td>
 				
-				<td><select name='txtFkRmple'>
+				<td><select class='form-control' name='txtFkRmple'>
 				";
 				while($row = $objEmpleados->fetch_assoc()){ 
 					echo"
@@ -165,7 +165,7 @@ try{
 			<tr>
 				<td><h4>Área</h4></td>
 				<td>
-				<select  name='txtFkIdArea'>
+				<select class='form-control' name='txtFkIdArea'>
 				";
 				while($row = $objEmpleados2->fetch_assoc()){ 
 					echo"

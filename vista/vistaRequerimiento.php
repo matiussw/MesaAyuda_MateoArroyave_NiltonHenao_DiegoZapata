@@ -49,18 +49,19 @@ echo "
 	<head>
 		<meta charset='utf-8'>
 		<title>Formulario Requerimientos</title>
-		<link rel='stylesheet' type='text/css' href='../css/estilos2.css'>
+		
 		<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>
 	</head>
 	<body>
-		<div id='contenedor'>
-			<header>
-				<h1>Formulario requerimiento</h1>
-			</header>
-		<div id='formulario'>
-			<form method='POST' >
-			<td><h4>Area Requerimiento</h4></td>
-				<td><select name='txtArea'>
+		<form method='POST'>		
+
+		<table class='form-table'  style='margin: 50px auto;' >
+			<thread class='thead-dark'>
+				<td colspan='2'><h1>REQUERIMIENTOS</h1></td>				
+			</thread>
+				<tr>
+				<td><h4>Área Requerimiento</h4></td>
+				<td><select class='form-control'name='txtArea'>
 				";
 				while($row = $objReque->fetch_assoc()){ 
 					echo"
@@ -70,17 +71,29 @@ echo "
 				}
 				echo"
 				</td>
-				<input type='text' name='txtIdEmpleado' placeholder='Ingrese su ID de Empleado'/>
-				<br>
-				<textarea name='txtRequerimiento' placeholder='Ingrese el requerimiento' rows='10'></textarea>
-				<br>
-				
+				</tr>
+				<tr>
+				<td><h4>ID Empleado</h4></td>
+				<td><input class='form-control' type='text' name='txtIdEmpleado' placeholder='Ingrese su ID de Empleado'/>
+				</td>
+				</tr>
+				<tr>
+				<td><h4>Observación</td>
+				<td><textarea name='txtRequerimiento' placeholder='Ingrese el requerimiento' rows='10'></textarea>
+				</td>
+				</tr>
+				</table>
+				<table class='form-table' style='margin: 50px auto;'>			
+				<tr>							
+				<td><input class='btn btn-success' align = 'center' type='submit' name='btn' value='Radicar'/></td>
+				</tr>
+				</table>
+				<table class='form-table' style='margin: 50px auto;'>
 				<td><a class='btn btn-primary' href='../index.html' role='button'>Regresar</a></td>
-										
-				<input class='boton-enviar' type='submit' name='btn' value='Radicar'/>
-			</form>
-		</div>
-	</div>
+				</tr>
+				</table>
+
+			</form>		
 	</body>
 </html>";
 
