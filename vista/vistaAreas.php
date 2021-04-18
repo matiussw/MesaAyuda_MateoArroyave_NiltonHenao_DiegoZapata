@@ -80,7 +80,7 @@ try{
 			</tr>			
 			<tr>
 				<td><h4>Jefe De Area</h4></td>
-				<td><select name='txtFkEmple_Jefe'>
+				<td><select class='form-control' name='txtFkEmple_Jefe'>
 				";
 				while($row = $objAreas->fetch_assoc()){ 
 					echo"

@@ -126,7 +126,7 @@
 			<tr>
 				<td><h4>Cargo</h4></td>
 				
-				<td><select name='txtCargo'>
+				<td><select class='form-control' name='txtCargo'>
 				";
 				
 				foreach ($matriz3 as $row){ 
@@ -162,7 +162,7 @@
 			<tr>
 				<td><h4>Jefe inmediato</h4></td>
 				
-				<td><select name='txtFkRmple'>
+				<td><select class='form-control' name='txtFkRmple'>
 				";
 				foreach ($matriz as $row){ 
 					echo"
@@ -177,7 +177,7 @@
 			<tr>
 				<td><h4>Área</h4></td>
 				<td>
-				<select  name='txtFkIdArea'>
+				<select class='form-control' name='txtFkIdArea'>
 				";
 				foreach ($matriz2 as $row) { 
 					echo"
