@@ -10,8 +10,7 @@
 	include "../control/ControlCargos.php";
 	include "../modelo/CargoPorEmpleado.php";
 	include "../control/ControlCargoPorEmpleado.php";
-	include "../modelo/CargoPorEmpleado.php";
-	include "../control/ControlCargoPorEmpleado.php";
+	
 	
 	$objEmpleados = new Empleados("","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
