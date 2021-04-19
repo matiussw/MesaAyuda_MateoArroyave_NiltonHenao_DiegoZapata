@@ -28,7 +28,7 @@ class ControlEmpleados
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 
-		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."',NULL,'".$fki."')";
+		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."',.$fke.,'".$fki."')";
 		
 	    $sw2=$objControlConexion->ejecutarComandoSql($comandoSql);
 		if ($sw2) {

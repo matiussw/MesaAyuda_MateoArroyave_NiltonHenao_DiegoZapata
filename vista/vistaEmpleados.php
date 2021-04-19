@@ -8,9 +8,9 @@
 	include "../control/ControlAreas.php";
 	include "../modelo/Cargos.php";
 	include "../control/ControlCargos.php";
+	include "../modelo/CargoPorEmpleado.php";
+	include "../control/ControlCargoPorEmpleado.php";
 	
-	
-
 	$objEmpleados = new Empleados("","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
 	$matriz = $objControlEmpleados->comboBoxJefe();
@@ -23,25 +23,29 @@
 	$objControlEmpleados3 = new ControlCargos($objEmpleados3);
 	$matriz3 = $objControlEmpleados3->comboBoxCargo();
 
-	$ide = $_POST['txtIdEmpleado'];
-	$nom = $_POST['txtNombre'];
-	$fot = $_POST['txtFoto'];
-	$hvs = $_POST['txtHojaVida'];
-	$tel = $_POST['txtTelefono'];
-	$car = $_POST['txtCargo'];
-	$ema = $_POST['txtEmail'];	
-	$dir = $_POST['txtDireccion'];
-	$x = $_POST['txtX'];
-	$y = $_POST['txtY'];
-	$fke = $_POST['txtFkRmple'];
-	$fki = $_POST['txtFkIdArea'];
-	$bot = $_POST['btn'];
-
+	$ide = isset($_POST['txtIdEmpleado']) ? $_POST['txtIdEmpleado']: null;
+	$nom = isset($_POST['txtNombre']) ? $_POST['txtNombre']: null;
+	$fot = isset($_POST['txtFoto']) ? $_POST['txtFoto']: null;
+	$hvs = isset($_POST['txtHojaVida']) ? $_POST['txtHojaVida']: null;
+	$tel = isset($_POST['txtTelefono']) ? $_POST['txtTelefono']: null;
+	$car = isset($_POST['txtCargo']) ? $_POST['txtCargo']: null;
+	$ema = isset($_POST['txtEmail']) ? $_POST['txtEmail']: null;	
+	$dir = isset($_POST['txtDireccion']) ? $_POST['txtDireccion']: null;
+	$x = isset($_POST['txtX']) ? $_POST['txtX']: null;
+	$y = isset($_POST['txtY']) ? $_POST['txtY']: null;
+	$fke = isset($_POST['txtFkRmple']) ? $_POST['txtFkRmple']: null;
+	$fki = isset($_POST['txtFkIdArea']) ? $_POST['txtFkIdArea']: null;
+	$bot = isset($_POST['btn']) ? $_POST['btn']: null;
+	
 	switch ($bot) {
 		case 'Guardar':
 		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki);
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->guardar();
+     
+		$objCargoPorEmpleado= new CargoPorEmpleado($car,$ide,strval(date("Y-m-d")), ""); 
+        $objControlCargoPorEmpleado = new ControlCargoPorEmpleado($objCargoPorEmpleado);
+		$objControlCargoPorEmpleado->guardar();
 		break;
 
 		case 'Consultar':
@@ -79,9 +83,9 @@
 			break;
 	}
 	
-
-	echo "
-	<!DOCTYPE html>
+	?>
+	
+<!DOCTYPE html>
 <html>
 <head>
 	<title>CRUD Empleados</title>
@@ -100,77 +104,80 @@
 			</thread>
 			<tr>
 				<td><h4>idEmpleado</h4></td>
-				<td><input class='form-control' type='text' name='txtIdEmpleado' value='".$ide."' >
+				<td><input class='form-control' type='text' name='txtIdEmpleado' value='<?php  echo$ide ?>'>
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Nombre</h4></td>
-				<td><input class='form-control' type='text' name='txtNombre' value='".$nom."' >
+				<td><input class='form-control' type='text' name='txtNombre' value='<?php  echo$nom?>' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Foto</h4></td>
-				<td><input class='form-control' type='file' name='txtFoto' value='".$fot."' >
+				<td><input class='form-control' type='file' name='txtFoto' value='<?php  echo$fot ?>' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Hoja de vida</h4></td>
-				<td><input class='form-control' type='file' name='txtHojaVida' value='".$hvs."' >
+				<td><input class='form-control' type='file' name='txtHojaVida' value='<?php  echo$hvs?>' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Teléfono</h4></td>
-				<td><input class='form-control' type='text' name='txtTelefono' value='" . $tel . "' >
+				<td><input class='form-control' type='text' name='txtTelefono' value='<?php   echo$tel ?>'>
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Cargo</h4></td>
 				
 				<td><select class='form-control' name='txtCargo'>
-				";
 				
+				<?php
+
 				foreach ($matriz3 as $row){ 
 					echo"
 					
 					<option value='".$row->getIdCargo()."'>".$row->getNombre()."</option>";
 
 				}
-				echo"
+				?>
+				
 				<option value='NULL'>Sin asingnar</option>
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Email</h4></td>
-				<td><input class='form-control' type='Email' name='txtEmail' value='" . $ema . "' >
+				<td><input class='form-control' type='Email' name='txtEmail' value='<?php echo $ema  ?>' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Dirección</h4></td>
-				<td><input class='form-control' type='text' name='txtDireccion' value='" . $dir . "' >
+				<td><input class='form-control' type='text' name='txtDireccion' value='<?php  echo$dir ?>' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>X</h4></td>
-				<td><input class='form-control' type='text' name='txtX' value='" . $x . "' >
+				<td><input class='form-control' type='text' name='txtX' value='<?php echo $x ?>' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Y</h4></td>
-				<td><input class='form-control' type='text' name='txtY' value='" . $y . "' >
+				<td><input class='form-control' type='text' name='txtY' value='<?php echo $y ?>' >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Jefe inmediato</h4></td>
 				
 				<td><select class='form-control' name='txtFkRmple'>
-				";
+				<?php
 				foreach ($matriz as $row){ 
 					echo"
 					
-					<option value='".$row->getIdEmpleado();"'>".$row->getNombre()."</option>";
+					<option value='".$row->getIdEmpleado()."'>".$row->getNombre()."</option>";
 
 				}
-				echo"
+				?>
+				
 				<option value=NULL>Sin asingnar</option>
 				</td>
 			</tr>
@@ -178,14 +185,15 @@
 				<td><h4>Área</h4></td>
 				<td>
 				<select class='form-control' name='txtFkIdArea'>
-				";
+				<?php
 				foreach ($matriz2 as $row) { 
 					echo"
 				
 					<option value='".$row->getIdArea()."'>".$row->getNombre()."</option>";
 
 				}
-				echo"
+				?>
+				
 				<option value=>Sin asingnar</option>
 				</td>
 			</tr>
@@ -206,5 +214,5 @@
 		</table>
 	</form>
 </body>
-</html>";
-?>
+</html>
+

@@ -61,22 +61,13 @@ class ControlAreas
 		$objControlConexion->cerrarBd();
 	}
 
-	function comboBox(){
-
-        $objControlConexion = new ControlConexion();
-        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-
-        $sql = "SELECT IDEMPLEADO , NOMBRE FROM empleado";
-        $recordSet = $objControlConexion->ejecutarSelect($sql);
-        $objControlConexion->cerrarBd();
-        return $recordSet;
-    }
+	
 	function comboBoxArea(){
 
         $objControlConexion = new ControlConexion();
         $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
 
-        $sql = "SELECT IDAREA,  NOMBRE FROM area";
+        $sql = "SELECT * FROM area";
         $recordSet = $objControlConexion->ejecutarSelect($sql);
 		$matriz = array();
 		$i = 0;
@@ -84,7 +75,7 @@ class ControlAreas
 		
 			$nombre = $row['NOMBRE'];
 			$idArea = $row['IDAREA'];
-			$EmpleadoEncargado = $mostrar['FKEMPLE'];
+			$EmpleadoEncargado = $row['FKEMPLE'];
 			$objArea = new Areas($idArea, $nombre, $EmpleadoEncargado);
 			$matriz[$i] = $objArea;
 			$i++;

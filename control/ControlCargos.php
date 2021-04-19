@@ -67,7 +67,7 @@ class ControlCargos
 		while($row = $recordSet->fetch_assoc()){ 
 		
 			$nombre = $row['NOMBRE'];
-			$idCargo = $row['IDCARGO '];
+			$idCargo = $row['IDCARGO'];
 			$objArea = new Cargos($idCargo, $nombre);
 			$matriz[$i] = $objArea;
 			$i++;
