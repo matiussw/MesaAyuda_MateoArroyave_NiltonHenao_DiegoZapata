@@ -10,18 +10,20 @@
 	include "../control/ControlCargos.php";
 	include "../modelo/CargoPorEmpleado.php";
 	include "../control/ControlCargoPorEmpleado.php";
+	include "../modelo/CargoPorEmpleado.php";
+	include "../control/ControlCargoPorEmpleado.php";
 	
 	$objEmpleados = new Empleados("","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
 	$matriz = $objControlEmpleados->comboBoxJefe();
 
-	$objEmpleados2 = new Areas("","","");
-	$objControlEmpleados2 = new ControlAreas($objEmpleados2);
-	$matriz2 = $objControlEmpleados2->comboBoxArea();
+	$objAreas = new Areas("","","");
+	$objControlAreas = new ControlAreas($objAreas);
+	$matrizArea = $objControlAreas->comboBoxArea();
 
-	$objEmpleados3 = new Cargos("","");
-	$objControlEmpleados3 = new ControlCargos($objEmpleados3);
-	$matriz3 = $objControlEmpleados3->comboBoxCargo();
+	$objCargos = new Cargos("","");
+	$objControlCargos = new ControlCargos($objCargos);
+	$matrizArea = $objControlCargos->comboBoxCargo();
 
 	$ide = isset($_POST['txtIdEmpleado']) ? $_POST['txtIdEmpleado']: null;
 	$nom = isset($_POST['txtNombre']) ? $_POST['txtNombre']: null;
@@ -42,8 +44,11 @@
 		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki);
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->guardar();
+
+		date_default_timezone_set('America/Bogota');	
+		$hoy = date('Y-m-d H:i:s');
      
-		$objCargoPorEmpleado= new CargoPorEmpleado($car,$ide,strval(date("Y-m-d")), ""); 
+		$objCargoPorEmpleado= new CargoPorEmpleado($car,$ide,$hoy,""); 
         $objControlCargoPorEmpleado = new ControlCargoPorEmpleado($objCargoPorEmpleado);
 		$objControlCargoPorEmpleado->guardar();
 		break;
@@ -73,7 +78,7 @@
 		break;
 
 		case 'Borrar':
-		$objEmpleados = new Empleados($ide,"","","","",0,"");
+		$objEmpleados = new Empleados($ide,"","","","","","","","","","");
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->borrar();
 		break;
@@ -96,7 +101,7 @@
 </head>
 <body>
 
-	<form method='POST' action='vistaEmpleados.php'>		
+	<form method='POST'>		
 
 		<table class='form-table'  style='margin: 50px auto;' >
 			<thread class='thead-dark'>
@@ -134,7 +139,7 @@
 				
 				<?php
 
-				foreach ($matriz3 as $row){ 
+				foreach ($matrizCargo as $row){ 
 					echo"
 					
 					<option value='".$row->getIdCargo()."'>".$row->getNombre()."</option>";
@@ -186,7 +191,7 @@
 				<td>
 				<select class='form-control' name='txtFkIdArea'>
 				<?php
-				foreach ($matriz2 as $row) { 
+				foreach ($matrizArea as $row) { 
 					echo"
 				
 					<option value='".$row->getIdArea()."'>".$row->getNombre()."</option>";

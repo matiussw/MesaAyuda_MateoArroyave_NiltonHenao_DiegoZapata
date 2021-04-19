@@ -21,7 +21,7 @@ class ControlCargos
 		$objControlConexion->cerrarBd();
 	}
 
-	function consultar()
+		function consultar()
 	{
 		$idc=$this->objCargos->getIdCargo();		
 		$objControlConexion = new ControlConexion();
@@ -29,7 +29,8 @@ class ControlCargos
 		$comandoSql = "select * from cargo where idCargo = '".$idc."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
 		$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
-		$nom = $registro["NOMBRE"];				
+		$nom = $registro['NOMBRE'];	
+		//echo $nom; 			
 		$this->objCargos->setNombre($nom);				
 		$objControlConexion->cerrarBd();
 		return $this->objCargos;

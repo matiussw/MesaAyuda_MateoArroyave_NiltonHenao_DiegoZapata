@@ -4,13 +4,9 @@
 	include "../control/ControlCargos.php";
 	include "../control/ControlConexion.php";
 
-	   
-		
-
-try{
-	$idc = $_POST['txtIdCargo'];
-	$nom = $_POST['txtNombre'];		
-	$bot = $_POST['btn'];
+	$idc = isset($_POST['txtIdCargo']) ? $_POST['txtIdCargo']:NULL;
+	$nom = isset($_POST['txtNombre']) ? $_POST['txtNombre']:NULL;		
+	$bot = isset($_POST['btn']) ?  $_POST['btn']:NULL;
 
 	switch ($bot) {
 		case 'Guardar':
@@ -44,12 +40,9 @@ try{
 			# code...
 			break;
 	}
-	} catch (Exception $e){
+	?>
 
-	}
-
-	echo "
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>CRUD Cargos</title>
@@ -68,12 +61,12 @@ try{
 			</thread>
 			<tr>
 				<td><h4>id Cargo</h4></td>
-				<td><input class='form-control' type='text' name='txtIdCargo' value='".$idc."'>
+				<td><input class='form-control' type='text' name='txtIdCargo' value='<?php echo $idc ?>'>
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Nombre Cargo</h4></td>
-				<td><input class='form-control' type='text' name='txtNombre' value='".$nom."' >
+				<td><input class='form-control' type='text' name='txtNombre' value='<?php echo $nom ?>' >
 				</td>
 			</tr>					
 		</table>
@@ -92,6 +85,6 @@ try{
 		</table>
 	</form>
 </body>
-</html>";
-?>
+</html>
+
 

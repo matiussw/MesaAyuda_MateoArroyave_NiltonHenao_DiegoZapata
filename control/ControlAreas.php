@@ -83,6 +83,28 @@ class ControlAreas
         $objControlConexion->cerrarBd();
         return $matriz;
     }
+
+	function comboBoxAreaReque(){
+
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+
+        $sql = "SELECT * FROM `area` WHERE IDAREA IN (10,20,30)";
+        $recordSet = $objControlConexion->ejecutarSelect($sql);
+		$matriz = array();
+		$i = 0;
+		while($row = $recordSet->fetch_assoc()){ 
+		
+			$nombre = $row['NOMBRE'];
+			$idArea = $row['IDAREA'];
+			$EmpleadoEncargado = $row['FKEMPLE'];
+			$objArea = new Areas($idArea, $nombre, $EmpleadoEncargado);
+			$matriz[$i] = $objArea;
+			$i++;
+			}
+        $objControlConexion->cerrarBd();
+        return $matriz;
+    }
 }
 	
 ?>

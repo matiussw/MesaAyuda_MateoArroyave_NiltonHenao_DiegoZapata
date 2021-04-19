@@ -15,11 +15,11 @@ class ControlCargoPorEmpleado{
 		$idCargo=$this->objCargoPorEmpleado->getFkCargo();	
 		$idEmple=$this->objCargoPorEmpleado->getFkEmple();
 		$fechaIni=$this->objCargoPorEmpleado->getFechaIni();
-        $fechaFin=$this->objCargoPorEmpleado->getFechaFin();
-echo $fechaIni;
+    //    $fechaFin=$this->objCargoPorEmpleado->getFechaFin();
+       
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "INSERT INTO cargo_por_empleado values('.$idCargo.','".$idEmple."','2021-04-12', NULL)";
+		$comandoSql = "INSERT INTO cargo_por_empleado values('".$idCargo."','".$idEmple."','".$fechaIni."', NULL)";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}

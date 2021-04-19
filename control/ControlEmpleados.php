@@ -23,19 +23,14 @@ class ControlEmpleados
 		$fki=$this->objEmpleados->getFkArea();
 		$fke=$this->objEmpleados->getFkEmple_Jefe();
 
-		echo $nom." ".$hvs;
+		//echo $nom." ".$hvs." ".$ide." ".$fot." ".$dir	;
 		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 
-		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."',.$fke.,'".$fki."')";
+		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."')";
+	    $objControlConexion->ejecutarComandoSql($comandoSql);
 		
-	    $sw2=$objControlConexion->ejecutarComandoSql($comandoSql);
-		if ($sw2) {
-            echo '<script>alert("Registro Exitoso")</script>';
-        } else { 
-            echo '<script>alert("Clave Primaria Repetida o Campos Vacios")</script>';
-        }
 		$objControlConexion->cerrarBd();
 		
 	}
@@ -130,11 +125,26 @@ class ControlEmpleados
         return $matriz;
         }
 
-		
+		function comboBoxEmplea(){
 
+			$objControlConexion = new ControlConexion();
+			$objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
 	
-	
-
+			$sql = "select * from empleado";
+			$recordSet = $objControlConexion->ejecutarSelect($sql);
+			$matriz = array();
+			$i = 0;
+			while($row = $recordSet->fetch_assoc()){ 
+			
+				$nombre = $row['NOMBRE'];
+				$idEmpleado = $row['IDEMPLEADO'];
+				$objArea = new Empleados($idEmpleado, $nombre, "", "", "","", "", "", "", "", "");
+				$matriz[$i] = $objArea;
+				$i++;
+				}
+			$objControlConexion->cerrarBd();
+			return $matriz;
+			}
 }
 	
 ?>

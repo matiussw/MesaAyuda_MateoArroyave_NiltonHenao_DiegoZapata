@@ -6,16 +6,17 @@
 	include '../modelo/DetalleReq.php';
 	include '../control/ControlDetalleReq.php';
 	include '../control/ControlConexion.php';
+	include "../modelo/Areas.php";
+	include "../control/ControlAreas.php";
 
-	$objReque = new Requerimiento("","");
-	$objControlReque = new ControlRequerimiento($objReque);
-	$objReque = $objControlReque->comboBoxArea();
+	$objAreas = new Areas("","","");
+	$objControlAreas = new ControlAreas($objAreas);
+	$matrizArea = $objControlAreas->comboBoxAreaReque();
 
-try{
-	$ida = $_POST['txtArea'];
-	$ide = $_POST['txtIdEmpleado'];
-	$req = $_POST['txtRequerimiento'];
-	$bot = $_POST['btn'];
+	$ida = isset ($_POST['txtArea']) ? $_POST['txtArea']: null;
+	$ide = isset ($_POST['txtIdEmpleado']) ? $_POST['txtIdEmpleado']: null;
+	$req = isset ($_POST['txtRequerimiento']) ? $_POST['txtRequerimiento']: null;
+	$bot = isset ($_POST['btn']) ? $_POST['btn']: null;
 
 	switch ($bot) {
 		case 'Radicar':
@@ -39,11 +40,9 @@ try{
 			# code...
 			break;
 	}
-	} catch (Exception $e){
+	?>
 
-	}
 
-echo "
 <!DOCTYPE html>
 <html>
 	<head>
@@ -62,14 +61,15 @@ echo "
 				<tr>
 				<td><h4>Área Requerimiento</h4></td>
 				<td><select class='form-control'name='txtArea'>
-				";
-				while($row = $objReque->fetch_assoc()){ 
+				";<?php
+				foreach ($matrizArea as $row) { 
 					echo"
-					
-					<option value='".$row['IDAREA']."'>".$row['NOMBRE']."</option>";
+				
+					<option value='".$row->getIdArea()."'>".$row->getNombre()."</option>";
 
 				}
-				echo"
+				?>
+				
 				</td>
 				</tr>
 				<tr>
@@ -95,7 +95,4 @@ echo "
 
 			</form>		
 	</body>
-</html>";
-
-
-?>
+</html>

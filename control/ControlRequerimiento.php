@@ -22,18 +22,7 @@ class ControlRequerimiento
 		$objControlConexion->cerrarBd();
 	}
 
-	function comboBoxArea(){
-
-        $objControlConexion = new ControlConexion();
-        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-
-        $sql = "SELECT * FROM `area` WHERE IDAREA IN (10,20,30)";
-        $recordSet = $objControlConexion->ejecutarSelect($sql);
-        $objControlConexion->cerrarBd();
-        return $recordSet;
-    }
-
-	
+		
     function Idreque(){
 
         $objControlConexion = new ControlConexion();

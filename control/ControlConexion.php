@@ -33,7 +33,7 @@ class ControlConexion
     function ejecutarComandoSql($sql) {
     	try	{
 			$query=$this->conn->query($sql);
-			echo "<script>{strval($query)}</script>";
+		
 			}
 		catch (Exception $e) {
 				echo " NO SE AFECTARON LOS REGISTROS: ". $e->getMessage()."\n";

@@ -3,16 +3,19 @@
 	include "../modelo/Areas.php";
 	include "../control/ControlAreas.php";
 	include "../control/ControlConexion.php";
+	include "../modelo/Empleados.php";
+	include "../control/ControlEmpleados.php";
 
-	    $objAreas = new Areas("","","","");
-		$objControlAreas = new ControlAreas($objAreas);
-		$objAreas = $objControlAreas->comboBox();
 
-try{
-	$ida = $_POST['txtIdArea'];
-	$nom = $_POST['txtNombre'];
-	$fke = $_POST['txtFkEmple_Jefe'];	
-	$bot = $_POST['btn'];
+	$objEmpleados = new Empleados("","","","","","","","","","","");
+	$objControlEmpleados = new ControlEmpleados($objEmpleados);
+	$matriz = $objControlEmpleados->comboBoxEmplea();
+
+
+	$ida = isset($_POST['txtIdArea']) ? $_POST['txtIdArea']:null;
+	$nom = isset($_POST['txtNombre']) ?$_POST['txtNombre']:null;
+	$fke = isset($_POST['txtFkEmple_Jefe']) ? $_POST['txtFkEmple_Jefe']:null;	
+	$bot = isset($_POST['btn']) ?$_POST['btn']:null;
 
 	switch ($bot) {
 		case 'Guardar':
@@ -46,11 +49,9 @@ try{
 			# code...
 			break;
 	}
-	} catch (Exception $e){
 
-	}
-
-	echo "
+	?>
+	
 	<!DOCTYPE html>
 <html>
 <head>
@@ -70,25 +71,27 @@ try{
 			</thread>
 			<tr>
 				<td><h4>id Área</h4></td>
-				<td><input class='form-control' type='text' name='txtIdArea' value='".$ida."'>
+				<td><input class='form-control' type='text' name='txtIdArea' value='<?php echo $ida?>'>
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Nombre Área</h4></td>
-				<td><input class='form-control' type='text' name='txtNombre' value='".$nom."' >
+				<td><input class='form-control' type='text' name='txtNombre' value='<?php echo $nom ?>' >
 				</td>
 			</tr>			
 			<tr>
 				<td><h4>Jefe De Area</h4></td>
 				<td><select class='form-control' name='txtFkEmple_Jefe'>
-				";
-				while($row = $objAreas->fetch_assoc()){ 
+				<?php
+
+				foreach ($matriz as $row){ 
 					echo"
 					
-					<option value='".$row['IDEMPLEADO']."'>".$row['IDEMPLEADO']." ".$row['NOMBRE']."</option>";
+					<option value='".$row->getIdEmpleado()."'>".$row->getNombre()."</option>";
 
 				}
-				echo"
+				?>
+				
 			
 			  </select>
 				</td>
@@ -109,6 +112,6 @@ try{
 		</table>
 	</form>
 </body>
-</html>";
-?>
+</html>
+
 
