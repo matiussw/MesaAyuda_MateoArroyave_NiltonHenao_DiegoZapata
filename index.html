@@ -14,31 +14,31 @@
         <!-- Custom styles for this template -->
     <link href="css/estilos.css" rel="stylesheet">
     <style>
-      .item1 { grid-area: video; }
-      .item2 { grid-area: col11; }
-      .item3 { grid-area: col12; }
-      .item4 { grid-area: col21; }
-      .item5 { grid-area: col22; }
-      .item6 { grid-area: col31; }
-      .item7 { grid-area: col32; }
-
-      .grid-container {
-        display: grid;
-        grid-template-areas:
-          'video video col11 col12'
-          'video video col21 col22'
-          'video video col31 col32';
-        grid-gap: 10px;        
-        padding: 10px;
-        background-color: #fff;
+     .grid1 {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr) ) ;
+    background-color: #fff;
+    color: #444;
       }
 
-      .grid-container > div {               
-        text-align: center;
-        padding: 20px 0;
-        font-size: 30px;
-      }
-</style>
+    .item1 { 
+      grid-column: auto / span 3;
+      grid-row: auto / span 3;
+      background-color: #444;
+      color: #fff;      
+      padding: 26px;
+      align-content: center;
+    }
+
+    .item2 { grid-column: auto / span 2; }
+    .item3 { grid-column: auto / span 2; }
+    .item4 { grid-column: auto / span 2; }
+    .item5 { grid-column: auto / span 2; }
+    .item6 { grid-column: auto / span 2; }
+    .item7 { grid-column: auto / span 2; } 
+
+    </style>
   </head>
 
   <body>
@@ -46,33 +46,33 @@
     <br>
     
       <div class="container">
-        <div class="grid-container">
+        <div class="grid1">
           <div class="item1">
             <iframe width="425" height="350" src="https://www.youtube.com/embed/OlSpSawBNFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="item2">
             <h4>CRUD Áreas</h4>
-            <p>Guardar, Consultar, Modificar y Borrar Áreas</p>
+            <h5>Guardar, Consultar, Modificar y Borrar Áreas</h5>
             <a class="btn btn-info" href="vista/vistaAreas.php" role="button">Ingresar</a>
           </div>
           <div class="item3">
             <h4>CRUD Empleados</h4>
-            <p>Guardar, Consultar, Modificar y Borrar Empleados</p>
+            <h5>Guardar, Consultar, Modificar y Borrar Empleados</h5>
             <a class="btn btn-info" href="vista/vistaEmpleados.php" role="button">Ingresar</a>
           </div>  
           <div class="item4">
             <h4>CRUD Cargo</h4>
-            <p>Guardar, Consultar, Modificar y Borrar Cargo</p>
+            <h5>Guardar, Consultar, Modificar y Borrar Cargo</h5>
             <a class="btn btn-info" href="vista/vistaCargos.php" role="button">Ingresar</a>
           </div>
           <div class="item5">
             <h4>Formulario Requerimientos</h4>
-            <p>Ingresar un requerimiento</p>
+            <h5>Ingresar un requerimiento</h5>
             <a class="btn btn-info" href="vista/vistaRequerimiento.php" role="button" >Ingresar</a>
           </div>
           <div class="item6">
             <h4>Administración de requerimientos</h4>
-            <p>Asignar, solucionar o cancelar un requerimiento</p>
+            <h5>Asignar, solucionar o cancelar un requerimiento</h5>
             <a class="btn btn-info" href="vista/vistaAdminRequerimientos.php" role="button">Ingresar</a>
           </div>
           <div class="item7">
@@ -81,7 +81,9 @@
         </div>
   
       </div>
-    
+    <br>
+    <br>
+    <br>
     
     
     <footer>
