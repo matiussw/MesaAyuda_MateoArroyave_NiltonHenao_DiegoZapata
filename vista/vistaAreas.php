@@ -56,38 +56,38 @@
 <html>
 <head>
 	<title>CRUD Áreas</title>
-	<meta charset='UTF-8'>
-	<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	
 
 </head>
 <body>
 
-	<form method='POST' action='vistaAreas.php'>		
+	<form method="POST" action="vistaAreas.php">		
 
-		<table class='form-table'  style='margin: 50px auto;' >
-			<thread class='thead-dark'>
-				<td colspan='2'><h1>Áreas</h1></td>				
+		<table class="form-table"  style="margin: 50px auto;" >
+			<thread class="thead-dark">
+				<td colspan="2"><h1>Áreas</h1></td>				
 			</thread>
 			<tr>
 				<td><h4>id Área</h4></td>
-				<td><input class='form-control' type='text' name='txtIdArea' value='<?php echo $ida?>'>
+				<td><input class="form-control" type="text" name="txtIdArea" value="<?php echo $ida?>">
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Nombre Área</h4></td>
-				<td><input class='form-control' type='text' name='txtNombre' value='<?php echo $nom ?>' >
+				<td><input class="form-control" type="text" name="txtNombre" value="<?php echo $nom ?>" >
 				</td>
 			</tr>			
 			<tr>
 				<td><h4>Jefe De Area</h4></td>
-				<td><select class='form-control' name='txtFkEmple_Jefe'>
+				<td><select class="form-control" name="txtFkEmple_Jefe">
 				<?php
 
 				foreach ($matriz as $row){ 
-					echo"
+					echo'
 					
-					<option value='".$row->getIdEmpleado()."'>".$row->getNombre()."</option>";
+					<option value='.$row->getIdEmpleado().'>'.$row->getNombre().'</option>';
 
 				}
 				?>
@@ -97,17 +97,17 @@
 				</td>
 			</tr>				
 		</table>
-		<table class='form-table' style='margin: 50px auto;'>
+		<table class="form-table" style="margin: 50px auto;">
 			<tr>
-				<td><input class='btn btn-success' type='submit' name='btn' value='Guardar'></td>
-				<td><input class='btn btn-info' type='submit' name='btn' value='Consultar'></td>
-				<td><input class='btn btn-warning' type='submit' name='btn' value='Modificar'></td>
-				<td><input class='btn btn-danger' type='submit' name='btn' value='Borrar'></td>
+				<td><input class="btn btn-success" type="submit" name="btn" value="Guardar"></td>
+				<td><input class="btn btn-info" type="submit" name="btn" value="Consultar"></td>
+				<td><input class="btn btn-warning" type="submit" name="btn" value="Modificar"></td>
+				<td><input class="btn btn-danger" type="submit" name="btn" value="Borrar"></td>
 			</tr>			
 		</table>
-		<table class='form-table' style='margin: 50px auto;'>
+		<table class="form-table" style="margin: 50px auto;">
 			<tr>
-				<td><a class='btn btn-primary' href='../index.html' role='button'>Regresar</a></td>
+				<td><a class="btn btn-primary" href="../index.html" role="button">Regresar</a></td>
 			</tr>
 		</table>
 	</form>

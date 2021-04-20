@@ -22,7 +22,7 @@
 
 	$objCargos = new Cargos("","");
 	$objControlCargos = new ControlCargos($objCargos);
-	$matrizArea = $objControlCargos->comboBoxCargo();
+	$matrizCargo = $objControlCargos->comboBoxCargo();
 
 	$ide = isset($_POST['txtIdEmpleado']) ? $_POST['txtIdEmpleado']: null;
 	$nom = isset($_POST['txtNombre']) ? $_POST['txtNombre']: null;
@@ -93,130 +93,132 @@
 <html>
 <head>
 	<title>CRUD Empleados</title>
-	<meta charset='UTF-8'>
-	<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	
 
 </head>
 <body>
 
-	<form method='POST'>		
+	<form method="POST">		
 
-		<table class='form-table'  style='margin: 50px auto;' >
-			<thread class='thead-dark'>
-				<td colspan='2'><h1>EMPLEADOS</h1></td>				
+		<table class="form-table"  style="margin: 50px auto;" >
+			<thread class="thead-dark">
+				<td colspan="2"><h1>EMPLEADOS</h1></td>				
 			</thread>
 			<tr>
 				<td><h4>idEmpleado</h4></td>
-				<td><input class='form-control' type='text' name='txtIdEmpleado' value='<?php  echo$ide ?>'>
+				<td><input class="form-control" type="text" name="txtIdEmpleado" value="<?php  echo$ide ?>">
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Nombre</h4></td>
-				<td><input class='form-control' type='text' name='txtNombre' value='<?php  echo$nom?>' >
+				<td><input class="form-control" type="text" name="txtNombre" value="<?php  echo$nom?>" >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Foto</h4></td>
-				<td><input class='form-control' type='file' name='txtFoto' value='<?php  echo$fot ?>' >
+				<td><input class="form-control" type="file" name="txtFoto" value="<?php  echo$fot ?>" >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Hoja de vida</h4></td>
-				<td><input class='form-control' type='file' name='txtHojaVida' value='<?php  echo$hvs?>' >
+				<td><input class="form-control" type="file" name="txtHojaVida" value="<?php  echo$hvs?>" >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Teléfono</h4></td>
-				<td><input class='form-control' type='text' name='txtTelefono' value='<?php   echo$tel ?>'>
+				<td><input class="form-control" type="text" name="txtTelefono" value="<?php   echo$tel ?>">
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Cargo</h4></td>
 				
-				<td><select class='form-control' name='txtCargo'>
+				<td><select class="form-control" name="txtCargo">
 				
 				<?php
 
 				foreach ($matrizCargo as $row){ 
-					echo"
+					echo'
 					
-					<option value='".$row->getIdCargo()."'>".$row->getNombre()."</option>";
+					<option value='.$row->getIdCargo().'>'.$row->getNombre().'</option>';
 
 				}
 				?>
 				
-				<option value='NULL'>Sin asingnar</option>
+				<option value="NULL">Sin asignar</option>
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Email</h4></td>
-				<td><input class='form-control' type='Email' name='txtEmail' value='<?php echo $ema  ?>' >
+				<td><input class="form-control" type="Email" name="txtEmail" value="<?php echo $ema  ?>" >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Dirección</h4></td>
-				<td><input class='form-control' type='text' name='txtDireccion' value='<?php  echo$dir ?>' >
+				<td><input class="form-control" type="text" name="txtDireccion" value="<?php  echo$dir ?>" >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>X</h4></td>
-				<td><input class='form-control' type='text' name='txtX' value='<?php echo $x ?>' >
+				<td><input class="form-control" type="text" name="txtX" value="<?php echo $x ?>" >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Y</h4></td>
-				<td><input class='form-control' type='text' name='txtY' value='<?php echo $y ?>' >
+				<td><input class="form-control" type="text" name="txtY" value="<?php echo $y ?>" >
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Jefe inmediato</h4></td>
 				
-				<td><select class='form-control' name='txtFkRmple'>
+				<td><select class="form-control" name="txtFkRmple">
 				<?php
 				foreach ($matriz as $row){ 
-					echo"
+					echo'
 					
-					<option value='".$row->getIdEmpleado()."'>".$row->getNombre()."</option>";
+					<option value='.$row->getIdEmpleado().'>'.$row->getNombre().'</option>';
 
 				}
 				?>
 				
-				<option value=NULL>Sin asingnar</option>
+				<option value=NULL>Sin asignar</option>
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Área</h4></td>
 				<td>
-				<select class='form-control' name='txtFkIdArea'>
+				<select class="form-control" name="txtFkIdArea">
 				<?php
 				foreach ($matrizArea as $row) { 
-					echo"
+					echo'
 				
-					<option value='".$row->getIdArea()."'>".$row->getNombre()."</option>";
+					<option value='.$row->getIdArea().'>'.$row->getNombre().'</option>';
 
 				}
 				?>
 				
-				<option value=>Sin asingnar</option>
+				<option value="NULL">Sin asignar</option>
 				</td>
 			</tr>
 							
 		</table>
-		<table class='form-table' style='margin: 50px auto;'>
+
+		<table class="form-table" style="margin: 50px auto;">
 			<tr>
-				<td><input class='btn btn-success' type='submit' name='btn' value='Guardar'></td>
-				<td><input class='btn btn-info' type='submit' name='btn' value='Consultar'></td>
-				<td><input class='btn btn-warning' type='submit' name='btn' value='Modificar'></td>
-				<td><input class='btn btn-danger' type='submit' name='btn' value='Borrar'></td>
+				<td><input class="btn btn-success" type="submit" name="btn" value="Guardar"></td>
+				<td><input class="btn btn-info" type="submit" name="btn" value="Consultar"></td>
+				<td><input class="btn btn-warning" type="submit" name="btn" value="Modificar"></td>
+				<td><input class="btn btn-danger" type="submit" name="btn" value="Borrar"></td>
 			</tr>			
 		</table>
-		<table class='form-table' style='margin: 50px auto;'>
+		<table class="form-table" style="margin: 50px auto;">
 			<tr>
-				<td><a class='btn btn-primary' href='../index.html' role='button'>Regresar</a></td>
+				<td><a class="btn btn-primary" href="../index.html" role="button">Regresar</a></td>
 			</tr>
 		</table>
 	</form>
+
 </body>
 </html>
 

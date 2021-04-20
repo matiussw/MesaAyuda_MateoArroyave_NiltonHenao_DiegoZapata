@@ -46,26 +46,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset='utf-8'>
+		<meta charset="utf-8">
 		<title>Formulario Requerimientos</title>
 		
-		<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	</head>
 	<body>
-		<form method='POST'>		
+		<form method="POST">		
 
-		<table class='form-table'  style='margin: 50px auto;' >
-			<thread class='thead-dark'>
-				<td colspan='2'><h1>REQUERIMIENTOS</h1></td>				
+		<table class="form-table"  style="margin: 50px auto;" >
+			<thread class="thead-dark">
+				<td colspan="2"><h1>REQUERIMIENTOS</h1></td>				
 			</thread>
 				<tr>
 				<td><h4>Área Requerimiento</h4></td>
-				<td><select class='form-control'name='txtArea'>
+				<td><select class="form-control"name="txtArea">
 				";<?php
 				foreach ($matrizArea as $row) { 
-					echo"
+					echo'
 				
-					<option value='".$row->getIdArea()."'>".$row->getNombre()."</option>";
+					<option value='.$row->getIdArea().'>'.$row->getNombre().'</option>';
 
 				}
 				?>
@@ -74,22 +74,23 @@
 				</tr>
 				<tr>
 				<td><h4>ID Empleado</h4></td>
-				<td><input class='form-control' type='text' name='txtIdEmpleado' placeholder='Ingrese su ID de Empleado'/>
+				<td><input class="form-control" type="text" name="txtIdEmpleado" placeholder="Ingrese su ID de Empleado"/>
 				</td>
 				</tr>
 				<tr>
 				<td><h4>Observación</td>
-				<td><textarea name='txtRequerimiento' placeholder='Ingrese el requerimiento' rows='10'></textarea>
+				<td><textarea name="txtRequerimiento" placeholder="Ingrese el requerimiento" rows="10"></textarea>
 				</td>
 				</tr>
 				</table>
-				<table class='form-table' style='margin: 50px auto;'>			
+				<table class="form-table" style="margin: 50px auto;">			
 				<tr>							
-				<td><input class='btn btn-success' align = 'center' type='submit' name='btn' value='Radicar'/></td>
+				<td><input class="btn btn-success" align = "center" type="submit" name="btn" value="Radicar"/></td>
 				</tr>
 				</table>
-				<table class='form-table' style='margin: 50px auto;'>
-				<td><a class='btn btn-primary' href='../index.html' role='button'>Regresar</a></td>
+				<table class="form-table" style="margin: 50px auto;">
+				<tr>
+				<td><a class="btn btn-primary" href="../index.html" role="button">Regresar</a></td>
 				</tr>
 				</table>
 
