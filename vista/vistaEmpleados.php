@@ -214,7 +214,7 @@
 		</table>
 		<table class="form-table" style="margin: 50px auto;">
 			<tr>
-				<td><a class="btn btn-primary" href="../index.html" role="button">Regresar</a></td>
+				<td><a class="btn btn-primary" href="../index.php" role="button">Regresar</a></td>
 			</tr>
 		</table>
 	</form>

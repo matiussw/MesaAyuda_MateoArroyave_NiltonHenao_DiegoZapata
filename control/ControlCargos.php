@@ -13,11 +13,15 @@ class ControlCargos
 	function guardar()
 	{
 		$nom=$this->objCargos->getNombre();		
-
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "INSERT INTO cargo VALUES (NULL,'".$nom."')";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+		if (empty($nom)){
+			echo '<script> alert("El campo nombre no debe ser vacio")</script>';
+		}else {
+			$comandoSql = "INSERT INTO cargo VALUES (NULL,'".$nom."')";
+			$rs=$objControlConexion->ejecutarComandoSql($comandoSql);
+			echo '<script> alert("Registro guardado exitosamente")</script>';
+			}
 		$objControlConexion->cerrarBd();
 	}
 
@@ -28,10 +32,14 @@ class ControlCargos
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "select * from cargo where idCargo = '".$idc."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
-		$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
-		$nom = $registro['NOMBRE'];	
-		//echo $nom; 			
-		$this->objCargos->setNombre($nom);				
+		$registro = $rs->fetch_array(MYSQLI_BOTH);
+		if(empty($registro)){
+			echo '<script> alert("No se encontro ningun cargo con id '.$idc.'")</script>';
+			//echo "la consulta no devolvio nada "; 
+		}else{
+			$nom = $registro['NOMBRE'];	
+			$this->objCargos->setNombre($nom);	
+		}
 		$objControlConexion->cerrarBd();
 		return $this->objCargos;
 	}
@@ -43,7 +51,12 @@ class ControlCargos
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "update cargo set NOMBRE = '".$nom."' where idCargo = '".$idc."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+		$rs =$objControlConexion->ejecutarComandoSql($comandoSql);
+		if($rs){
+			
+		}else{
+			echo '<script> alert("modificacion realizada con exito")</script>';
+		}
 		$objControlConexion->cerrarBd();
 	}
 
