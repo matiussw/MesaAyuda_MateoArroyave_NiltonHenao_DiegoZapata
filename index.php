@@ -29,7 +29,7 @@
       background-color: #444;
       color: #fff;      
       padding: 26px;
-      align-content: center;
+      align-items:  center;
     }
 
     .item2 { grid-column: auto / span 2; }

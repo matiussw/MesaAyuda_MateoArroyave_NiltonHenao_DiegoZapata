@@ -23,7 +23,6 @@ a:hover{
 	color: #666666;
 }
 
-/*Codigo para resetear las flotaciones que hayan a izquierda o derecha*/
 .clear{
 	clear: both;
 }
@@ -62,3 +61,107 @@ a:hover{
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 }*/
+
+/*Media Queries*/
+/*Tablet/Ipad en portrait o landscape*/
+@media only screen and (min-width: 768px) and (max-width: 960px){
+	
+
+	.cabecera-principal img#logo{
+		margin: auto;
+		display: block;
+		width: 50%;
+		padding-bottom: 10px;
+		transition: width 2s;
+		-o-transition: width 2s;
+		-moz-transition: width 2s;
+		-webkit-transition: width 2s;
+	}
+	
+}
+
+/*Tablets (en orientación Portrait o landscape*/
+
+@media only screen and (min-width: 569px) and (max-width: 767px){
+	
+	.cabecera-principal img#logo{
+		margin: auto;
+		display: block;
+		width: 50%;
+		padding-bottom: 10px;
+	}
+
+	/*.cabecera-principal .nav-principal{
+		height: auto;
+		display: block;
+		overflow: hidden;
+		width: 99%;
+	}
+
+		.cabecera-principal .nav-principal ul{
+		padding: 2% 1%;
+		text-align: center;
+		width: 98%;
+	}
+
+	.cabecera-principal .nav-principal li{
+		float: none;
+		display: block;
+		margin-right: 0;
+		width: 100%;
+		border-bottom: 1px solid #a3293b;
+	}
+
+	.cabecera-principal .nav-principal li a{
+		margin-bottom: 2px;
+		text-align: center;
+	}
+
+	.cabecera-principal .nav-principal li a:hover, .cabecera-principal .nav-principal li a:active{
+	display: block;
+	}*/
+}
+
+	
+/*Smartphones*/
+@media only screen and (min-width: 240px) and (max-width: 568px){
+	
+	.cabecera-principal img#logo{
+		margin: auto;
+		display: block;
+		width: 90%;
+		padding-bottom: 10px;
+	}
+
+	/*.cabecera-principal .nav-principal{
+		height: auto;
+		display: block;
+		overflow: hidden;
+		width: 99%;
+	}
+
+		.cabecera-principal .nav-principal ul{
+		padding: 2% 1%;
+		text-align: center;
+		width: 98%;
+	}
+
+	.cabecera-principal .nav-principal li{
+		float: none;
+		display: block;
+		margin-right: 0;
+		width: 100%;
+		border-bottom: 1px solid #a3293b;
+	}
+
+	.cabecera-principal .nav-principal li a{
+		margin-bottom: 2px;
+		text-align: center;
+	}
+
+	.cabecera-principal .nav-principal li a:hover, .cabecera-principal .nav-principal li a:active{
+	display: block;
+	}*/
+
+	
+}
