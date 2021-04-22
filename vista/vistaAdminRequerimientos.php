@@ -50,7 +50,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Formulario Requerimientos</title>
+		<title>Administración Requerimientos</title>
 		
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 
@@ -68,7 +68,7 @@
 					<form method="POST">
 					<table class="form-table"  style="margin: 50px auto;" id="table" >
 						<thread class="thead-dark">
-							<td colspan="2"><h1>Requerimientos radicados</h1></td>				
+							<td colspan="2"><h2>Listado Requerimientos</h2></td>				
 						</thread>							
 							<tr>
 								<th>ID Requerimiento</th>
@@ -100,7 +100,7 @@
 					<form method="POST">
 					<table class="form-table"  style="margin: 50px auto;" >
 						<thread class="thead-dark">
-							<td colspan="2"><h1>REQUERIMIENTOS</h1></td>				
+							<td colspan="2"><h2>Requerimientos</h2></td>				
 						</thread>
 							<tr>
 								<td><h4>Área Requerimiento</h4></td>
