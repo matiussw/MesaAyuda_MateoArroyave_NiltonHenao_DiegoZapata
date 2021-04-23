@@ -50,8 +50,24 @@
 		<title>Formulario Requerimientos</title>
 		
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link href="../css/estilos2.css" type="text/css" rel="stylesheet">
+		
 	</head>
 	<body>
+		<div class="container">		   
+			<header class="cabecera-principal">
+				<div id=contenedor-cabecera>
+					<img id="logo" src="../img/logo.png" alt="Logo Responsive">
+				</div>
+				<!--<nav class="nav-principal">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Equipo</a></li>
+						<li><a href="#">Servicios</a></li>
+						<li><a href="#">Organización</a></li>						
+					</ul>
+				</nav>-->
+			</header>       
 		<form method="POST">		
 
 		<table class="form-table"  style="margin: 50px auto;" >
@@ -94,6 +110,7 @@
 				</tr>
 				</table>
 
-			</form>		
+			</form>
+			</div>		
 	</body>
 </html>

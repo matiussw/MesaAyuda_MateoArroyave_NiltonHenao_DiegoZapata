@@ -53,6 +53,7 @@
 		<title>Administración Requerimientos</title>
 		
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link href="../css/estilos2.css" type="text/css" rel="stylesheet">
 
 		<style>
             table tr:not(:first-child){
@@ -62,7 +63,20 @@
         </style>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container">					   
+		<header class="cabecera-principal">
+			<div id=contenedor-cabecera>
+				<img id="logo" src="../img/logo.png" alt="Logo Responsive">
+			</div>
+			<!--<nav class="nav-principal">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Equipo</a></li>
+					<li><a href="#">Servicios</a></li>
+					<li><a href="#">Organización</a></li>						
+				</ul>
+			</nav>-->
+		</header>
 			<div class="row">
 				<div class="col-6 col-md-6">
 					<form method="POST">
