@@ -50,9 +50,10 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Formulario Requerimientos</title>
+		<title>Administración Requerimientos</title>
 		
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link href="../css/estilos2.css" type="text/css" rel="stylesheet">
 
 		<style>
             table tr:not(:first-child){
@@ -62,13 +63,26 @@
         </style>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container">					   
+		<header class="cabecera-principal">
+			<div id=contenedor-cabecera>
+				<img id="logo" src="../img/logo.png" alt="Logo Responsive">
+			</div>
+			<!--<nav class="nav-principal">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Equipo</a></li>
+					<li><a href="#">Servicios</a></li>
+					<li><a href="#">Organización</a></li>						
+				</ul>
+			</nav>-->
+		</header>
 			<div class="row">
 				<div class="col-6 col-md-6">
 					<form method="POST">
 					<table class="form-table"  style="margin: 50px auto;" id="table" >
 						<thread class="thead-dark">
-							<td colspan="2"><h1>Requerimientos radicados</h1></td>				
+							<td colspan="2"><h2>Listado Requerimientos</h2></td>				
 						</thread>							
 							<tr>
 								<th>ID Requerimiento</th>
@@ -100,7 +114,7 @@
 					<form method="POST">
 					<table class="form-table"  style="margin: 50px auto;" >
 						<thread class="thead-dark">
-							<td colspan="2"><h1>REQUERIMIENTOS</h1></td>				
+							<td colspan="2"><h2>Requerimientos</h2></td>				
 						</thread>
 							<tr>
 								<td><h4>Área Requerimiento</h4></td>
