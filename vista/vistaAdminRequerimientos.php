@@ -190,7 +190,7 @@
 		{
 			 //rIndex = this.rowIndex;
 			 document.getElementById("txtArea").value = this.cells[1].innerHTML;
-			 document.getElementById("txtNombreEmple").value = this.cells[3].innerHTML;
+			 document.getElementById("txtNombreEmple").value = this.cells[4].innerHTML;
 			 document.getElementById("txtRequerimiento").value = this.cells[6].innerHTML;
 
 
