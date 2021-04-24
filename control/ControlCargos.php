@@ -91,7 +91,7 @@ class ControlCargos
 			echo '<script> alert("El campo no debe estar vacio")</script>';
 		}elseif($dato==0){
 			echo '<script> alert("El registro no se puede borrar por que no existe en la bdd")</script>';				
-		}
+		
 		}else {
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		echo '<script> alert("El Cargo ha sido borrado con exito")</script>';
