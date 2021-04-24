@@ -42,34 +42,43 @@ class ControlEmpleados
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "select * from empleado where IDEMPLEADO ='".$ide."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
-		if ($rs){
-			$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
-			$nom = $registro["NOMBRE"];
-			$fot = $registro["FOTO"];
-			$hvs = $registro["HOJAVIDA"];
-			$tel = $registro["TELEFONO"];
-			$ema = $registro["EMAIL"];
-			$dir = $registro["DIRECCION"];
-			$x = $registro["X"];
-			$Y = $registro["Y"];
-			$fke = $registro["fkEMPLE_JEFE"];
-			$fki = $registro["fkAREA"];
-			
-			$this->objEmpleados->setNombre($nom);
-			$this->objEmpleados->setFoto($fot);
-			$this->objEmpleados->setHojaVida($hvs);
-			$this->objEmpleados->setTelefono($tel);
-			$this->objEmpleados->setEmail($ema);
-			$this->objEmpleados->setDireccion($dir);
-			$this->objEmpleados->setX($x);
-			$this->objEmpleados->setY($Y);
-			$this->objEmpleados->setFkArea($fki);
-			$this->objEmpleados->setFkEmple_Jefe($fke);
-		
-		}else {
-			echo '<script>alert("Registro no encontrado")</script>';
+		//valida si existe el empleado
+		$comandoSqlValidacion="select exists (select * from empleado where IDEMPLEADO = '".$ide."')";
+		$rss = $objControlConexion->ejecutarSelect($comandoSqlValidacion);
+		$registroo = $rss->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
+		$dato = $registroo[0];
+		//si el campo está vacio muestra alerta
+		if(empty($ide)){
+			echo '<script>alert("el campo no puede estar vacio")</script>';
 		}
-		
+		elseif ($dato==0) { // si el registro no está en la bdd muestra alerta
+			echo '<script>alert("Registro no encontrado en la base de datos")</script>';
+		}else{ 
+				if ($rs){
+				$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
+				$nom = $registro["NOMBRE"];
+				$fot = $registro["FOTO"];
+				$hvs = $registro["HOJAVIDA"];
+				$tel = $registro["TELEFONO"];
+				$ema = $registro["EMAIL"];
+				$dir = $registro["DIRECCION"];
+				$x = $registro["X"];
+				$Y = $registro["Y"];
+				$fke = $registro["fkEMPLE_JEFE"];
+				$fki = $registro["fkAREA"];
+				
+				$this->objEmpleados->setNombre($nom);
+				$this->objEmpleados->setFoto($fot);
+				$this->objEmpleados->setHojaVida($hvs);
+				$this->objEmpleados->setTelefono($tel);
+				$this->objEmpleados->setEmail($ema);
+				$this->objEmpleados->setDireccion($dir);
+				$this->objEmpleados->setX($x);
+				$this->objEmpleados->setY($Y);
+				$this->objEmpleados->setFkArea($fki);
+				$this->objEmpleados->setFkEmple_Jefe($fke);			
+			}
+		}
 		$objControlConexion->cerrarBd();
 		return $this->objEmpleados;
 	}
@@ -89,8 +98,22 @@ class ControlEmpleados
 		$fke=$this->objEmpleados->getFkEmple_Jefe();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update empleado set NOMBRE = '".$nom."', FOTO = '".$fot."', HOJAVIDA = '".$hvs."', TELEFONO = '".$tel."', EMAIL = '".$ema."', DIRECCION = '".$dir."', X = '".$x."', Y = ".$y.", fkEMPLE_JEFE = '".$fke."' , fkAREA = '".$fki."' where IDEMPLEADO  = '".$ide."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+			//valida si existe el empleado
+			$comandoSqlValidacion="select exists (select * from empleado where IDEMPLEADO = '".$ide."')";
+			$rss = $objControlConexion->ejecutarSelect($comandoSqlValidacion);
+			$registroo = $rss->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
+			$dato = $registroo[0];
+			//Si el campo está vacio muestra alerta
+			if(empty($ide)){
+				echo '<script>alert("el campo no puede estar vacio")</script>';
+			}
+			elseif ($dato==0) {//si el campo no existe en la bdd muestra alerta
+				echo '<script>alert("Registro no encontrado Ingrese un registro valido")</script>';
+			}else{ 
+				$comandoSql = "update empleado set NOMBRE = '".$nom."', FOTO = '".$fot."', HOJAVIDA = '".$hvs."', TELEFONO = '".$tel."', EMAIL = '".$ema."', DIRECCION = '".$dir."', X = '".$x."', Y = ".$y.", fkEMPLE_JEFE = '".$fke."' , fkAREA = '".$fki."' where IDEMPLEADO  = '".$ide."'";
+				$objControlConexion->ejecutarComandoSql($comandoSql);
+				echo '<script> alert("Registro modificado con exito")</script>';					
+			}
 		$objControlConexion->cerrarBd();
 	}
 
@@ -99,8 +122,21 @@ class ControlEmpleados
 		$ide=$this->objEmpleados->getIdEmpleado();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "delete from empleado where idEmpleado = '".$ide."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+		//valida si existe el empleado
+		$comandoSqlValidacion="select exists (select * from empleado where IDEMPLEADO = '".$ide."')";
+		$rss = $objControlConexion->ejecutarSelect($comandoSqlValidacion);
+		$registroo = $rss->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
+		$dato = $registroo[0];
+		//Si el campo está vacio muestra alerta
+		if(empty($ide)){
+			echo '<script>alert("el campo no puede estar vacio")</script>';
+		}
+		elseif ($dato==0) {//si el campo no existe en la bdd muestra alerta
+			echo '<script>alert("Registro no encontrado Ingrese un registro valido")</script>';
+		}else{ 
+			$comandoSql = "delete from empleado where idEmpleado = '".$ide."'";
+			$objControlConexion->ejecutarComandoSql($comandoSql);
+		}
 		$objControlConexion->cerrarBd();
 	}
 

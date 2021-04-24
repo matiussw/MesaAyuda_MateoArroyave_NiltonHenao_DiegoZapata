@@ -92,7 +92,7 @@
 							</tr>
 							<?php foreach ($matrizReque as $row){?>
 								<tr>
-							<td><?php echo $row->getidDetalle() ?></td>
+							<td><?php echo $row->getfkReque() ?></td>
 						    <td><?php echo $row->getNombre() ?></td>
 						    <td><?php echo $row->getfecha() ?></td>	
 							<td><?php echo $row->getestado() ?></td>	

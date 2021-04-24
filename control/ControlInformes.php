@@ -17,7 +17,8 @@ class ControlInformes {
             ON detallereq.FKESTADO = estado.IDESTADO
             INNER JOIN empleado
             ON detallereq.FKEMPLE=empleado.IDEMPLEADO
-            WHERE detallereq.FKESTADO IN (1,2,3)";
+            ORDER BY detallereq.FECHA, estado.IDESTADO DESC";
+
         $recordSet = $objControlConexion->ejecutarSelect($sql);
         $matriz = array();
         $i = 0;
