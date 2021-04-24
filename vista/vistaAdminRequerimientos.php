@@ -36,7 +36,7 @@
 
 	  $obDetalleReq = new DetalleReq("",$hoy, $req,$fkReque,$estado,$ide,$empleasig);
 	  $objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
-	  $objControlDetalleReq->guardar();
+	  $objControlDetalleReq->guardarAsigEmple();
 		break;
 		
 		default:
