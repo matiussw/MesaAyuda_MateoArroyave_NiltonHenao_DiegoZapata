@@ -27,9 +27,16 @@ class ControlEmpleados
 		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
+if(empty($ide)){
 
-		$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."')";
-	    $objControlConexion->ejecutarComandoSql($comandoSql);
+echo '<script>alert("el campo no puede estar vacio")</script>';
+
+}else{
+	$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."')";
+	    
+	$objControlConexion->ejecutarComandoSql($comandoSql);
+}
+		
 		
 		$objControlConexion->cerrarBd();
 		
