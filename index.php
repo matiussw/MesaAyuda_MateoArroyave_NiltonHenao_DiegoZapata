@@ -26,10 +26,20 @@
     .item1 { 
       grid-column: auto / span 3;
       grid-row: auto / span 3;
-      background-color: #444;
+      background-color: #fff;
       color: #fff;      
       padding: 26px;
-      align-items:  center;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .item1 iframe {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 100%;
     }
 
     .item2 { grid-column: auto / span 2; }
@@ -61,7 +71,7 @@
         </header>
         <div class="grid1">
           <div class="item1">
-            <iframe width="425" height="350" src="https://www.youtube.com/embed/OlSpSawBNFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe  src="https://www.youtube.com/embed/OlSpSawBNFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="item2">
             <h4>CRUD Áreas</h4>
