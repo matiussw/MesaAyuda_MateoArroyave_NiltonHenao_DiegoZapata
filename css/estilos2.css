@@ -1,3 +1,16 @@
+body{
+	background-image: url("../img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+	font-size: 100%;
+	font-family: 'Arial', sans-serif;
+	color: #666666;
+	line-height: 1.7em;
+	text-align: left;
+}
+
 #contenedor-cabecera{
 	background-image: url("../img/fondo_cabecera.jpg");
 	background-repeat: no-repeat;
@@ -28,10 +41,10 @@ a:hover{
 }
 
 
-/*.cabecera-principal .nav-principal{
-	background: #882433;
+.cabecera-principal .nav-principal{
+	background: #5bc0de;
 	height: 40px;
-	border: 1px #c13046 solid;
+	border: 1px #5bc0de solid;
 }
 
 .cabecera-principal .nav-principal ul{
@@ -51,23 +64,22 @@ a:hover{
 	color: #fff;
 	display: inline-block;
 	padding: 10px 20px;
-	height: 20px;
+	height: 40px;
 }
 
 .cabecera-principal .nav-principal li a:hover, .cabecera-principal .nav-principal li a:active{
-	background: #85b34b;
+	background: #fff;
 	color: #000;
 	border-radius: 5px;
 	-o-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
-}*/
+}
 
 /*Media Queries*/
 /*Tablet/Ipad en portrait o landscape*/
 @media only screen and (min-width: 768px) and (max-width: 960px){
 	
-
 	.cabecera-principal img#logo{
 		margin: auto;
 		display: block;
@@ -85,6 +97,7 @@ a:hover{
 
 @media only screen and (min-width: 569px) and (max-width: 767px){
 	
+	
 	.cabecera-principal img#logo{
 		margin: auto;
 		display: block;
@@ -92,7 +105,7 @@ a:hover{
 		padding-bottom: 10px;
 	}
 
-	/*.cabecera-principal .nav-principal{
+	.cabecera-principal .nav-principal{
 		height: auto;
 		display: block;
 		overflow: hidden;
@@ -110,7 +123,7 @@ a:hover{
 		display: block;
 		margin-right: 0;
 		width: 100%;
-		border-bottom: 1px solid #a3293b;
+		border-bottom: 1px solid #5bc0de;
 	}
 
 	.cabecera-principal .nav-principal li a{
@@ -134,7 +147,7 @@ a:hover{
 		padding-bottom: 10px;
 	}
 
-	/*.cabecera-principal .nav-principal{
+	.cabecera-principal .nav-principal{
 		height: auto;
 		display: block;
 		overflow: hidden;
@@ -152,7 +165,7 @@ a:hover{
 		display: block;
 		margin-right: 0;
 		width: 100%;
-		border-bottom: 1px solid #a3293b;
+		border-bottom: 1px solid #5bc0de;
 	}
 
 	.cabecera-principal .nav-principal li a{
@@ -162,7 +175,7 @@ a:hover{
 
 	.cabecera-principal .nav-principal li a:hover, .cabecera-principal .nav-principal li a:active{
 	display: block;
-	}*/
+	}
 
 	
 }

@@ -72,19 +72,19 @@
 			<div id=contenedor-cabecera>
 				<img id="logo" src="../img/logo1.png" alt="Logo Responsive">
 			</div>
-			<!--<nav class="nav-principal">
+			<nav class="nav-principal">
 				<ul>
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Equipo</a></li>
 					<li><a href="#">Servicios</a></li>
 					<li><a href="#">Organización</a></li>						
 				</ul>
-			</nav>-->
+			</nav>
 		</header>
 			<div class="row">
-				<div class="col-6 col-md-6">
+				<div class="col-md-8 col-xs-12">
 					<form method="POST">
-					<table class="form-table"  style="margin: 50px auto;" id="table" >
+					<table class="form-table">
 						<thread class="thead-dark">
 							<td colspan="2"><h2>Listado Requerimientos</h2></td>				
 						</thread>							
@@ -114,9 +114,9 @@
 
 					</form>
 				</div>	
-				<div class="col-6 col-md-6">
+				<div class="col-md-4 col-xs-12">
 					<form method="POST">
-					<table class="form-table"  style="margin: 50px auto;" >
+					<table class="form-table" >
 						<thread class="thead-dark">
 							<td colspan="2"><h2>Requerimientos</h2></td>				
 						</thread>
@@ -179,8 +179,7 @@
 							</table>
 
 					</form>
-				</div>
-				
+				</div>				
 			</div>
 		</div>
 	</body>
