@@ -18,12 +18,15 @@ class ControlDetalleReq
 		$fkre=$this->objDetalleReq->getfkReque();
         $fkes=$this->objDetalleReq->getfkEstado();
 		$fkem=$this->objDetalleReq->getfkEmple();
+		$RequeActivo=$this->objDetalleReq->getRequeActivo();
+
+		
 
 		//$fkas=$this->objDetalleReq->getfkEmpleAsignado();
 			
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."',NULL)";
+		$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."',NULL,'".$RequeActivo."')";
 		//echo "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
@@ -41,14 +44,13 @@ class ControlDetalleReq
 		$fkre=$this->objDetalleReq->getfkReque();
         $fkes=$this->objDetalleReq->getfkEstado();
 		$fkem=$this->objDetalleReq->getfkEmple();
-
 		$fkas=$this->objDetalleReq->getfkEmpleAsignado();
-	
-		
+		$RequeActivo=$this->objDetalleReq->getRequeActivo();
+
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		
-		$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."')";
+		$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."','".$RequeActivo."')";
 		//echo "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."')";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
@@ -73,7 +75,7 @@ class ControlDetalleReq
 		if ($dato==0) { 
 			echo '<script> alert("Registro no encontrado en la base de datos, por favor ingrese un registro valido")</script>';		
 		}else{
-			$comandoSql = "UPDATE detallereq SET FKESTADO = '".$fkes."', FKEMPLEASIGNADO = '".$fkas."' WHERE IDDETALLE = '".$ide."';";
+			$comandoSql = "UPDATE detallereq SET RequeActivo='0' WHERE IDDETALLE = '".$ide."';";
 			$objControlConexion->ejecutarComandoSql($comandoSql);
 			echo '<script> alert("Registro modificado con exito")</script>';
 		}	

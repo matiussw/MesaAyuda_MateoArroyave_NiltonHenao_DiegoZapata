@@ -42,12 +42,16 @@ class ControlCargoPorEmpleado{
 
 	function modificar()
 	{	
-		$ida=$this->objCargoPorEmpleado->getIdArea();
-		$nom=$this->objCargoPorEmpleado->getNombre();
-		$fke=$this->objCargoPorEmpleado->getFkEmple_Jefe();		
+
+
+		$idCargo=$this->objCargoPorEmpleado->getFkCargo();	
+		$idEmple=$this->objCargoPorEmpleado->getFkEmple();
+		$fechaIni=$this->objCargoPorEmpleado->getFechaIni();
+		$fechaFin=$this->objCargoPorEmpleado->getFechaFin();
+         
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update area set NOMBRE = '".$nom."', FKEMPLE = '".$fke."' where idArea = '".$ida."'";
+		$comandoSql = "UPDATE cargo_por_empleado SET FECHAFIN = '".$fechaFin."' where FKEMPLE ='".$idEmple."'";
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		$objControlConexion->cerrarBd();
 	}

@@ -31,7 +31,7 @@
 	  $fkReque=$objControlReque->Idreque();	
 	// echo $fkReque ;
 
-	  $obDetalleReq = new DetalleReq("",$hoy, $req,$fkReque,"1",$ide,NULL);
+	  $obDetalleReq = new DetalleReq("",$hoy, $req,$fkReque,"1",$ide,NULL,1);
 	  $objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
 	  $objControlDetalleReq->guardar();
 		break;

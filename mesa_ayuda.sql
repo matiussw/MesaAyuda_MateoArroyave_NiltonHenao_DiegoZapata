@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2021 a las 05:32:08
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 7.4.16
+-- Tiempo de generación: 25-04-2021 a las 04:39:15
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -100,6 +100,13 @@ CREATE TABLE `cargo_por_empleado` (
   `FECHAFIN` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `cargo_por_empleado`
+--
+
+INSERT INTO `cargo_por_empleado` (`FKCARGO`, `FKEMPLE`, `FECHAINI`, `FECHAFIN`) VALUES
+(21, '11', '2021-04-24', '2021-04-24');
+
 -- --------------------------------------------------------
 
 --
@@ -113,8 +120,17 @@ CREATE TABLE `detallereq` (
   `FKREQ` int(11) NOT NULL,
   `FKESTADO` varchar(1) NOT NULL,
   `FKEMPLE` varchar(20) NOT NULL,
-  `FKEMPLEASIGNADO` varchar(20) DEFAULT NULL
+  `FKEMPLEASIGNADO` varchar(20) DEFAULT NULL,
+  `RequeActivo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detallereq`
+--
+
+INSERT INTO `detallereq` (`IDDETALLE`, `FECHA`, `OBSERVACION`, `FKREQ`, `FKESTADO`, `FKEMPLE`, `FKEMPLEASIGNADO`, `RequeActivo`) VALUES
+(1, '2021-04-24 21:25:50', 'Prueba con estado ', 1, '1', '1', NULL, 0),
+(2, '2021-04-24 21:37:13', 'Prueba con estado \r\nAsignado a gabriela ', 1, '2', '1', '7', 1);
 
 -- --------------------------------------------------------
 
@@ -133,22 +149,25 @@ CREATE TABLE `empleado` (
   `X` double DEFAULT NULL,
   `Y` double DEFAULT NULL,
   `fkEMPLE_JEFE` varchar(20) DEFAULT NULL,
-  `fkAREA` varchar(10) NOT NULL
+  `fkAREA` varchar(10) NOT NULL,
+  `EmpleActivo` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `empleado`
 --
 
-INSERT INTO `empleado` (`IDEMPLEADO`, `NOMBRE`, `FOTO`, `HOJAVIDA`, `TELEFONO`, `EMAIL`, `DIRECCION`, `X`, `Y`, `fkEMPLE_JEFE`, `fkAREA`) VALUES
-('1', 'Hugo', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\1.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\1.pdf', '411', 'hugo@ma.com', 'Cl. 54a #30-01, Medellín, Antioquia', -75.5532407, 6.2453253, '4', '10'),
-('2', 'Paco', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\2.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\2.pdf', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '4', '10'),
-('3', 'Luís', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\3.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\3.pdf', '413', 'luis@ma.com', 'Cra. 65 #98 A-75, Medellín, Antioquia', -75.5715315, 6.2938986, '6', '20'),
-('4', 'Ana', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\4.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\4.pdf', '414', 'ana@ma.com', 'Cra. 51 #58-69, Medellín, Antioquia', -75.5683161, 6.2576409, '6', '10'),
-('5', 'Lina', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\5.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\5.pdf', '415', 'lina@ma.com', 'Cl. 47A ##85 - 20, Medellín, Antioquia', -75.6026462, 6.2504554, '6', '30'),
-('6', 'Gerardo', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\6.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\6.pdf', '416', 'gerardo@ma.com', 'Cl. 95 #74b-57, Medellín, Antioquia', -75.5790301121926, 6.2921190558127735, NULL, '60'),
-('7', 'Gabriela', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\7.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\7.pdf', '417', 'gerardo@ma.com', 'Cl. 38a #80-7, Medellín, Antioquia', -75.60028196030213, 6.247450438743179, '6', '40'),
-('8', 'Gonzalo', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\8.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\8.pdf', '418', 'gerardo@ma.com', 'Cl. 32EE #80-129, Medellín, Antioquia', -75.60063384503952, 6.237608403201256, '6', '50');
+INSERT INTO `empleado` (`IDEMPLEADO`, `NOMBRE`, `FOTO`, `HOJAVIDA`, `TELEFONO`, `EMAIL`, `DIRECCION`, `X`, `Y`, `fkEMPLE_JEFE`, `fkAREA`, `EmpleActivo`) VALUES
+('1', 'Hugo', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\1.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\1.pdf', '411', 'hugo@ma.com', 'Cl. 54a #30-01, Medellín, Antioquia', -75.5532407, 6.2453253, '4', '10', 1),
+('10', 'Juan perez', 'foto.jpg', 'foto.jpg', '555555', 'Prueba@mail.com', 'Cra 89 ', 999999999, 888888888, NULL, '60', 0),
+('11', 'PEPE Perez prueba', 'delete.txt', 'delete.txt', '7777777777', 'ggg22222g@ana.com', 'Cra 99 #6666', 88888888888, 99999999999, '5', '40', 0),
+('2', 'Paco Prueba UPDATE', '', '', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '4', '10', 1),
+('3', 'Luís', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\3.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\3.pdf', '413', 'luis@ma.com', 'Cra. 65 #98 A-75, Medellín, Antioquia', -75.5715315, 6.2938986, '6', '20', 1),
+('4', 'Ana', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\4.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\4.pdf', '414', 'ana@ma.com', 'Cra. 51 #58-69, Medellín, Antioquia', -75.5683161, 6.2576409, '6', '10', 1),
+('5', 'Lina', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\5.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\5.pdf', '415', 'lina@ma.com', 'Cl. 47A ##85 - 20, Medellín, Antioquia', -75.6026462, 6.2504554, '6', '30', 1),
+('6', 'Gerardo', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\6.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\6.pdf', '416', 'gerardo@ma.com', 'Cl. 95 #74b-57, Medellín, Antioquia', -75.5790301121926, 6.2921190558127735, NULL, '60', 1),
+('7', 'Gabriela', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\7.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\7.pdf', '417', 'gerardo@ma.com', 'Cl. 38a #80-7, Medellín, Antioquia', -75.60028196030213, 6.247450438743179, '6', '40', 1),
+('8', 'Gonzalo', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\8.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\8.pdf', '418', 'gerardo@ma.com', 'Cl. 32EE #80-129, Medellín, Antioquia', -75.60063384503952, 6.237608403201256, '6', '50', 1);
 
 -- --------------------------------------------------------
 
@@ -182,6 +201,13 @@ CREATE TABLE `requerimiento` (
   `IDREQ` int(11) NOT NULL,
   `FKAREA` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `requerimiento`
+--
+
+INSERT INTO `requerimiento` (`IDREQ`, `FKAREA`) VALUES
+(1, '20');
 
 --
 -- Índices para tablas volcadas
@@ -252,19 +278,19 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT de la tabla `cargo_por_empleado`
 --
 ALTER TABLE `cargo_por_empleado`
-  MODIFY `FKCARGO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `FKCARGO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `detallereq`
 --
 ALTER TABLE `detallereq`
-  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `requerimiento`
 --
 ALTER TABLE `requerimiento`
-  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

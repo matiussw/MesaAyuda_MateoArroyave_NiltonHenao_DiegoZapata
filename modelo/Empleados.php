@@ -13,8 +13,9 @@
 		var $y;
 		var $fkIdArea;
 		var $fkRmple;
+		var $empleActivo;
 		
-		function __construct($idEmpleado, $nombre, $foto, $hojaVida, $telefono,$email, $direccion, $x, $y, $fkEmple_Jefe, $fkIdArea)
+		function __construct($idEmpleado, $nombre, $foto, $hojaVida, $telefono,$email, $direccion, $x, $y, $fkEmple_Jefe, $fkIdArea,$empleActivo)
 		{
 			$this->idEmpleado=$idEmpleado;
 			$this->nombre=$nombre;
@@ -27,8 +28,15 @@
 			$this->y=$y;
 			$this->fkEmple_Jefe=$fkEmple_Jefe;
 			$this->fkIdArea=$fkIdArea;
-			
-			
+			$this->empleActivo=$empleActivo;
+					
+		}
+
+		function setempleActivo($empleActivo){
+			$this->empleActivo=$empleActivo;
+		}
+		function getempleActivo(){
+			return $this->empleActivo;
 		}
 
 		function setIdAmpleado($idEmpleado){

@@ -12,7 +12,7 @@
 	include "../control/ControlCargoPorEmpleado.php";
 	
 	
-	$objEmpleados = new Empleados("","","","","","","","","","","");
+	$objEmpleados = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
 	$matriz = $objControlEmpleados->comboBoxJefe();
 
@@ -40,7 +40,7 @@
 	
 	switch ($bot) {
 		case 'Guardar':
-		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki);
+		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki,1);
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->guardar();
 
@@ -53,7 +53,7 @@
 		break;
 
 		case 'Consultar':
-		$objEmpleados = new Empleados($ide,"","","","","","","","","","");
+		$objEmpleados = new Empleados($ide,"","","","","","","","","","","");
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objEmpleados = $objControlEmpleados->consultar();
 		$ide=$objEmpleados->getIdEmpleado();
@@ -71,15 +71,23 @@
 		break;
 
 		case 'Modificar':
-		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki);
+		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki,"");
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->modificar();
 		break;
 
 		case 'Borrar':
-		$objEmpleados = new Empleados($ide,"","","","","","","","","","");
+		$objEmpleados = new Empleados($ide,"","","","","","","","","","","");
 		$objControlEmpleados = new ControlEmpleados($objEmpleados);
 		$objControlEmpleados->borrar();
+
+		date_default_timezone_set('America/Bogota');	
+		$hoy = date('Y-m-d H:i:s');
+
+		$objCargoPorEmpleado= new CargoPorEmpleado($car,$ide,"",$hoy); 
+        $objControlCargoPorEmpleado = new ControlCargoPorEmpleado($objCargoPorEmpleado);
+		$objControlCargoPorEmpleado->modificar();
+
 		break;
 		
 		default:

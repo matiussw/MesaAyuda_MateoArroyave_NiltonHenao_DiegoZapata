@@ -13,10 +13,11 @@
 	$objControlInfo = new ControlInformes($objinfo);
 	$matrizReque = $objControlInfo->requerimientosActivos();
 
-	$objEmpleados = new Empleados("","","","","","","","","","","");
+	$objEmpleados = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
 	$matrizEmple = $objControlEmpleados->comboBoxEmplea();
 
+	$idDetalle = isset ($_POST['idDetalle']) ? $_POST['idDetalle']: null;
 	$ida = isset ($_POST['txtArea']) ? $_POST['txtArea']: null;
 	$ide = isset ($_POST['txtIdEmpleado']) ? $_POST['txtIdEmpleado']: null;
 	$req = isset ($_POST['txtRequerimiento']) ? $_POST['txtRequerimiento']: null;
@@ -33,8 +34,11 @@
 		$hoy = date('Y-m-d H:i:s');
 
 	//	echo $fkReque.$ide ;
+	$obDetalleReq = new DetalleReq($idDetalle,$hoy, $req,$fkReque,$estado,$ide,$empleasig,1);
+	$objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
+	$objControlDetalleReq->modificar();
 
-	  $obDetalleReq = new DetalleReq("",$hoy, $req,$fkReque,$estado,$ide,$empleasig);
+	  $obDetalleReq = new DetalleReq("",$hoy, $req,$fkReque,$estado,$ide,$empleasig,1);
 	  $objControlDetalleReq = new ControlDetalleReq($obDetalleReq);
 	  $objControlDetalleReq->guardarAsigEmple();
 		break;
@@ -99,7 +103,7 @@
 							<td	hidden><?php echo $row->getemple() ?></td>	
 							<td	hidden><?php echo $row->getIdArea() ?></td>	
 							<td	hidden><?php echo $row->getobservacion() ?></td>	
-							<td	hidden><?php echo $row->getfkReque() ?></td>	
+							<td	hidden><?php echo $row->getidDetalle() ?></td>	
 							<td	hidden><?php echo $row->getfkEstado() ?></td>	
 							<td	hidden><?php echo $row->getfkEmple() ?></td>	
 							<td	hidden><?php echo $row->getfkEmpleAsignado() ?></td>
@@ -129,6 +133,7 @@
 								<td><input class="form-control" type="text" id ="txtNombreEmple" name="txtNombreEmple" readonly/>
 								</td>
 							</tr>
+							<input hidden id="idDetalle" name="idDetalle" >
 							<input hidden id="fkreque" name ="fkreque" >	
 							<input hidden id="txtIdEmpleado" name="txtIdEmpleado" >
 							<tr>
@@ -197,7 +202,8 @@
 			// document.getElementById("fkreque").value = this.cells[6].innerHTML;
 			// document.getElementById("txtIdEmpleado").value = this.cells[8].innerHTML;
 
-			 document.getElementById("fkreque").value = this.cells[7].innerHTML;
+			 document.getElementById("idDetalle").value = this.cells[7].innerHTML;
+			 document.getElementById("fkreque").value = this.cells[0].innerHTML;
 			 document.getElementById("txtIdEmpleado").value = this.cells[9].innerHTML;
 		};
 	}

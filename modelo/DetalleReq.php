@@ -9,9 +9,10 @@
         var $fkEstado;
 		var $fkEmple;
         var $fkEmpleAsignado;
+		var $RequeActivo;
 	
 				
-		function __construct($idDetalle, $fecha,$observacion,$fkReque,$fkEstado,$fkEmple,$fkEmpleAsignado)
+		function __construct($idDetalle, $fecha,$observacion,$fkReque,$fkEstado,$fkEmple,$fkEmpleAsignado,$RequeActivo)
 		{
 			$this->idDetalle=$idDetalle;
 			$this->fecha=$fecha;
@@ -20,6 +21,15 @@
 			$this->fkEstado=$fkEstado;
             $this->fkEmple=$fkEmple;
             $this->fkEmpleAsignado=$fkEmpleAsignado;
+			$this->RequeActivo=$RequeActivo;
+			
+		}
+
+		function setRequeActivo($RequeActivo){
+			$this->RequeActivo=$RequeActivo;
+		}
+		function getRequeActivo(){
+			return $this->RequeActivo;
 		}
 
 		function setIdidDetalle($idDetalle){

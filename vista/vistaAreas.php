@@ -7,7 +7,7 @@
 	include "../control/ControlEmpleados.php";
 
 
-	$objEmpleados = new Empleados("","","","","","","","","","","");
+	$objEmpleados = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
 	$matriz = $objControlEmpleados->comboBoxEmplea();
 
