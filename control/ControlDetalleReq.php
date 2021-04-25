@@ -49,13 +49,19 @@ class ControlDetalleReq
 
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		
-		$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."','".$RequeActivo."')";
-		//echo "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."')";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+
+		if($fkes==4 or $fkes==5){
+			$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."','0')";
+			//echo "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."')";
+			$objControlConexion->ejecutarComandoSql($comandoSql);
+		}else{
+			$comandoSql = "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."','".$RequeActivo."')";
+			//echo "insert into detallereq values(NULL,'".$fec."','".$obs."','".$fkre."','". $fkes."','".$fkem."','".$fkas."')";
+			$objControlConexion->ejecutarComandoSql($comandoSql);
+		}
 		$objControlConexion->cerrarBd();
 		echo '<script> alert("Su solicitud se ha radicado exitosamente")</script>';
-		echo"<script> window.location='../index.php';</script>";
+		echo"<script> window.location='../vista/vistaAdminRequerimientos.php';</script>";
 
 	}
 
