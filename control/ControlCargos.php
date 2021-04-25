@@ -77,7 +77,8 @@ class ControlCargos
 	}
 
 	function borrar()
-	{
+	{ 
+		/*
 		$idc=$this->objCargos->getIdCargo();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
@@ -95,9 +96,12 @@ class ControlCargos
 		}else {
 		$objControlConexion->ejecutarComandoSql($comandoSql);
 		echo '<script> alert("El Cargo ha sido borrado con exito")</script>';
-		}
+	}
 		$objControlConexion->cerrarBd();
-	}	
+		*/
+		echo '<script> alert("Para Borrar el Cargo por favor contacte al administrador de base de datos")</script>';
+	}
+		
 
 	function comboBoxCargo(){
 

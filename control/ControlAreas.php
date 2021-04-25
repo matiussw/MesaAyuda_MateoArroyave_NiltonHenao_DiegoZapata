@@ -87,6 +87,7 @@ class ControlAreas
 
 	function borrar()
 	{
+		/*
 		$ida=$this->objAreas->getIdArea();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
@@ -106,6 +107,8 @@ class ControlAreas
 		echo '<script> alert("El area ha sido borrada con exito")</script>';
 		}
 		$objControlConexion->cerrarBd();
+		*/
+		echo '<script> alert("Para Borrar el Area por favor contacte al administrador de base de datos")</script>';
 	}
 
 	
