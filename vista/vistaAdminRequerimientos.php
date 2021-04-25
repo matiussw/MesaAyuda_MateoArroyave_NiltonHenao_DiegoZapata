@@ -84,7 +84,7 @@
 			<div class="row">
 				<div class="col-md-8 col-xs-12">
 					<form method="POST">
-					<table class="form-table">
+					<table class="form-table" id="table">
 						<thread class="thead-dark">
 							<td colspan="2"><h2>Listado Requerimientos</h2></td>				
 						</thread>							
