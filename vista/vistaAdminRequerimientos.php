@@ -81,12 +81,14 @@
 				</ul>
 			</nav>
 		</header>
+		</div>
+		<div class="container">	
 			<div class="row">
-				<div class="col-md-8 col-xs-12">
+				<div class="col-6 col-md-6 col-sm-12 col-xs-12">
 					<form method="POST">
 					<table class="form-table" id="table">
 						<thread class="thead-dark">
-							<td colspan="2"><h2>Listado Requerimientos</h2></td>				
+							<td colspan="3"><h2>Listado Requerimientos</h2></td>				
 						</thread>							
 							<tr>
 								<th>ID Requerimiento</th>
@@ -114,11 +116,11 @@
 
 					</form>
 				</div>	
-				<div class="col-md-4 col-xs-12">
+				<div class="col-4 col-md-4 col-sm-12 col-xs-12">
 					<form method="POST">
 					<table class="form-table" >
-						<thread class="thead-dark">
-							<td colspan="2"><h2>Requerimientos</h2></td>				
+						<thread class="thead-dark" style="margin: 5px auto;">
+							<td colspan="3"><h2>Requerimientos</h2></td>				
 						</thread>
 							<tr>
 								<td><h4>Área Requerimiento</h4></td>
@@ -166,21 +168,18 @@
 								<td><textarea name="txtRequerimiento" id="txtRequerimiento" placeholder="Ingrese el requerimiento" rows="10"></textarea>
 								</td>
 							</tr>
-					</table>
-							<table class="form-table" style="margin: 50px auto;">			
 							<tr>							
-								<td><input class="btn btn-success" align = "center" type="submit" name="btn" value="Radicar"/></td>
+								<td><input class="btn btn-success" type="submit" name="btn" value="Radicar"/></td>
 							</tr>
-							</table>
-							<table class="form-table" style="margin: 50px auto;">
-								<tr>
-								<td><a class="btn btn-primary" href="../index.php" role="button">Regresar</a></td>
-								</tr>
-							</table>
-
+					</table>
 					</form>
 				</div>				
 			</div>
+			<table class="form-table" style="margin: 50px auto;">
+				<tr>
+				<td><a class="btn btn-primary" href="../index.php" role="button">Regresar</a></td>
+				</tr>
+			</table>
 		</div>
 	</body>
 
