@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2021 a las 04:39:15
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.2
+-- Tiempo de generación: 25-04-2021 a las 22:25:42
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -85,7 +85,8 @@ INSERT INTO `cargo` (`IDCARGO`, `NOMBRE`) VALUES
 (24, 'Jefe de ventas'),
 (25, 'Vendedor'),
 (26, 'Cajero'),
-(27, 'Gerente general');
+(27, 'Gerente general'),
+(28, 'Jefe de Sistemas');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,16 @@ CREATE TABLE `cargo_por_empleado` (
 --
 
 INSERT INTO `cargo_por_empleado` (`FKCARGO`, `FKEMPLE`, `FECHAINI`, `FECHAFIN`) VALUES
-(21, '11', '2021-04-24', '2021-04-24');
+(7, '1', '2021-04-24', NULL),
+(8, '2', '2021-04-24', NULL),
+(9, '3', '2021-04-24', NULL),
+(13, '10', '2021-04-24', NULL),
+(15, '5', '2021-04-24', NULL),
+(16, '11', '2021-04-24', '2021-04-24'),
+(21, '7', '2021-04-24', NULL),
+(24, '8', '2021-04-24', NULL),
+(27, '6', '2021-04-24', NULL),
+(28, '4', '2021-04-24', NULL);
 
 -- --------------------------------------------------------
 
@@ -130,7 +140,8 @@ CREATE TABLE `detallereq` (
 
 INSERT INTO `detallereq` (`IDDETALLE`, `FECHA`, `OBSERVACION`, `FKREQ`, `FKESTADO`, `FKEMPLE`, `FKEMPLEASIGNADO`, `RequeActivo`) VALUES
 (1, '2021-04-24 21:25:50', 'Prueba con estado ', 1, '1', '1', NULL, 0),
-(2, '2021-04-24 21:37:13', 'Prueba con estado \r\nAsignado a gabriela ', 1, '2', '1', '7', 1);
+(2, '2021-04-24 21:37:13', 'Prueba con estado \r\nAsignado a gabriela ', 1, '2', '1', '7', 0),
+(3, '2021-04-24 21:45:47', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto', 1, '3', '1', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +176,7 @@ INSERT INTO `empleado` (`IDEMPLEADO`, `NOMBRE`, `FOTO`, `HOJAVIDA`, `TELEFONO`, 
 ('3', 'Luís', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\3.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\3.pdf', '413', 'luis@ma.com', 'Cra. 65 #98 A-75, Medellín, Antioquia', -75.5715315, 6.2938986, '6', '20', 1),
 ('4', 'Ana', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\4.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\4.pdf', '414', 'ana@ma.com', 'Cra. 51 #58-69, Medellín, Antioquia', -75.5683161, 6.2576409, '6', '10', 1),
 ('5', 'Lina', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\5.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\5.pdf', '415', 'lina@ma.com', 'Cl. 47A ##85 - 20, Medellín, Antioquia', -75.6026462, 6.2504554, '6', '30', 1),
-('6', 'Gerardo', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\6.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\6.pdf', '416', 'gerardo@ma.com', 'Cl. 95 #74b-57, Medellín, Antioquia', -75.5790301121926, 6.2921190558127735, NULL, '60', 1),
+('6', 'Gerardo', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\6.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\6.pdf', '416', 'gerardo@ma.com', 'Cl. 95 #74b-57, Medellín, Antioquia', -75.5790301121926, 6.2921190558127735, '6', '60', 1),
 ('7', 'Gabriela', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\7.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\7.pdf', '417', 'gerardo@ma.com', 'Cl. 38a #80-7, Medellín, Antioquia', -75.60028196030213, 6.247450438743179, '6', '40', 1),
 ('8', 'Gonzalo', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\fotos\\8.jpg', 'C:\\xampp\\htdocs\\MesaAyuda_MateoArroyave_NiltonHenao_DiegoZapata\\vista\\hvs\\8.pdf', '418', 'gerardo@ma.com', 'Cl. 32EE #80-129, Medellín, Antioquia', -75.60063384503952, 6.237608403201256, '6', '50', 1);
 
@@ -272,19 +283,19 @@ ALTER TABLE `requerimiento`
 -- AUTO_INCREMENT de la tabla `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `IDCARGO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `IDCARGO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `cargo_por_empleado`
 --
 ALTER TABLE `cargo_por_empleado`
-  MODIFY `FKCARGO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `FKCARGO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `detallereq`
 --
 ALTER TABLE `detallereq`
-  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `requerimiento`
