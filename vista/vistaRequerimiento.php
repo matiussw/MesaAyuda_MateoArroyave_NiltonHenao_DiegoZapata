@@ -50,7 +50,7 @@
 		<title>Formulario Requerimientos</title>
 		
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-		<link href="../css/estilos2.css" type="text/css" rel="stylesheet">
+		<link href="../css/estilos3.css" type="text/css" rel="stylesheet">
 		
 	</head>
 	<body>
@@ -61,7 +61,7 @@
 				</div>
 				<nav class="nav-principal">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a href="../index.php">Inicio</a></li>
 						<li><a href="#">Equipo</a></li>
 						<li><a href="#">Servicios</a></li>
 						<li><a href="#">Organización</a></li>						
