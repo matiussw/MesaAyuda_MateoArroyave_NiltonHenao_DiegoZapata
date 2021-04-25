@@ -111,7 +111,7 @@
 	<div class="container">		   
 		<header class="cabecera-principal">
 			<div id=contenedor-cabecera>
-				<img id="logo" src="../img/logo.png" alt="Logo Responsive">
+				<img id="logo" src="../img/logo1.png" alt="Logo Responsive">
 			</div>
 			<!--<nav class="nav-principal">
 				<ul>
