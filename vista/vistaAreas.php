@@ -9,13 +9,14 @@
 
 	$objEmpleados = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
-	$matriz = $objControlEmpleados->comboBoxEmplea();
-
+	
+	
 
 	$ida = isset($_POST['txtIdArea']) ? $_POST['txtIdArea']:null;
 	$nom = isset($_POST['txtNombre']) ?$_POST['txtNombre']:null;
 	$fke = isset($_POST['txtFkEmple_Jefe']) ? $_POST['txtFkEmple_Jefe']:null;	
 	$bot = isset($_POST['btn']) ?$_POST['btn']:null;
+	$matriz = $objControlEmpleados->comboBoxEmplea($ida);
 
 	switch ($bot) {
 		case 'Guardar':
@@ -29,7 +30,7 @@
 		$objControlAreas = new ControlAreas($objAreas);
 		$objAreas = $objControlAreas->consultar();
 		$nom=$objAreas->getNombre();		
-		$fke=$objAreas->getFkEmple_Jefe();
+		$fke=$objAreas->getFkEmple_Jefe();		
 			
 		break;
 
@@ -50,6 +51,8 @@
 			break;
 	}
 
+
+	
 	?>
 	
 	<!DOCTYPE html>
@@ -58,7 +61,7 @@
 	<title>CRUD Áreas</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-	<link href="../css/estilos2.css" type="text/css" rel="stylesheet">
+	<link href="../css/estilos3.css" type="text/css" rel="stylesheet">
 	
 
 </head>
@@ -70,7 +73,7 @@
 			</div>
 			<nav class="nav-principal">
 				<ul>
-					<li><a href="#">Home</a></li>
+					<li><a href="../index.php">Inicio</a></li>
 					<li><a href="#">Equipo</a></li>
 					<li><a href="#">Servicios</a></li>
 					<li><a href="#">Organización</a></li>						
@@ -96,12 +99,14 @@
 			<tr>
 				<td><h4>Jefe De Area</h4></td>
 				<td><select class="form-control" name="txtFkEmple_Jefe">
+				
 				<?php
 
-				foreach ($matriz as $row){ 
+				
+				foreach ($matriz as $row){ 					
 					echo'
 					
-					<option value='.$row->getIdEmpleado().'>'.$row->getNombre().'</option>';
+					<option value='.$row->getIdEmpleado().'>'.$row->getNombre().'</option>' ;
 
 				}
 				?>

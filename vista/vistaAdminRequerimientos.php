@@ -15,7 +15,7 @@
 
 	$objEmpleados = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
-	$matrizEmple = $objControlEmpleados->comboBoxEmplea();
+	
 
 	$idDetalle = isset ($_POST['idDetalle']) ? $_POST['idDetalle']: null;
 	$ida = isset ($_POST['txtArea']) ? $_POST['txtArea']: null;
@@ -25,7 +25,8 @@
     $estado = isset ($_POST['txtEstado']) ? $_POST['txtEstado']: null;
 	$fkReque= isset ($_POST['fkreque']) ? $_POST['fkreque']: null;
 	$bot = isset ($_POST['btn']) ? $_POST['btn']: null;
- 
+
+	$matrizEmple = $objControlEmpleados->comboBoxEmplea($ida);
 	switch ($bot) {
 		case 'Radicar':
 	    
@@ -57,7 +58,7 @@
 		<title>Administración Requerimientos</title>
 		
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-		<link href="../css/estilos2.css" type="text/css" rel="stylesheet">
+		<link href="../css/estilos3.css" type="text/css" rel="stylesheet">
 
 		<style>
             table tr:not(:first-child){
@@ -74,19 +75,21 @@
 			</div>
 			<nav class="nav-principal">
 				<ul>
-					<li><a href="#">Home</a></li>
+					<li><a href="../index.php">Inicio</a></li>
 					<li><a href="#">Equipo</a></li>
 					<li><a href="#">Servicios</a></li>
 					<li><a href="#">Organización</a></li>						
 				</ul>
 			</nav>
 		</header>
+		</div>
+		<div class="container">	
 			<div class="row">
-				<div class="col-md-8 col-xs-12">
+				<div class="col-6 col-md-6 col-sm-12 col-xs-12">
 					<form method="POST">
 					<table class="form-table" id="table">
 						<thread class="thead-dark">
-							<td colspan="2"><h2>Listado Requerimientos</h2></td>				
+							<td colspan="3"><h2>Listado Requerimientos</h2></td>				
 						</thread>							
 							<tr>
 								<th>ID Requerimiento</th>
@@ -114,11 +117,11 @@
 
 					</form>
 				</div>	
-				<div class="col-md-4 col-xs-12">
+				<div class="col-4 col-md-4 col-sm-12 col-xs-12">
 					<form method="POST">
 					<table class="form-table" >
-						<thread class="thead-dark">
-							<td colspan="2"><h2>Requerimientos</h2></td>				
+						<thread class="thead-dark" style="margin: 5px auto;">
+							<td colspan="3"><h2>Requerimientos</h2></td>				
 						</thread>
 							<tr>
 								<td><h4>Área Requerimiento</h4></td>
@@ -137,7 +140,7 @@
 							<input hidden id="fkreque" name ="fkreque" >	
 							<input hidden id="txtIdEmpleado" name="txtIdEmpleado" >
 							<tr>
-								<td><h4>asignar Empleado</h4></td>
+								<td><h4>Asignar Empleado</h4></td>
 								<td><select class="form-control" name="txtIdEmpleadoAsignado">
 				<?php
 				foreach ($matrizEmple as $row){ 
@@ -166,21 +169,18 @@
 								<td><textarea name="txtRequerimiento" id="txtRequerimiento" placeholder="Ingrese el requerimiento" rows="10"></textarea>
 								</td>
 							</tr>
-					</table>
-							<table class="form-table" style="margin: 50px auto;">			
 							<tr>							
-								<td><input class="btn btn-success" align = "center" type="submit" name="btn" value="Radicar"/></td>
+								<td><input class="btn btn-success" type="submit" name="btn" value="Radicar"/></td>
 							</tr>
-							</table>
-							<table class="form-table" style="margin: 50px auto;">
-								<tr>
-								<td><a class="btn btn-primary" href="../index.php" role="button">Regresar</a></td>
-								</tr>
-							</table>
-
+					</table>
 					</form>
 				</div>				
 			</div>
+			<table class="form-table" style="margin: 50px auto;">
+				<tr>
+				<td><a class="btn btn-primary" href="../index.php" role="button">Regresar</a></td>
+				</tr>
+			</table>
 		</div>
 	</body>
 

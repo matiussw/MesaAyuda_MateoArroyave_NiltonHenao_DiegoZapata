@@ -11,18 +11,14 @@
 	include "../modelo/CargoPorEmpleado.php";
 	include "../control/ControlCargoPorEmpleado.php";
 	
-	
 	$objEmpleados = new Empleados("","","","","","","","","","","","");
 	$objControlEmpleados = new ControlEmpleados($objEmpleados);
-	$matriz = $objControlEmpleados->comboBoxJefe();
-
+	
 	$objAreas = new Areas("","","");
 	$objControlAreas = new ControlAreas($objAreas);
-	$matrizArea = $objControlAreas->comboBoxArea();
-
+	
 	$objCargos = new Cargos("","");
 	$objControlCargos = new ControlCargos($objCargos);
-	$matrizCargo = $objControlCargos->comboBoxCargo();
 
 	$ide = isset($_POST['txtIdEmpleado']) ? $_POST['txtIdEmpleado']: null;
 	$nom = isset($_POST['txtNombre']) ? $_POST['txtNombre']: null;
@@ -37,7 +33,10 @@
 	$fke = isset($_POST['txtFkRmple']) ? $_POST['txtFkRmple']: null;
 	$fki = isset($_POST['txtFkIdArea']) ? $_POST['txtFkIdArea']: null;
 	$bot = isset($_POST['btn']) ? $_POST['btn']: null;
-	
+
+	$matrizCargo = $objControlCargos->comboBoxCargo($ide);
+	$matriz = $objControlEmpleados->comboBoxJefe($ide);
+	$matrizArea = $objControlAreas->comboBoxArea($ide);
 	switch ($bot) {
 		case 'Guardar':
 		$objEmpleados = new Empleados($ide, $nom, $fot, $hvs, $tel, $ema,$dir, $x, $y, $fke, $fki,1);
@@ -103,7 +102,7 @@
 	<title>CRUD Empleados</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-	<link href="../css/estilos2.css" type="text/css" rel="stylesheet">
+	<link href="../css/estilos3.css" type="text/css" rel="stylesheet">
 	
 
 </head>
@@ -115,7 +114,7 @@
 			</div>
 			<nav class="nav-principal">
 				<ul>
-					<li><a href="#">Home</a></li>
+					<li><a href="../index.php">Inicio</a></li>
 					<li><a href="#">Equipo</a></li>
 					<li><a href="#">Servicios</a></li>
 					<li><a href="#">Organización</a></li>						
@@ -194,7 +193,7 @@
 			<tr>
 				<td><h4>Jefe inmediato</h4></td>
 				
-				<td><select class="form-control" name="txtFkRmple">
+				<td><select class="form-control" name="txtFkRmple" selected disabled>
 				<?php
 				foreach ($matriz as $row){ 
 					echo'
@@ -241,6 +240,8 @@
 		</table>
 	</form>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/vistaEmpleados.js"></script>
 </body>
 </html>
 

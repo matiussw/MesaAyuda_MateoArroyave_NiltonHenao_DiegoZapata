@@ -53,12 +53,15 @@ class ControlAreas
 			$fke = $registro["FKEMPLE"];		
 			$this->objAreas->setNombre($nom);
 			$this->objAreas->setFkEmple_Jefe($fke);	
+			
+			
 		}
 				
 		$objControlConexion->cerrarBd();
 		return $this->objAreas;
 	}
 
+	
 	function modificar()
 	{	
 		$ida=$this->objAreas->getIdArea();
@@ -112,12 +115,19 @@ class ControlAreas
 	}
 
 	
-	function comboBoxArea(){
+	function comboBoxArea($ide){
+		$idee = $ide;
 
         $objControlConexion = new ControlConexion();
         $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
 
-        $sql = "SELECT * FROM area";
+		if($ide==null){	
+			$sql = "SELECT * FROM area";
+		}else{
+			
+			$sql = "select area.IDAREA AS IDAREA, area.NOMBRE AS NOMBRE, area.FKEMPLE AS FKEMPLE FROM empleado INNER JOIN area on empleado.IDEMPLEADO = area.FKEMPLE INNER JOIN cargo_por_empleado ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE INNER JOIN cargo ON cargo_por_empleado.FKCARGO = cargo.IDCARGO WHERE empleado.EmpleActivo = '1' ORDER BY empleado.IDEMPLEADO = '".$idee."' DESC";
+		}
+        
         $recordSet = $objControlConexion->ejecutarSelect($sql);
 		$matriz = array();
 		$i = 0;

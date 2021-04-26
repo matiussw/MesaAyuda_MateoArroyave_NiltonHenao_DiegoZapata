@@ -103,11 +103,16 @@ class ControlCargos
 	}
 		
 
-	function comboBoxCargo(){
-
+	function comboBoxCargo($ide){
+		$idee = $ide;
         $objControlConexion = new ControlConexion();
-        $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-        $sql = "SELECT * FROM cargo";
+		$objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+		if($ide==null){		
+			$sql = "SELECT * FROM cargo";
+		}else{
+			$sql = "select cargo.NOMBRE AS NOMBRE, cargo.IDCARGO AS IDCARGO FROM empleado INNER JOIN area on empleado.IDEMPLEADO = area.FKEMPLE INNER JOIN cargo_por_empleado ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE INNER JOIN cargo ON cargo_por_empleado.FKCARGO = cargo.IDCARGO WHERE empleado.EmpleActivo = '1' ORDER BY empleado.IDEMPLEADO = '".$idee."' DESC";
+			
+		}
         $recordSet = $objControlConexion->ejecutarSelect($sql);
 		$matriz = array();
 		$i = 0;

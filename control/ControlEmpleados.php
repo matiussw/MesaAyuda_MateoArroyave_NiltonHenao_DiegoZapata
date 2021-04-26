@@ -28,17 +28,15 @@ class ControlEmpleados
 		
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-if(empty($ide)){
+		if(empty($ide)){
 
-echo '<script>alert("el campo no puede estar vacio")</script>';
+		echo '<script>alert("el campo no puede estar vacio")</script>';
 
-}else{
-	$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."','".$empleEstado."')";
-	    
-	$objControlConexion->ejecutarComandoSql($comandoSql);
-}
-		
-		
+		}else{
+			$comandoSql = "INSERT INTO empleado  values('".$ide."','".$nom."','".$fot."','".$hvs."','".$tel."','".$ema."','".$dir."','".$x."','".$y."','".$fke."','".$fki."','".$empleEstado."')";
+				
+			$objControlConexion->ejecutarComandoSql($comandoSql);
+		}
 		$objControlConexion->cerrarBd();
 		
 	}
@@ -50,6 +48,8 @@ echo '<script>alert("el campo no puede estar vacio")</script>';
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "select * from empleado where IDEMPLEADO ='".$ide."'";
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
+	
+			
 		//valida si existe el empleado
 		$comandoSqlValidacion="select exists (select * from empleado where IDEMPLEADO = '".$ide."' AND EmpleActivo = '1')";
 		$rss = $objControlConexion->ejecutarSelect($comandoSqlValidacion);
@@ -159,12 +159,26 @@ echo '<script>alert("el campo no puede estar vacio")</script>';
 		$objControlConexion->cerrarBd();
 	}
 
-	function comboBoxJefe(){
+	function comboBoxJefe($ide){
+		$idee = $ide;
 
         $objControlConexion = new ControlConexion();
         $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
+		
+		if($ide==null){					
+			$sql = "select * from area a INNER JOIN empleado b on a.FKEMPLE = b.IDEMPLEADO where b.EmpleActivo = '1'";
+		}else{
+			//valida primero el jefe de la persona
+			$comandoSql = "select fkEMPLE_JEFE , IDEMPLEADO FROM empleado WHERE  EmpleActivo = '1' AND IDEMPLEADO = '".$ide."'";
+			$rs = $objControlConexion->ejecutarSelect($comandoSql);
+			$registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro			
+			$fkjefe = $registro["fkEMPLE_JEFE"];				
 
-        $sql = "select * from area a INNER JOIN empleado b on a.FKEMPLE = b.IDEMPLEADO where b.EmpleActivo = '1'";
+			$sql = "select empleado.IDEMPLEADO AS IDEMPLEADO, empleado.NOMBRE AS NOMBRE FROM empleado where empleado.EmpleActivo = '1' ORDER BY empleado.IDEMPLEADO = '".$fkjefe."' DESC";
+			
+			
+		}
+       
         $recordSet = $objControlConexion->ejecutarSelect($sql);
 		$matriz = array();
 		$i = 0;
@@ -180,12 +194,15 @@ echo '<script>alert("el campo no puede estar vacio")</script>';
         return $matriz;
         }
 
-		function comboBoxEmplea(){
-
+		function comboBoxEmplea($ida){
+			$idaa = $ida;
 			$objControlConexion = new ControlConexion();
 			$objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-	
-			$sql = "select * from empleado where EmpleActivo = '1'";
+			if($ida==null){				
+				$sql = "select * from empleado where EmpleActivo = '1'";
+			}else{
+				$sql = "select empleado.IDEMPLEADO as IDEMPLEADO, empleado.NOMBRE as NOMBRE FROM empleado INNER JOIN area on empleado.IDEMPLEADO = area.FKEMPLE INNER JOIN cargo_por_empleado ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE INNER JOIN cargo ON cargo_por_empleado.FKCARGO = cargo.IDCARGO WHERE empleado.EmpleActivo = '1' order by area.IDAREA = '".$idaa."' desc";
+			}
 			$recordSet = $objControlConexion->ejecutarSelect($sql);
 			$matriz = array();
 			$i = 0;
