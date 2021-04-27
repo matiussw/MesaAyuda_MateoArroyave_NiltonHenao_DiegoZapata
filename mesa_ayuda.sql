@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2021 a las 22:25:42
+-- Tiempo de generación: 27-04-2021 a las 17:55:54
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.4.16
 
@@ -141,7 +141,13 @@ CREATE TABLE `detallereq` (
 INSERT INTO `detallereq` (`IDDETALLE`, `FECHA`, `OBSERVACION`, `FKREQ`, `FKESTADO`, `FKEMPLE`, `FKEMPLEASIGNADO`, `RequeActivo`) VALUES
 (1, '2021-04-24 21:25:50', 'Prueba con estado ', 1, '1', '1', NULL, 0),
 (2, '2021-04-24 21:37:13', 'Prueba con estado \r\nAsignado a gabriela ', 1, '2', '1', '7', 0),
-(3, '2021-04-24 21:45:47', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto', 1, '3', '1', '1', 1);
+(3, '2021-04-24 21:45:47', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto', 1, '3', '1', '1', 0),
+(4, '2021-04-26 17:47:57', 'Reparacion desague oficina 202', 2, '1', '3', NULL, 0),
+(5, '2021-04-26 17:49:11', 'Reparacion desague oficina 202\r\nSe asigna a Hugo de Mantenimiento', 2, '2', '3', '1', 0),
+(6, '2021-04-26 17:50:28', 'Reparacion desague oficina 202\r\nSe asigna a Hugo de Mantenimiento\r\nSe ubica tubo temporal mientras llega el repuesto', 2, '3', '3', '1', 1),
+(7, '2021-04-27 10:37:29', 'Inicio Requerimiento', 3, '1', '3', NULL, 0),
+(8, '2021-04-27 10:38:36', 'Inicio Requerimiento\r\nRequerimiento Asignado a Ana', 3, '2', '3', '4', 1),
+(9, '2021-04-27 10:39:35', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto\r\nSe completa la socucion del requerimiento', 1, '4', '1', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -172,7 +178,7 @@ INSERT INTO `empleado` (`IDEMPLEADO`, `NOMBRE`, `FOTO`, `HOJAVIDA`, `TELEFONO`, 
 ('1', 'Hugo', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\1.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\1.pdf', '411', 'hugo@ma.com', 'Cl. 54a #30-01, Medellín, Antioquia', -75.5532407, 6.2453253, '4', '10', 1),
 ('10', 'Juan perez', 'foto.jpg', 'foto.jpg', '555555', 'Prueba@mail.com', 'Cra 89 ', 999999999, 888888888, NULL, '60', 0),
 ('11', 'PEPE Perez prueba', 'delete.txt', 'delete.txt', '7777777777', 'ggg22222g@ana.com', 'Cra 99 #6666', 88888888888, 99999999999, '5', '40', 0),
-('2', 'Paco Prueba UPDATE', '', '', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '4', '10', 1),
+('2', 'Paco Prueba UPDATE', 'foto.jpg', 'hvs.pdf', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '4', '10', 1),
 ('3', 'Luís', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\3.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\3.pdf', '413', 'luis@ma.com', 'Cra. 65 #98 A-75, Medellín, Antioquia', -75.5715315, 6.2938986, '6', '20', 1),
 ('4', 'Ana', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\4.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\4.pdf', '414', 'ana@ma.com', 'Cra. 51 #58-69, Medellín, Antioquia', -75.5683161, 6.2576409, '6', '10', 1),
 ('5', 'Lina', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\5.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\5.pdf', '415', 'lina@ma.com', 'Cl. 47A ##85 - 20, Medellín, Antioquia', -75.6026462, 6.2504554, '6', '30', 1),
@@ -218,7 +224,9 @@ CREATE TABLE `requerimiento` (
 --
 
 INSERT INTO `requerimiento` (`IDREQ`, `FKAREA`) VALUES
-(1, '20');
+(1, '20'),
+(3, '20'),
+(2, '30');
 
 --
 -- Índices para tablas volcadas
@@ -295,13 +303,13 @@ ALTER TABLE `cargo_por_empleado`
 -- AUTO_INCREMENT de la tabla `detallereq`
 --
 ALTER TABLE `detallereq`
-  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `requerimiento`
 --
 ALTER TABLE `requerimiento`
-  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
