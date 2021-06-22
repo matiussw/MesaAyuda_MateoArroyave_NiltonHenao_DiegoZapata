@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2021 a las 17:55:54
+-- Tiempo de generación: 22-06-2021 a las 16:03:21
 -- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 7.4.16
+-- Versión de PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,86 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `mesa_ayuda`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `informeDos` ()  SELECT empleado.NOMBRE,
+CASE WHEN empleado.fkEMPLE_JEFE = 1 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 1)
+WHEN empleado.fkEMPLE_JEFE = 2 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 2)
+WHEN empleado.fkEMPLE_JEFE = 3 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 3)
+WHEN empleado.fkEMPLE_JEFE = 4 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 4)
+WHEN empleado.fkEMPLE_JEFE = 5 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 5)
+WHEN empleado.fkEMPLE_JEFE = 6 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 6)
+WHEN empleado.fkEMPLE_JEFE = 7 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 7)
+WHEN empleado.fkEMPLE_JEFE = 8 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 8)
+WHEN empleado.fkEMPLE_JEFE = 9 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 9)
+WHEN empleado.fkEMPLE_JEFE = 10 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 10)
+ELSE 'NO TIENE JEFE DE AREA ASIGNADO'
+END NOMBREJEFE,
+area.NOMBRE AS NOMBRE
+FROM empleado 
+LEFT JOIN area 
+on empleado.fkAREA = area.IDAREA 
+INNER JOIN cargo_por_empleado 
+ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE 
+INNER JOIN cargo 
+ON cargo_por_empleado.FKCARGO = cargo.IDCARGO 
+WHERE empleado.EmpleActivo = '1'$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInformeDos` ()  SELECT empleado.NOMBRE,
+CASE WHEN empleado.fkEMPLE_JEFE = 1 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 1)
+WHEN empleado.fkEMPLE_JEFE = 2 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 2)
+WHEN empleado.fkEMPLE_JEFE = 3 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 3)
+WHEN empleado.fkEMPLE_JEFE = 4 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 4)
+WHEN empleado.fkEMPLE_JEFE = 5 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 5)
+WHEN empleado.fkEMPLE_JEFE = 6 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 6)
+WHEN empleado.fkEMPLE_JEFE = 7 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 7)
+WHEN empleado.fkEMPLE_JEFE = 8 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 8)
+WHEN empleado.fkEMPLE_JEFE = 9 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 9)
+WHEN empleado.fkEMPLE_JEFE = 10 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 10)
+ELSE 'NO TIENE JEFE DE AREA ASIGNADO'
+END NOMBREJEFE,
+area.NOMBRE AS NOMBRE
+FROM empleado 
+LEFT JOIN area 
+on empleado.fkAREA = area.IDAREA 
+INNER JOIN cargo_por_empleado 
+ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE 
+INNER JOIN cargo 
+ON cargo_por_empleado.FKCARGO = cargo.IDCARGO 
+WHERE empleado.EmpleActivo = '1'$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInformeUno` ()  SELECT area.NOMBRE AS NOMBRE,
+CASE WHEN area.NOMBRE = 'INFORMÁTICA' THEN 'Ana'
+    WHEN area.NOMBRE = 'GESTIÓN HUMANA' THEN 'Luís'
+    WHEN area.NOMBRE = 'MANTENIMIENTO' THEN 'Lina'
+    WHEN area.NOMBRE = 'CONTABILIDAD' THEN 'Gabriela'
+    WHEN area.NOMBRE = 'VENTAS' THEN 'Gonzalo'
+    WHEN area.NOMBRE = 'Gerencia' THEN 'Gerardo'
+    ELSE 'NO TIENE JEFE DE AREA ASIGNADO'
+    END NOMBREJEFE,
+CASE WHEN area.IDAREA = 10 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                 FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 10 AND empleado.EmpleActivo = '1')
+    WHEN area.IDAREA = 20 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 20 AND empleado.EmpleActivo = '1')
+    WHEN area.IDAREA = 30 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 30 AND empleado.EmpleActivo = '1')
+    WHEN area.IDAREA = 40 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 40 AND empleado.EmpleActivo = '1')
+    WHEN area.IDAREA = 50 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 50 AND empleado.EmpleActivo = '1')
+    WHEN area.IDAREA = 60 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 60 AND empleado.EmpleActivo = '1')
+    WHEN area.IDAREA = 70 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 70 AND empleado.EmpleActivo = '1')                               WHEN area.IDAREA = 80 THEN (SELECT COUNT(*) AS CANTIDAD 
+                                FROM empleado INNER JOIN area on empleado.fkAREA = area.IDAREA WHERE area.IDAREA = 80 AND empleado.EmpleActivo = '1')
+    ELSE 0
+    END NROEMPLEADOS
+FROM area$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -141,13 +221,7 @@ CREATE TABLE `detallereq` (
 INSERT INTO `detallereq` (`IDDETALLE`, `FECHA`, `OBSERVACION`, `FKREQ`, `FKESTADO`, `FKEMPLE`, `FKEMPLEASIGNADO`, `RequeActivo`) VALUES
 (1, '2021-04-24 21:25:50', 'Prueba con estado ', 1, '1', '1', NULL, 0),
 (2, '2021-04-24 21:37:13', 'Prueba con estado \r\nAsignado a gabriela ', 1, '2', '1', '7', 0),
-(3, '2021-04-24 21:45:47', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto', 1, '3', '1', '1', 0),
-(4, '2021-04-26 17:47:57', 'Reparacion desague oficina 202', 2, '1', '3', NULL, 0),
-(5, '2021-04-26 17:49:11', 'Reparacion desague oficina 202\r\nSe asigna a Hugo de Mantenimiento', 2, '2', '3', '1', 0),
-(6, '2021-04-26 17:50:28', 'Reparacion desague oficina 202\r\nSe asigna a Hugo de Mantenimiento\r\nSe ubica tubo temporal mientras llega el repuesto', 2, '3', '3', '1', 1),
-(7, '2021-04-27 10:37:29', 'Inicio Requerimiento', 3, '1', '3', NULL, 0),
-(8, '2021-04-27 10:38:36', 'Inicio Requerimiento\r\nRequerimiento Asignado a Ana', 3, '2', '3', '4', 1),
-(9, '2021-04-27 10:39:35', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto\r\nSe completa la socucion del requerimiento', 1, '4', '1', '1', 0);
+(3, '2021-04-24 21:45:47', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto', 1, '3', '1', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -178,7 +252,7 @@ INSERT INTO `empleado` (`IDEMPLEADO`, `NOMBRE`, `FOTO`, `HOJAVIDA`, `TELEFONO`, 
 ('1', 'Hugo', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\1.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\1.pdf', '411', 'hugo@ma.com', 'Cl. 54a #30-01, Medellín, Antioquia', -75.5532407, 6.2453253, '4', '10', 1),
 ('10', 'Juan perez', 'foto.jpg', 'foto.jpg', '555555', 'Prueba@mail.com', 'Cra 89 ', 999999999, 888888888, NULL, '60', 0),
 ('11', 'PEPE Perez prueba', 'delete.txt', 'delete.txt', '7777777777', 'ggg22222g@ana.com', 'Cra 99 #6666', 88888888888, 99999999999, '5', '40', 0),
-('2', 'Paco Prueba UPDATE', 'foto.jpg', 'hvs.pdf', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '4', '10', 1),
+('2', 'Paco Prueba UPDATE', '', '', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '4', '10', 1),
 ('3', 'Luís', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\3.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\3.pdf', '413', 'luis@ma.com', 'Cra. 65 #98 A-75, Medellín, Antioquia', -75.5715315, 6.2938986, '6', '20', 1),
 ('4', 'Ana', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\4.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\4.pdf', '414', 'ana@ma.com', 'Cra. 51 #58-69, Medellín, Antioquia', -75.5683161, 6.2576409, '6', '10', 1),
 ('5', 'Lina', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\5.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\5.pdf', '415', 'lina@ma.com', 'Cl. 47A ##85 - 20, Medellín, Antioquia', -75.6026462, 6.2504554, '6', '30', 1),
@@ -224,9 +298,50 @@ CREATE TABLE `requerimiento` (
 --
 
 INSERT INTO `requerimiento` (`IDREQ`, `FKAREA`) VALUES
-(1, '20'),
-(3, '20'),
-(2, '30');
+(1, '20');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `idRol` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`idRol`, `nombre`) VALUES
+(1, 'administrador del sistema'),
+(2, 'cliente'),
+(3, 'empleado'),
+(4, 'proveedor');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `idRol` int(11) NOT NULL,
+  `estatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `password`, `idRol`, `estatus`) VALUES
+(1, 'Gerardo', '1234', 1, 1),
+(2, 'Ana', '4567', 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -284,6 +399,19 @@ ALTER TABLE `requerimiento`
   ADD KEY `CONS_FKAREA1` (`FKAREA`);
 
 --
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`idRol`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idRol` (`idRol`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -303,13 +431,19 @@ ALTER TABLE `cargo_por_empleado`
 -- AUTO_INCREMENT de la tabla `detallereq`
 --
 ALTER TABLE `detallereq`
-  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `requerimiento`
 --
 ALTER TABLE `requerimiento`
-  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -349,6 +483,12 @@ ALTER TABLE `empleado`
 --
 ALTER TABLE `requerimiento`
   ADD CONSTRAINT `CONS_FKAREA1` FOREIGN KEY (`FKAREA`) REFERENCES `area` (`IDAREA`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `roles` (`idRol`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
