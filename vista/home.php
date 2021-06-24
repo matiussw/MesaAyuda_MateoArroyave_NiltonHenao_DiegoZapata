@@ -118,12 +118,9 @@
           <div class="item7"> 
           <h4>Informes</h4>
             <h6>Generar informes</h6>
-<<<<<<< HEAD
-            <a class="btn btn-info" href="vista/vistainformes.php" role="button">Ingresar</a>                  
-=======
-            <a class="btn btn-info" href="#" role="button">Ingresar</a>                  
->>>>>>> 12321aef14e867797cc0afce1ce959c47c96f13c
-          </div>
+
+            <a class="btn btn-info" href="vista/vistainformes.php" role="button">Ingresar</a>     
+                  </div>
         </div>
   
       </div>
