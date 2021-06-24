@@ -88,37 +88,41 @@
       <div class="container">
         <div class="grid1">
           <div class="item1">
-            <iframe  src="https://www.youtube.com/embed/OlSpSawBNFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe  src="https://www.youtube.com/embed/dgQn2rZ7jBk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="item2">
             <h4>CRUD Áreas</h4>
-            <h5>Guardar, Consultar, Modificar y Borrar Áreas</h5>
+            <h6>Guardar, Consultar, Modificar y Borrar Áreas</h6>
             <a class="btn btn-info" href="vista/vistaAreas.php" role="button">Ingresar</a>
           </div>
           <div class="item3">
             <h4>CRUD Empleados</h4>
-            <h5>Guardar, Consultar, Modificar y Borrar Empleados</h5>
+            <h6>Guardar, Consultar, Modificar y Borrar Empleados</h6>
             <a class="btn btn-info" href="vista/vistaEmpleados.php" role="button">Ingresar</a>
           </div>  
           <div class="item4">
             <h4>CRUD Cargo</h4>
-            <h5>Guardar, Consultar, Modificar y Borrar Cargo</h5>
+            <h6>Guardar, Consultar, Modificar y Borrar Cargo</h6>
             <a class="btn btn-info" href="vista/vistaCargos.php" role="button">Ingresar</a>
           </div>
           <div class="item5">
             <h4>Formulario Requerimientos</h4>
-            <h5>Ingresar un requerimiento</h5>
+            <h6>Ingresar un requerimiento</h6>
             <a class="btn btn-info" href="vista/vistaRequerimiento.php" role="button" >Ingresar</a>
           </div>
           <div class="item6">
             <h4>Administración de requerimientos</h4>
-            <h5>Asignar, solucionar o cancelar un requerimiento</h5>
+            <h6>Asignar, solucionar o cancelar un requerimiento</h6>
             <a class="btn btn-info" href="vista/vistaAdminRequerimientos.php" role="button">Ingresar</a>
           </div>
           <div class="item7"> 
           <h4>Informes</h4>
             <h6>Generar informes</h6>
+<<<<<<< HEAD
             <a class="btn btn-info" href="vista/vistainformes.php" role="button">Ingresar</a>                  
+=======
+            <a class="btn btn-info" href="#" role="button">Ingresar</a>                  
+>>>>>>> 12321aef14e867797cc0afce1ce959c47c96f13c
           </div>
         </div>
   
