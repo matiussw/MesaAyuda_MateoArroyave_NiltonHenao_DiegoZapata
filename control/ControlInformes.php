@@ -1,6 +1,9 @@
 <?php
-
+    include_once '../modelo/InformesProcedimientos.php';
 class ControlInformes {
+
+    private $rSelect;
+    private $rConsulta;
 
     function requerimientosActivos(){
 
@@ -45,7 +48,40 @@ class ControlInformes {
 
         }
 
+        function ejecutarProcedimientoInformes($respuestaSelect){
+            $objControlConexion = new ControlConexion();
+            $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
 
+            if($respuestaSelect==1){              
+                $comandoSql = "CALL spInformeUno";
+                $rs = $objControlConexion->ejecutarSelect($comandoSql);
+                $this->rConsulta =$rs;
+                return $rs;                              
+            }else if($respuestaSelect==2){
+                $objInformes = new InformesProcedimientos();
+                $comandoSql = "CALL spInformeDos";
+                $rs = $objControlConexion->ejecutarSelect($comandoSql);         
+                $this->rConsulta =$rs;
+                return $rs;               
+            }                       
+    
+            }
+
+            public function getSelect(){
+                return $this->rSelect;
+            }
+        
+            public function setSelect($rSelect){
+                $this->rSelect=$rSelect;
+            }
+
+            public function getRconsulta(){
+                return $this->rConsulta;
+            }
+        
+            public function setRconsulta($rConsulta){
+                $this->rConsulta=$rConsulta;
+            }
 
 }
 

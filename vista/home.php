@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
     <meta name="description" content="Mesa de Ayuda">
     <meta name="author" content="Mateo Arroyave, Nilton Henao, Diego Zapata">
     <link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/starter-template/">
@@ -115,7 +115,10 @@
             <h5>Asignar, solucionar o cancelar un requerimiento</h5>
             <a class="btn btn-info" href="vista/vistaAdminRequerimientos.php" role="button">Ingresar</a>
           </div>
-          <div class="item7">                   
+          <div class="item7"> 
+          <h4>Informes</h4>
+            <h6>Generar informes</h6>
+            <a class="btn btn-info" href="vista/vistainformes.php" role="button">Ingresar</a>                  
           </div>
         </div>
   

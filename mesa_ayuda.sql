@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2021 a las 16:03:21
+-- Tiempo de generación: 24-06-2021 a las 22:34:35
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -25,51 +25,28 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `informeDos` ()  SELECT empleado.NOMBRE,
-CASE WHEN empleado.fkEMPLE_JEFE = 1 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 1)
-WHEN empleado.fkEMPLE_JEFE = 2 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 2)
-WHEN empleado.fkEMPLE_JEFE = 3 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 3)
-WHEN empleado.fkEMPLE_JEFE = 4 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 4)
-WHEN empleado.fkEMPLE_JEFE = 5 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 5)
-WHEN empleado.fkEMPLE_JEFE = 6 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 6)
-WHEN empleado.fkEMPLE_JEFE = 7 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 7)
-WHEN empleado.fkEMPLE_JEFE = 8 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 8)
-WHEN empleado.fkEMPLE_JEFE = 9 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 9)
-WHEN empleado.fkEMPLE_JEFE = 10 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 10)
-ELSE 'NO TIENE JEFE DE AREA ASIGNADO'
-END NOMBREJEFE,
-area.NOMBRE AS NOMBRE
-FROM empleado 
-LEFT JOIN area 
-on empleado.fkAREA = area.IDAREA 
-INNER JOIN cargo_por_empleado 
-ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE 
-INNER JOIN cargo 
-ON cargo_por_empleado.FKCARGO = cargo.IDCARGO 
-WHERE empleado.EmpleActivo = '1'$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInformeDos` ()  SELECT empleado.NOMBRE,
-CASE WHEN empleado.fkEMPLE_JEFE = 1 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 1)
-WHEN empleado.fkEMPLE_JEFE = 2 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 2)
-WHEN empleado.fkEMPLE_JEFE = 3 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 3)
-WHEN empleado.fkEMPLE_JEFE = 4 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 4)
-WHEN empleado.fkEMPLE_JEFE = 5 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 5)
-WHEN empleado.fkEMPLE_JEFE = 6 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 6)
-WHEN empleado.fkEMPLE_JEFE = 7 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 7)
-WHEN empleado.fkEMPLE_JEFE = 8 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 8)
-WHEN empleado.fkEMPLE_JEFE = 9 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 9)
-WHEN empleado.fkEMPLE_JEFE = 10 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 10)
-ELSE 'NO TIENE JEFE DE AREA ASIGNADO'
-END NOMBREJEFE,
-area.NOMBRE AS NOMBRE
-FROM empleado 
-LEFT JOIN area 
-on empleado.fkAREA = area.IDAREA 
-INNER JOIN cargo_por_empleado 
-ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE 
-INNER JOIN cargo 
-ON cargo_por_empleado.FKCARGO = cargo.IDCARGO 
-WHERE empleado.EmpleActivo = '1'$$
+	CASE WHEN empleado.fkEMPLE_JEFE = 1 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 1)
+	WHEN empleado.fkEMPLE_JEFE = 2 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 2)
+	WHEN empleado.fkEMPLE_JEFE = 3 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 3)
+	WHEN empleado.fkEMPLE_JEFE = 4 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 4)
+	WHEN empleado.fkEMPLE_JEFE = 5 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 5)
+	WHEN empleado.fkEMPLE_JEFE = 6 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 6)
+	WHEN empleado.fkEMPLE_JEFE = 7 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 7)
+	WHEN empleado.fkEMPLE_JEFE = 8 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 8)
+	WHEN empleado.fkEMPLE_JEFE = 9 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 9)
+	WHEN empleado.fkEMPLE_JEFE = 10 THEN (SELECT empleado.NOMBRE FROM empleado WHERE empleado.IDEMPLEADO = 10)
+	ELSE 'NO TIENE JEFE DE AREA ASIGNADO'
+	END NOMBREJEFE,
+	area.NOMBRE AS NOMBREAREA
+	FROM empleado 
+	LEFT JOIN area 
+	on empleado.fkAREA = area.IDAREA 
+	INNER JOIN cargo_por_empleado 
+	ON empleado.IDEMPLEADO = cargo_por_empleado.FKEMPLE 
+	INNER JOIN cargo 
+	ON cargo_por_empleado.FKCARGO = cargo.IDCARGO 
+	WHERE empleado.EmpleActivo = '1'$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInformeUno` ()  SELECT area.NOMBRE AS NOMBRE,
 CASE WHEN area.NOMBRE = 'INFORMÁTICA' THEN 'Ana'
