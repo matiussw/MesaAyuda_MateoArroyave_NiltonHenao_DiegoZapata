@@ -69,7 +69,9 @@
 				</nav>
 			</header>       
 		<form method="POST">		
-
+		<?php 
+		session_start();
+		include "../rol.php"  ?>
 		<table class="form-table"  style="margin: 50px auto;" >
 			<thread class="thead-dark">
 				<td colspan="2"><h1>REQUERIMIENTOS</h1></td>				
@@ -77,7 +79,7 @@
 				<tr>
 				<td><h4>Área Requerimiento</h4></td>
 				<td><select class="form-control"name="txtArea">
-				";<?php
+				<?php
 				foreach ($matrizArea as $row) { 
 					echo'
 				
@@ -90,7 +92,7 @@
 				</tr>
 				<tr>
 				<td><h4>ID Empleado</h4></td>
-				<td><input class="form-control" type="text" name="txtIdEmpleado" placeholder="Ingrese su ID de Empleado"/>
+				<td><input class="form-control" type="text" name="txtIdEmpleado"  readonly value="<?php echo $_SESSION['id']; ?>"  />
 				</td>
 				</tr>
 				<tr>

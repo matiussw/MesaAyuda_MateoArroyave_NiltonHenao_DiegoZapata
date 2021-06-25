@@ -26,23 +26,28 @@ class User
     public function setUser($user){
         $objControlConexion = new ControlConexion();
         $objControlConexion->abrirBd("localhost", "root", "", "mesa_ayuda");
-        $comandoSql = "select usuarios.username as username, roles.nombre as nombrerol from usuarios inner join roles on usuarios.idRol = roles.idRol where username ='".$user."'";
+        $comandoSql = "select usuarios.id , usuarios.username as username, roles.nombre as nombrerol from usuarios inner join roles on usuarios.idRol = roles.idRol where username ='".$user."'";
         $rs = $objControlConexion->ejecutarSelect($comandoSql);
         
         $registro = $rs->fetch_array(MYSQLI_BOTH); //Asigna los datos a la variable $registro
         
-        $this->username = $registro["username"];
-        $this->rolname = $registro["nombrerol"];	
-       
+        $_SESSION['username'] = $registro["username"];
+        $_SESSION['nombrerol'] = $registro["nombrerol"];	
+        $_SESSION['id'] = $registro["id"];	
+
+        $objControlConexion->cerrarBd();
        
     }
 
     public function getNombre(){
-        return $this->username;
+      return  $_SESSION['username'];
     }
 
+    public function getId(){
+        return   $_SESSION['id'];
+    }
     public function getNombreRol(){
-        return $this->rolname;
+        return   $_SESSION['nombrerol'];
     }
 }
 

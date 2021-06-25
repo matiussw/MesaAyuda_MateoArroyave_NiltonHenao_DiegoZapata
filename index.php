@@ -24,6 +24,7 @@ if(isset($_SESSION['user'])){
         $user->setUser($userForm);
 
         include_once 'vista/home.php';
+       
     }else{
       
         $errorLogin = "Nombre de usuario y/o password incorrecto";

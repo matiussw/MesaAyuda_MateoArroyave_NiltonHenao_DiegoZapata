@@ -48,7 +48,9 @@
 			</nav>
 		</header>
 	<form method="POST" action="vistaInformes.php">		
-
+	<?php 
+		session_start();
+		include "../rol.php"  ?>
 		<table class="form-table"  style="margin: 50px auto;" >
 			<thread class="thead-dark">
 				<td colspan="2"><h1>Generación de informes</h1></td>				

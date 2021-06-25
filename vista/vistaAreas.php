@@ -66,6 +66,10 @@
 
 </head>
 <body>
+
+<?php 
+		session_start();
+		include "../rol.php"  ?>
 	<div class="container">		   
 		<header class="cabecera-principal">
 			<div id=contenedor-cabecera>

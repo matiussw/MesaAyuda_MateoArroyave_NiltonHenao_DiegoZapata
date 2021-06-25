@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2021 a las 22:34:35
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Tiempo de generación: 25-06-2021 a las 07:11:45
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -198,7 +198,10 @@ CREATE TABLE `detallereq` (
 INSERT INTO `detallereq` (`IDDETALLE`, `FECHA`, `OBSERVACION`, `FKREQ`, `FKESTADO`, `FKEMPLE`, `FKEMPLEASIGNADO`, `RequeActivo`) VALUES
 (1, '2021-04-24 21:25:50', 'Prueba con estado ', 1, '1', '1', NULL, 0),
 (2, '2021-04-24 21:37:13', 'Prueba con estado \r\nAsignado a gabriela ', 1, '2', '1', '7', 0),
-(3, '2021-04-24 21:45:47', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto', 1, '3', '1', '1', 1);
+(3, '2021-04-24 21:45:47', 'Prueba con estado \r\nAsignado a gabriela\r\nSe deja impresora de respaldo mientras tinto', 1, '3', '1', '1', 1),
+(4, '2021-06-25 00:03:05', 'Prueba', 2, '1', '4', NULL, 0),
+(5, '2021-06-25 00:03:40', 'Prueba\r\n\r\nActualizacion Prueba', 2, '2', '4', '3', 0),
+(6, '2021-06-25 00:03:50', 'Prueba\r\n\r\nActualizacion Prueba', 2, '4', '4', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -275,6 +278,7 @@ CREATE TABLE `requerimiento` (
 --
 
 INSERT INTO `requerimiento` (`IDREQ`, `FKAREA`) VALUES
+(2, '10'),
 (1, '20');
 
 -- --------------------------------------------------------
@@ -305,7 +309,7 @@ INSERT INTO `roles` (`idRol`, `nombre`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` varchar(20) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(250) NOT NULL,
   `idRol` int(11) NOT NULL,
@@ -317,8 +321,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `username`, `password`, `idRol`, `estatus`) VALUES
-(1, 'Gerardo', '1234', 1, 1),
-(2, 'Ana', '4567', 3, 1);
+('4', 'Ana', '4567', 3, 1),
+('5', 'Lina12', '0000', 4, 0),
+('6', 'Gerardo', '1234', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -408,19 +413,13 @@ ALTER TABLE `cargo_por_empleado`
 -- AUTO_INCREMENT de la tabla `detallereq`
 --
 ALTER TABLE `detallereq`
-  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDDETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `requerimiento`
 --
 ALTER TABLE `requerimiento`
-  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDREQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -465,7 +464,8 @@ ALTER TABLE `requerimiento`
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `roles` (`idRol`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `roles` (`idRol`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`id`) REFERENCES `empleado` (`IDEMPLEADO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -61,11 +61,9 @@
   </head>
 
   <body>
-      
-  
-        <h5>Bienvenido <?php echo $user->getNombre();  ?></h5>
-        <h5>ROL:  <?php echo $user->getNombreRol();  ?></h5>
-      <div class="container">
+  <h4>Bienvenido <?php echo $user->getNombre();  ?></h4>
+        <h4>ROL:  <?php echo $user->getNombreRol();  ?></h4>
+              <div class="container">
         <header class="cabecera-principal">
             <div id=contenedor-cabecera>
               <img id="logo" src="img/logo1.png" alt="Logo Responsive">
@@ -90,38 +88,88 @@
           <div class="item1">
             <iframe  src="https://www.youtube.com/embed/dgQn2rZ7jBk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <div class="item2">
-            <h4>CRUD Áreas</h4>
-            <h6>Guardar, Consultar, Modificar y Borrar Áreas</h6>
-            <a class="btn btn-info" href="vista/vistaAreas.php" role="button">Ingresar</a>
-          </div>
-          <div class="item3">
-            <h4>CRUD Empleados</h4>
-            <h6>Guardar, Consultar, Modificar y Borrar Empleados</h6>
-            <a class="btn btn-info" href="vista/vistaEmpleados.php" role="button">Ingresar</a>
-          </div>  
-          <div class="item4">
-            <h4>CRUD Cargo</h4>
-            <h6>Guardar, Consultar, Modificar y Borrar Cargo</h6>
-            <a class="btn btn-info" href="vista/vistaCargos.php" role="button">Ingresar</a>
-          </div>
-          <div class="item5">
+          <?php 
+        if ( $user->getNombreRol()=="empleado"){
+          ?>
+          <div class="item6">
+          <h4>Administración de requerimientos</h4>
+          <h6>Asignar, solucionar o cancelar un requerimiento</h6>
+          <a class="btn btn-info" href="vista/vistaAdminRequerimientos.php" role="button">Ingresar</a>
+        </div>
+
+        <div class="item5">
             <h4>Formulario Requerimientos</h4>
             <h6>Ingresar un requerimiento</h6>
             <a class="btn btn-info" href="vista/vistaRequerimiento.php" role="button" >Ingresar</a>
           </div>
-          <div class="item6">
-            <h4>Administración de requerimientos</h4>
-            <h6>Asignar, solucionar o cancelar un requerimiento</h6>
-            <a class="btn btn-info" href="vista/vistaAdminRequerimientos.php" role="button">Ingresar</a>
+        <?php
+        }elseif ($user->getNombreRol()=="proveedor"){
+          ?>
+         <div class="item6">
+          <h4>Administración de requerimientos</h4>
+          <h6>Asignar, solucionar o cancelar un requerimiento</h6>
+          <a class="btn btn-info" href="vista/vistaAdminRequerimientos.php" role="button">Ingresar</a>
+        </div>
+
+        <div class="item5">
+            <h4>Formulario Requerimientos</h4>
+            <h6>Ingresar un requerimiento</h6>
+            <a class="btn btn-info" href="vista/vistaRequerimiento.php" role="button" >Ingresar</a>
           </div>
+
           <div class="item7"> 
           <h4>Informes</h4>
             <h6>Generar informes</h6>
 
             <a class="btn btn-info" href="vista/vistainformes.php" role="button">Ingresar</a>     
                   </div>
+         
+        <?php 
+        }else{
+          ?> 
+
+          <div class="item2">
+          <h4>CRUD Áreas</h4>
+          <h6>Guardar, Consultar, Modificar y Borrar Áreas</h6>
+          <a class="btn btn-info" href="vista/vistaAreas.php" role="button">Ingresar</a>
         </div>
+        <div class="item3">
+          <h4>CRUD Empleados</h4>
+          <h6>Guardar, Consultar, Modificar y Borrar Empleados</h6>
+          <a class="btn btn-info" href="vista/vistaEmpleados.php" role="button">Ingresar</a>
+        </div>  
+        <div class="item4">
+          <h4>CRUD Cargo</h4>
+          <h6>Guardar, Consultar, Modificar y Borrar Cargo</h6>
+          <a class="btn btn-info" href="vista/vistaCargos.php" role="button">Ingresar</a>
+        </div>
+
+        <div class="item6">
+          <h4>Administración de requerimientos</h4>
+          <h6>Asignar, solucionar o cancelar un requerimiento</h6>
+          <a class="btn btn-info" href="vista/vistaAdminRequerimientos.php" role="button">Ingresar</a>
+        </div>
+
+        <div class="item5">
+            <h4>Formulario Requerimientos</h4>
+            <h6>Ingresar un requerimiento</h6>
+            <a class="btn btn-info" href="vista/vistaRequerimiento.php" role="button" >Ingresar</a>
+          </div>
+
+          <div class="item7"> 
+          <h4>Informes</h4>
+            <h6>Generar informes</h6>
+
+            <a class="btn btn-info" href="vista/vistainformes.php" role="button">Ingresar</a>     
+                  </div>
+        <?php 
+        }
+        
+        ?> 
+               
+          
+      
+        </div>   
   
       </div>
     <br>

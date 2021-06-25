@@ -53,7 +53,10 @@
 
 </head>
 <body>
-	<div class="container">		   
+	<div class="container">		
+	<?php 
+		session_start();
+		include "../rol.php"  ?>   
 		<header class="cabecera-principal">
 			<div id=contenedor-cabecera>
 				<img id="logo" src="../img/logo1.png" alt="Logo Responsive">
