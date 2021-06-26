@@ -74,7 +74,7 @@
                 <li><a href="vista/vistaEquipo.php">Equipo</a></li>
                 <li><a href="vista/vistaServicios.php">Servicios</a></li>                                    
                 <li aling=right class="cerrar-sesion">
-                <a href="../includes/CerrarSesion.php">Cerrar Sesion</a> 
+                <a href="includes/CerrarSesion.php">Cerrar Sesion</a> 
                 </li>               
               </ul>
               
