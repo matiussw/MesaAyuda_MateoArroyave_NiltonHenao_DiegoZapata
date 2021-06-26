@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2021 a las 07:11:45
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.2
+-- Tiempo de generación: 26-06-2021 a las 22:25:48
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -124,13 +124,13 @@ INSERT INTO `cargo` (`IDCARGO`, `NOMBRE`) VALUES
 (6, 'Scrum Master'),
 (7, 'Desarrollador de software'),
 (8, 'Tester'),
-(9, 'Director de recursos humanos'),
+(9, 'Jefe de recursos humanos'),
 (10, 'Técnico de selección de personal'),
 (11, 'Técnico de comunicación interna'),
 (12, 'Técnico de formación'),
 (13, 'Electricista'),
 (14, 'Electromecánico'),
-(15, 'Gerente de mantenimiento'),
+(15, 'Jefe de mantenimiento'),
 (16, 'Mecánico'),
 (17, 'Técnico en aire acondicionado'),
 (18, 'Asistente de mantenimiento'),
@@ -168,7 +168,7 @@ INSERT INTO `cargo_por_empleado` (`FKCARGO`, `FKEMPLE`, `FECHAINI`, `FECHAFIN`) 
 (9, '3', '2021-04-24', NULL),
 (13, '10', '2021-04-24', NULL),
 (15, '5', '2021-04-24', NULL),
-(16, '11', '2021-04-24', '2021-04-24'),
+(16, '11', '2021-04-24', '0000-00-00'),
 (21, '7', '2021-04-24', NULL),
 (24, '8', '2021-04-24', NULL),
 (27, '6', '2021-04-24', NULL),
@@ -230,9 +230,9 @@ CREATE TABLE `empleado` (
 
 INSERT INTO `empleado` (`IDEMPLEADO`, `NOMBRE`, `FOTO`, `HOJAVIDA`, `TELEFONO`, `EMAIL`, `DIRECCION`, `X`, `Y`, `fkEMPLE_JEFE`, `fkAREA`, `EmpleActivo`) VALUES
 ('1', 'Hugo', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\1.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\1.pdf', '411', 'hugo@ma.com', 'Cl. 54a #30-01, Medellín, Antioquia', -75.5532407, 6.2453253, '4', '10', 1),
-('10', 'Juan perez', 'foto.jpg', 'foto.jpg', '555555', 'Prueba@mail.com', 'Cra 89 ', 999999999, 888888888, NULL, '60', 0),
-('11', 'PEPE Perez prueba', 'delete.txt', 'delete.txt', '7777777777', 'ggg22222g@ana.com', 'Cra 99 #6666', 88888888888, 99999999999, '5', '40', 0),
-('2', 'Paco Prueba UPDATE', '', '', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '4', '10', 1),
+('10', 'Juan perez', 'foto.jpg', 'foto.jpg', '555555', 'Prueba@mail.com', 'Cra 89 ', 999999999, 888888888, '7', '40', 1),
+('11', 'PEPE', 'delete.txt', 'delete.txt', '7777777777', 'ggg22222g@ana.com', 'Cra 99 #6666', 88888888888, 99999999999, '5', '30', 1),
+('2', 'Paco', '', '', '412', 'paco@ma.com', 'Cra. 74d #732, Medellín, Antioquia', -75.5910024, 6.2736935, '3', '20', 1),
 ('3', 'Luís', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\3.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\3.pdf', '413', 'luis@ma.com', 'Cra. 65 #98 A-75, Medellín, Antioquia', -75.5715315, 6.2938986, '6', '20', 1),
 ('4', 'Ana', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\4.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\4.pdf', '414', 'ana@ma.com', 'Cra. 51 #58-69, Medellín, Antioquia', -75.5683161, 6.2576409, '6', '10', 1),
 ('5', 'Lina', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\fotos\\5.jpg', 'C:\\xampp\\htdocs\\proyectoMesaAyuda\\vista\\hvs\\5.pdf', '415', 'lina@ma.com', 'Cl. 47A ##85 - 20, Medellín, Antioquia', -75.6026462, 6.2504554, '6', '30', 1),
@@ -300,7 +300,7 @@ INSERT INTO `roles` (`idRol`, `nombre`) VALUES
 (1, 'administrador del sistema'),
 (2, 'cliente'),
 (3, 'empleado'),
-(4, 'proveedor');
+(4, 'Jefe de area');
 
 -- --------------------------------------------------------
 
@@ -321,9 +321,16 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `username`, `password`, `idRol`, `estatus`) VALUES
-('4', 'Ana', '4567', 3, 1),
-('5', 'Lina12', '0000', 4, 0),
-('6', 'Gerardo', '1234', 1, 1);
+('1', 'Hugo', '1234', 3, 1),
+('10', 'Juan', '1234', 3, 1),
+('11', 'Pepe', '1234', 3, 1),
+('2', 'Paco', '1234', 3, 1),
+('3', 'Luis', '1234', 4, 1),
+('4', 'Ana', '1234', 4, 1),
+('5', 'Lina12', '1234', 4, 1),
+('6', 'Gerardo', '1234', 1, 1),
+('7', 'Gabriela', '1234', 4, 1),
+('8', 'Gonzalo', '1234', 4, 1);
 
 --
 -- Índices para tablas volcadas
@@ -390,8 +397,7 @@ ALTER TABLE `roles`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idRol` (`idRol`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
