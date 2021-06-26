@@ -63,19 +63,18 @@
   <body>
   <h4>Bienvenido <?php echo $user->getNombre();  ?></h4>
         <h4>ROL:  <?php echo $user->getNombreRol();  ?></h4>
-              <div class="container">
+        <div class="container">
         <header class="cabecera-principal">
             <div id=contenedor-cabecera>
               <img id="logo" src="img/logo1.png" alt="Logo Responsive">
             </div>
             <nav  class="nav-principal">
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Equipo</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Organización</a></li>                    
+                <li><a href="../index.php">Inicio</a></li>
+                <li><a href="vista/vistaEquipo.php">Equipo</a></li>
+                <li><a href="vista/vistaServicios.php">Servicios</a></li>                                    
                 <li aling=right class="cerrar-sesion">
-                    <a href="includes/CerrarSesion.php">Cerrar Sesion</a> 
+                <a href="../includes/CerrarSesion.php">Cerrar Sesion</a> 
                 </li>               
               </ul>
               
@@ -103,7 +102,7 @@
             <a class="btn btn-info" href="vista/vistaRequerimiento.php" role="button" >Ingresar</a>
           </div>
         <?php
-        }elseif ($user->getNombreRol()=="proveedor"){
+        }elseif ($user->getNombreRol()=="Jefe de area"){
           ?>
          <div class="item6">
           <h4>Administración de requerimientos</h4>
